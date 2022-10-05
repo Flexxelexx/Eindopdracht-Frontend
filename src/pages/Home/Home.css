@@ -1,0 +1,21 @@
+#logo {
+    border-style: groove;
+    border-color: yellow;
+    max-height: 150px;
+    max-width: 150px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-content: space-evenly;
+    list-style: none;
+}
+
+.midStrip {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 400px;
+    align-items: flex-start;
+}
