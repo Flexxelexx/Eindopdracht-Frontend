@@ -3,13 +3,13 @@
     border-width: thick;
     border-color: black;
     border-radius: 50px;
-    width: 500px;
     background-color: #D9D9D9;
     height: 550px;
+    flex-basis: 500px;
 }
 
 .midPicture {
-    width: 500px;
+    width: 100%;
     border-radius: 45px 45px 0px 0px ;
 }
 
@@ -20,4 +20,13 @@
     list-style: none;
     font-weight: bold;
     padding-bottom: 10px;
+}
+
+.midStrip {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    align-items: flex-start;
 }

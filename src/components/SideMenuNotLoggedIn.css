@@ -10,13 +10,14 @@
     border-style: solid;
     border-color: black;
     border-width: thick;
+    position: absolute;
+    left: 1%
     }
 
 .input-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
 
 .button-container {
