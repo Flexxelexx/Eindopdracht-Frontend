@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Switch, Route, NavLink} from "react-router-dom";
 import './App.css';
 import Home from "./pages/Home/Home";
@@ -8,21 +8,41 @@ import './components/Navigation.css'
 import Portfolio from "./pages/Home/Portfolio";
 import Upload from "./pages/Home/Upload";
 import Visplekken from "./pages/Home/Visplekken";
+import ToggleImages from "./components/ToggleImages"
 
 function App() {
+
+    const [active, setActive] = useState(false)
+
+    const handleChangeActive = () => {
+        setActive((previousIcon) => {
+            return !previousIcon;
+        })
+    }
+
+    const [click, setClick] = useState(false)
+    const [dropdown, setDropdown] = useState(false)
+
+    const handleClick = () => setClick(!click)
+    const closeMobileMenu = () => setClick(false)
+
     return (
+
         <>
             <div className="outer-container">
+
 
                 <div className="inner-container">
 
 
                     <nav>
-                        <img className="logo" src={logo} alt="Logo"/>
+                        <NavLink to="/">
+                            <img className="logo" src={logo} alt="Logo" onClick={handleClick}/>
+                        </NavLink>
                         <ul>
                             <li>
                                 <NavLink to="/">
-                                    <button className="navibuttons">🏡 Home</button>
+                                    <button className="navibuttons" onClick={closeMobileMenu}>🏡 Home</button>
                                 </NavLink>
                             </li>
                             <li>
@@ -42,15 +62,14 @@ function App() {
                             </li>
                         </ul>
 
-                        <div className="hamburgerVisible">
+                        <div className="hamburgerVisible" onClick={handleClick}>
                             <button className="hamburger">
 
-                                <img className="burgervis" src={burgervis} alt="burgervis"/>
+                                <ToggleImages active={active} handleChangeActive={handleChangeActive}/>
 
-                                <li>MENU</li>
+                                <li className="menu-icon">MENU<i className='fas fa-caret-down'/></li>
                             </button>
                         </div>
-
                     </nav>
 
                     <Switch>
