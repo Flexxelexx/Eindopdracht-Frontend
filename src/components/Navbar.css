@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 200px;
+    padding: 0 2rem;
+    background-color: #013E30;
+}
+
+.header2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 200px;
+    padding: 0 2rem;
+    background-color: #013E30;
+}
+
+nav a {
+    margin: 0 2rem;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    filter: blur(3px);
+}
+
+nav a:hover {
+    filter: blur();
+}
+
+.navLogo {
+    max-height: 75%;
+    max-width: 75%;
+    border-radius: 100px;
+}
+
+header .nav-btn {
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: black;
+    font-size: 1.8rem;
+    visibility: hidden;
+    opacity: 0;
+}
+
+@media screen and (max-width: 700px) {
+.navLogo {
+    max-height: 50%;
+    max-width: 50%;
+}
+}
+
+@media only screen and (max-width: 700px) {
+    header .nav-btn {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    header nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: black;
+        transition: 1s;
+        transform: translateY(-100vh);
+    }
+
+    header nav .nav-close-btn {
+        margin-top: 50px;
+    }
+
+    .header2 nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: black;
+        transition: 1s;
+        transform: translateY(0vh);
+    }
+
+    nav .nav-close-btn {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        color: white;
+    }
+
+    nav a {
+        font-size: 1.5rem;
+        filter: blur();
+    }
+
+}
+
+

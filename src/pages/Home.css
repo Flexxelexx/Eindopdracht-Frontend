@@ -1,0 +1,152 @@
+.inlog-form {
+    background-color: #D9D9D9;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: black;
+    border-width: thick;
+    grid-area: i;
+}
+
+.fishLogo {
+    font-size: 50px;
+}
+
+.newForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #013E51;
+    border: none;
+    color: red;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.emailInput {
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #013E51;
+    border: none;
+    color: red;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.mid-content {
+    border-style: solid;
+    border-width: thick;
+    border-color: black;
+    border-radius: 50px;
+    background-color: #D9D9D9;
+    grid-area: c;
+}
+
+.midPicture {
+    width: 100%;
+    border-radius: 45px 45px 0px 0px;
+}
+
+.midText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas:
+    "i i . c c c c . ."
+    ". . . c c c c . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . .";
+}
+
+
+@media screen and (max-width: 700px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 15px 10px;
+    }
+}
+
+/*@media screen and (min-width: 700px ) and (max-width: 1000px) {*/
+/*    main {*/
+/*        margin: 15px 10px;*/
+/*        display: grid;*/
+/*        grid-template-columns: repeat(13, 1fr);*/
+/*        grid-template-rows: repeat(8, 1fr);*/
+/*        grid-template-areas:*/
+/*    "l l l . c c c c c c c . ."*/
+/*    "l l l . c c c c c c c . ."*/
+/*    "i i i . c c c c c c c . ."*/
+/*    "i i i . c c c c c c c . ."*/
+/*    ". . . . . . . . . . . . ."*/
+/*    ". . . . . . . . . . . . ."*/
+/*    ". . . . . . . . . . . . ."*/
+/*    ". . . . . . . . . . . . .";*/
+/*    }*/
+
+/*    .logo {*/
+/*        display: flex;*/
+/*    }*/
+
+/*}*/
+
+/*@media screen and (min-width: 1000px ) {*/
+/*    main {*/
+/*        margin: 15px 10px;*/
+/*        display: grid;*/
+/*        grid-template-columns: repeat(10, 1fr);*/
+/*        grid-template-rows: repeat(12, 1fr);*/
+/*        grid-template-areas:*/
+/*    "l l . c c c c c . ."*/
+/*    "l l . c c c c c . ."*/
+/*    "i i . c c c c c . ."*/
+/*    "i i . c c c c c . ."*/
+/*    ". . . . . . . . . ."*/
+/*    ". . . . . . . . . ."*/
+/*    ". . . . . . . . . ."*/
+/*    ". . . . . . . . . ."*/
+/*    ". . . . . . . . . ."*/
+/*    ". . . . . . . . . ."*/
+/*    ". . . . . . . . . ."*/
+/*    ". . . . . . . . . .";*/
+/*    }*/
+
+/*    .logo {*/
+/*        display: flex;*/
+/*    }*/
+/*}*/
+
