@@ -42,6 +42,10 @@ nav a:hover {
     border-radius: 100px;
 }
 
+.navLogoDropdown {
+display: none;
+}
+
 header .nav-btn {
     padding: 5px;
     cursor: pointer;
@@ -54,14 +58,26 @@ header .nav-btn {
     opacity: 0;
 }
 
+.secret {
+    display: none;
+    margin-top: 70px;
+}
+
 @media screen and (max-width: 700px) {
 .navLogo {
-    max-height: 50%;
-    max-width: 50%;
+    max-height: 75%;
+    max-width: 75%;
 }
 }
 
 @media only screen and (max-width: 700px) {
+    .navLogoDropdown {
+        display: flex;
+        max-height: 50%;
+        max-width: 50%;
+        border-radius: 150px;
+    }
+
     header .nav-btn {
         visibility: visible;
         opacity: 1;
@@ -113,6 +129,12 @@ header .nav-btn {
     nav a {
         font-size: 1.5rem;
         filter: blur();
+    }
+
+    .secret {
+        display: flex;
+        color: white;
+        font-size: 100px;
     }
 
 }

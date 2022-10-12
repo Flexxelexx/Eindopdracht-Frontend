@@ -1,7 +1,7 @@
 import React from "react";
 
 import './Home.css'
-import midlogo from "../../assets/4.jpg";
+import midlogo from "../assets/4.jpg";
 import {FaFish} from "react-icons/fa";
 
 export default function Home() {

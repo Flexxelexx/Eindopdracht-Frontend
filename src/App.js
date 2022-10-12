@@ -4,11 +4,10 @@ import {Switch, Route} from "react-router-dom";
 import './App.css';
 
 
-
-import Home from "./pages/Home/Home";
-import Portfolio from "./pages/Home/Portfolio";
-import Upload from "./pages/Home/Upload";
-import Visplekken from "./pages/Home/Visplekken";
+import Home from "./pages/Home";
+import Portfolio from "./pages/Portfolio";
+import Upload from "./pages/Upload";
+import Visplekken from "./pages/Visplekken";
 
 import Navbar from "./components/Navbar"
 
@@ -16,40 +15,39 @@ import Navbar from "./components/Navbar"
 function App() {
 
 
-        return (
+    return (
 
-            <>
-                <div className="outer-container">
+        <>
+            <div className="outer-container">
 
-                    <div className="inner-container">
+                <div className="inner-container">
 
-                        <Navbar />
+                    <Navbar/>
 
+                    <Switch>
 
-                        <Switch>
+                        <Route path="/" exact component={Home}>
 
-                            <Route path="/" exact component={Home}>
+                        </Route>
+                        <Route path="/visplekken" exact component={Visplekken}>
 
-                            </Route>
-                            <Route path="visplekken" exact component={Visplekken}>
+                        </Route>
+                        <Route path="/portfolio" exact component={Portfolio}>
 
-                            </Route>
-                            <Route path="portfolio" exact component={Portfolio}>
+                        </Route>
+                        <Route path="/upload" exact component={Upload}>
 
-                            </Route>
-                            <Route path="upload" exact component={Upload}>
+                        </Route>
 
-                            </Route>
+                    </Switch>
 
-                        </Switch>
-
-                        <footer>❌TYPFEAUXTEN VOORBEHEAUXDEN❌</footer>
-
-                    </div>
+                    <footer>❌TYPFEAUXTEN VOORBEHEAUXDEN❌</footer>
 
                 </div>
-            </>
-        );
+
+            </div>
+        </>
+    );
 
 }
 
