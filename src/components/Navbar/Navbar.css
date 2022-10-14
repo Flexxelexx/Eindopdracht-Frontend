@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+[data-theme='donker'] {
+    background-color: #253237;
+    --text-primary: black;
+    --text-secondary: grey;
+    --accent: darkred;
+    transition: background-color 2s ease-out;
+}
+
+[data-theme='licht'] {
+    background-color: #e0fbfc;
+    transition: background-color 2s ease-out;
+}
+
 header {
     width: 100%;
     display: flex;
@@ -11,7 +24,6 @@ header {
     justify-content: space-between;
     height: 200px;
     padding: 0 2rem;
-    background-color: #013E30;
 }
 
 .header2 {
@@ -21,15 +33,23 @@ header {
     justify-content: space-between;
     height: 200px;
     padding: 0 2rem;
-    background-color: #013E30;
+}
+
+[data-theme='donker'] nav a {
+    color: #e0fbfc;
+    transition: color 2s ease-out;
+}
+
+[data-theme='licht'] nav a {
+    color: #253237;
+    transition: color 2s ease-out;
 }
 
 nav a {
     margin: 0 2rem;
-    color: white;
+    color: black;
     font-size: 20px;
     text-decoration: none;
-    filter: blur(3px);
 }
 
 nav a:hover {
@@ -39,11 +59,10 @@ nav a:hover {
 .navLogo {
     max-height: 75%;
     max-width: 75%;
-    border-radius: 100px;
 }
 
 .navLogoDropdown {
-display: none;
+    display: none;
 }
 
 header .nav-btn {
@@ -64,10 +83,10 @@ header .nav-btn {
 }
 
 @media screen and (max-width: 700px) {
-.navLogo {
-    max-height: 75%;
-    max-width: 75%;
-}
+    .navLogo {
+        max-height: 75%;
+        max-width: 75%;
+    }
 }
 
 @media only screen and (max-width: 700px) {
@@ -114,7 +133,7 @@ header .nav-btn {
         align-items: center;
         justify-content: center;
         gap: 1.5rem;
-        background-color: black;
+        background-color: #0A0B0D;
         transition: 1s;
         transform: translateY(0vh);
     }
@@ -135,6 +154,16 @@ header .nav-btn {
         display: flex;
         color: white;
         font-size: 100px;
+    }
+
+    [data-theme='donker'] header a {
+        color: white;
+        transition: color 2s ease-out;
+    }
+
+    [data-theme='licht'] .header2 a {
+        color: white;
+        transition: color 2s ease-out;
     }
 
 }

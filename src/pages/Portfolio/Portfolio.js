@@ -1,21 +1,22 @@
 import React from "react";
 import './Portfolio.css'
 import {FaFish} from "react-icons/fa";
-import midlogo from "../assets/4.jpg";
+import StarRating from '../components/StarRating'
 
 
 export default function Portfolio() {
     return (
         <>
-            <main>
+            <div className='portfolio-grid'>
                 <div className="inlog-form">
                     <form>
                         <div className="newForm">
-                            <h5>Welkom terug !name! </h5>
+                            <h5>Welkom terug !name </h5>
                             <div className="fishLogo"><FaFish/></div>
                             <li>!totaal gevangen! : xxx</li>
                             <li>!totaal gewicht! : xxx</li>
                             <li>!totale lengte! : xxx</li>
+                            <button className="logoutBtn">Naar je portfolio</button>
                             <button className="logoutBtn">Uitloggen</button>
                         </div>
 
@@ -48,7 +49,12 @@ export default function Portfolio() {
                 </div>
 
 
-            </main>
+                <div className="ratingScreen">
+                    <h3>Geef deze vangst een beoordeling!</h3>
+                    <StarRating/>
+                </div>
+
+            </div>
 
         </>
     )

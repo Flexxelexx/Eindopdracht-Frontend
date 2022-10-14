@@ -1,0 +1,39 @@
+.inlog-form {
+    background-color: #D9D9D9;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    grid-area: i;
+}
+
+.logoutBtn {
+    margin-top: 25px;
+}
+
+.button-container {
+    background-color: black;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.visplekken-grid {
+    filter: drop-shadow(0 0 0.75rem black);
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+    "i i . c c c . . ."
+    ". . . c c c . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . .";
+}

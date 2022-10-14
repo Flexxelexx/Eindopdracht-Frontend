@@ -3,14 +3,20 @@ import './Navbar.css';
 import {NavLink} from "react-router-dom";
 import {FaBars, FaTimes} from "react-icons/fa";
 import {GiFishCorpse} from "react-icons/gi"
-import logo from "../assets/logo.jpg"
-import navlogotop from "../assets/navlogotop.jpg"
 import origineellogoPNG from "../assets/origineelLogoPNG.png"
+import useLocalStorage from "use-local-storage";
 
 
 function Navbar() {
 
-    const [click, setClick] = useState(false)
+
+    const defaultDark = window.matchMedia('(prefers-color-scheme: donker)').matches;
+    const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'donker' : 'licht');
+
+    const switchTheme = () => {
+        const newTheme = theme === 'donker' ? 'licht' : 'donker';
+        setTheme(newTheme)
+    }
 
     const [className, setClassName] = useState('header')
 
@@ -22,6 +28,7 @@ function Navbar() {
         setClassName("header2")
     }
 
+
     return (
 
         <header className={className}>
@@ -32,7 +39,12 @@ function Navbar() {
                 <NavLink to='/visplekken' onClick={showNavBar}>Visplekken</NavLink>
                 <NavLink to='/portfolio' onClick={showNavBar}>Portfolio</NavLink>
                 <NavLink to='/upload' onClick={showNavBar}>Upload</NavLink>
-                <NavLink to ='/secret' className='secret' onClick={showNavBar}><GiFishCorpse/></NavLink>
+                <button
+                    className='themebtn'
+                    onClick={switchTheme}
+                > {theme === 'donker' ? 'Donker' : 'Licht'} thema
+                </button>
+                <NavLink to='/secret' className='secret' onClick={showNavBar}><GiFishCorpse/></NavLink>
                 <button className='nav-btn nav-close-btn' onClick={showNavBar}>
                     <FaTimes/>
                 </button>

@@ -1,21 +1,20 @@
 import React from "react";
 import './Upload.css'
 import {FaFish} from "react-icons/fa";
-import midlogo from "../assets/4.jpg";
 
 
 export default function Upload() {
     return (
         <>
-            <main>
+            <div className='upload-grid'>
                 <div className="inlog-form">
                     <form>
                         <div className="newForm">
-                            <h5>Welkom terug !name! </h5>
+                            <h5>Welkom terug !name </h5>
                             <div className="fishLogo"><FaFish/></div>
-                            <li>!totaal gevangen! : xxx</li>
-                            <li>!totaal gewicht! : xxx</li>
-                            <li>!totale lengte! : xxx</li>
+                            <li>!totaal gevangen : xxx</li>
+                            <li>!totaal gewicht : xxx</li>
+                            <li>!totale lengte : xxx</li>
                             <button className="logoutBtn">Uitloggen</button>
                         </div>
 
@@ -38,7 +37,7 @@ export default function Upload() {
                                 <label>
                                     Gewicht:
                                 </label>
-                                <input type="text" name="uname" placeholder="Juriaan is gek ..."
+                                <input type="text" name="uname" placeholder="Vul hier het gewicht in..."
                                        required/>
                             </div>
                             <div className="uploadFormLine">
@@ -84,7 +83,7 @@ export default function Upload() {
                 </div>
 
 
-            </main>
+            </div>
 
         </>
     );

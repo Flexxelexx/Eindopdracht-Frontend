@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 50%;
+    width: 70%;
 }
 
 .uploadFormLine {
@@ -44,4 +44,17 @@
     margin-top: 15px;
     cursor: pointer;
     width: 60%;
+}
+
+.upload-grid {
+    filter: drop-shadow(0 0 0.75rem black);
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+    "i i . c c c . . ."
+    ". . . c c c . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ;
 }

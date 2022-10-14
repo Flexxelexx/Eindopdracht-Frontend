@@ -1,0 +1,31 @@
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-area: a;
+    text-align: center;
+    width: 100%;
+    background-color: #D9D9D9;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    padding: 50px;
+}
+
+.formInput {
+    width: 50%;
+}
+
+.admin-portal {
+    filter: drop-shadow(0 0 0.75rem black);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+". . . . ."
+". . a . ."
+". . . . ."
+". . . . ."
+". . . . .";
+}

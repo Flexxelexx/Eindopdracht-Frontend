@@ -9,29 +9,19 @@ import origineellogoPNG from "../assets/origineelLogoPNG.png"
 function Visplekken() {
     return (
 
-        <main>
+        <div className='visplekken-grid'>
             <div className="inlog-form">
                 <form>
                     <div className="newForm">
-                        <h5>LOG IN</h5>
+                        <h5>Welkom terug !name </h5>
                         <div className="fishLogo"><FaFish/></div>
-
-                        <label>Email</label>
-                        <input className='emailInput' type="text" name="uname" placeholder="Vul hier je email in..."
-                               required/>
-                        <label>Wachtwoord</label>
-                        <input className='emailInput' type="password" name="wachtwoord"
-                               placeholder="Vul hier je wachtwoord in..." required/>
-                        <div className="button-container">
-                            <button className="button-container2">Verzenden</button>
-                        </div>
-                        <div className="button-container">
-                            <button className="button-container2">Wachtwoord vergeten?</button>
-                        </div>
-                        <div className="button-container">
-                            <button className="button-container2">Registreren</button>
-                        </div>
+                        <li>!totaal gevangen! : xxx</li>
+                        <li>!totaal gewicht! : xxx</li>
+                        <li>!totale lengte! : xxx</li>
+                        <button className="logoutBtn">Naar je portfolio</button>
+                        <button className="logoutBtn">Uitloggen</button>
                     </div>
+
                 </form>
             </div>
 
@@ -52,7 +42,7 @@ function Visplekken() {
             </div>
 
 
-        </main>
+        </div>
 
     );
 }
