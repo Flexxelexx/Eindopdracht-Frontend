@@ -1,8 +1,8 @@
 import React from "react";
 import './Visplekken.css'
 import {FaFish} from "react-icons/fa";
-import midlogo from "../assets/4.jpg";
-import origineellogoPNG from "../assets/origineelLogoPNG.png"
+import midlogo from "../../assets/4.jpg";
+import origineellogoPNG from "../../assets/origineelLogoPNG.png"
 
 
 

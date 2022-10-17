@@ -1,7 +1,7 @@
 import React from "react";
 import './Portfolio.css'
 import {FaFish} from "react-icons/fa";
-import StarRating from '../components/StarRating'
+import StarRating from '../../components/StarRating/StarRating'
 
 
 export default function Portfolio() {
