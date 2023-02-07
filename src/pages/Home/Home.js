@@ -66,10 +66,6 @@ export default function Home() {
                         Deze vangst bekijken =>
                     </button>
                 </div>
-                {/*<button className='thanksthumb' onClick={switchGrootte} data-theme={grootte}>*/}
-                {/*    {grootte === 'klein' && <p>👍</p>}*/}
-                {/*    {grootte === 'groot' && <p>👍</p>}*/}
-                {/*</button>*/}
             </div>
         </div>
 

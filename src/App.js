@@ -2,7 +2,8 @@ import React, {useEffect, useRef, useState} from "react";
 import {Switch, Route, Redirect, NavLink} from "react-router-dom";
 import useLocalStorage from 'use-local-storage'
 import decode from 'jwt-decode';
-
+import { MdDarkMode } from 'react-icons/md';
+import {BsFillSunFill} from 'react-icons/bs';
 import './App.css';
 import './components/Navbar/Navbar.css'
 
@@ -13,13 +14,12 @@ import Visplekken from "./pages/Visplekken/Visplekken";
 import AlgemeneVoorwaarden from "./pages/AlgemeneVoorwaarden/AlgemeneVoorwaarden"
 import AdminPortal from "./pages/Admin/Admin";
 import Contact from "./pages/Contact/Contact";
-import Accountf from "./pages/Account/Account";
+import Account from "./pages/Account/Account";
 
 import Navbar from "./components/Navbar/Navbar"
 import Login from "./components/Login/Login"
 import ScrollToTop from "./components/ScrollToTop";
-import Menu from "./components/Dropdown";
-import Account from "./pages/Account/Account";
+
 
 
 
@@ -31,38 +31,6 @@ function App() {
     const switchTheme = () => {
         const newTheme = theme === 'donker' ? 'licht' : 'donker';
         setTheme(newTheme)
-    }
-
-    const isAuthenticated = () => {
-        const token = localStorage.getItem('token');
-        const refreshToken = localStorage.getItem('refreshToken');
-        try {
-            decode(token);
-            decode(refreshToken);
-            console.log([decode(token), decode(refreshToken)])
-            return true;
-        } catch (error) {
-            return false;
-        }
-    }
-
-    function PrivateRoute({component: Component, ...rest}) {
-        return (
-            <Route
-                {...rest}
-                render={props =>
-                    isAuthenticated() ? (
-                        <Component {...props} />
-                    ) : (
-                        <Redirect
-                            to={{
-                                pathname: "/login",
-                            }}
-                        />
-                    )
-                }
-            />
-        );
     }
 
     return (
@@ -80,7 +48,7 @@ function App() {
                     <button
                         className='themebtn'
                         onClick={switchTheme}
-                    > {theme === 'donker' ? 'Donker' : 'Licht'} thema
+                    > {theme === 'donker' ? <BsFillSunFill /> : <MdDarkMode />}
                     </button>
                     <Navbar/>
 
