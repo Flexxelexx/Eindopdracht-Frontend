@@ -10,6 +10,8 @@
     font-weight: bold;
 }
 
+
+
 .mid-content-text {
     display: flex;
     flex-direction: column;
@@ -51,7 +53,7 @@
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas:
     "i i . c c c . . ."
-    ". . . c c c . . ."
+    "s s . c c c . . ."
     ". . . r r r . . ."
     ". . . . . . . . ."
     ". . . . . . . . .";

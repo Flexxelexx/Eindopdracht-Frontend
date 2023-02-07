@@ -1,12 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import './Admin.css'
-import {FaFish} from "react-icons/fa";
+
 import {NavLink} from "react-router-dom";
 
 
 
+
 function AdminPortal() {
+
+    useEffect(() => {
+        document.title = "Admin Portal";
+    }, []);
+
+
     return (
 
         <div className="admin-form">

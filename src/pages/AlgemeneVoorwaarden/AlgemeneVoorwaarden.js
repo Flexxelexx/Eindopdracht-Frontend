@@ -1,8 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import './AlgemeneVoorwaarden.css'
 
 function AlgemeneVoorwaarden() {
+
+    useEffect(() => {
+        document.title = "Algemene Voorwaarden";
+    }, []);
+
     return (
 
         <div className="algemene-voorwaarden">

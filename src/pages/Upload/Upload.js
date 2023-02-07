@@ -1,9 +1,16 @@
-import React from "react";
+import React,{useEffect} from "react";
 import './Upload.css'
 import {FaFish} from "react-icons/fa";
+import SearchBar from "../../components/SearchBar/SearchBar";
+
 
 
 export default function Upload() {
+
+    useEffect(() => {
+        document.title = "Upload";
+    }, []);
+
     return (
         <>
             <div className='upload-grid'>
@@ -19,6 +26,12 @@ export default function Upload() {
                         </div>
 
                     </form>
+                </div>
+
+                <div className="search-field">
+                    <div className="searchbar">
+                        <SearchBar/>
+                    </div>
                 </div>
 
                 <div className="mid-content">

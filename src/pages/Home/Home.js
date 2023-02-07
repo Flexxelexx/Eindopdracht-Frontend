@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import './Home.css'
 import midlogo from "../../assets/4.jpg";
 import {FaFish} from "react-icons/fa";
 import useLocalStorage from "use-local-storage";
-
+import SearchBar from "../../components/SearchBar/SearchBar";
 export default function Home() {
+
+    useEffect(() => {
+        document.title = "Home FISHiT";
+    }, []);
 
 
     const defaultKlein = window.matchMedia('(prefers-grootte: klein)').matches;
@@ -44,6 +48,12 @@ export default function Home() {
                 </form>
             </div>
 
+            <div className="search-field">
+                <div className="searchbar">
+                        <SearchBar/>
+                </div>
+            </div>
+
             <div className="mid-content">
                 <img className="midPicture" src={midlogo} alt="foto"/>
 
@@ -56,10 +66,10 @@ export default function Home() {
                         Deze vangst bekijken =>
                     </button>
                 </div>
-                <button className='thanksthumb' onClick={switchGrootte} data-theme={grootte}>
-                    {grootte === 'klein' && <p>👍</p>}
-                    {grootte === 'groot' && <p>Bedankt 😀</p>}
-                </button>
+                {/*<button className='thanksthumb' onClick={switchGrootte} data-theme={grootte}>*/}
+                {/*    {grootte === 'klein' && <p>👍</p>}*/}
+                {/*    {grootte === 'groot' && <p>👍</p>}*/}
+                {/*</button>*/}
             </div>
         </div>
 

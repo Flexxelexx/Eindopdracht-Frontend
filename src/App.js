@@ -13,11 +13,13 @@ import Visplekken from "./pages/Visplekken/Visplekken";
 import AlgemeneVoorwaarden from "./pages/AlgemeneVoorwaarden/AlgemeneVoorwaarden"
 import AdminPortal from "./pages/Admin/Admin";
 import Contact from "./pages/Contact/Contact";
+import Accountf from "./pages/Account/Account";
 
 import Navbar from "./components/Navbar/Navbar"
 import Login from "./components/Login/Login"
 import ScrollToTop from "./components/ScrollToTop";
 import Menu from "./components/Dropdown";
+import Account from "./pages/Account/Account";
 
 
 
@@ -89,14 +91,14 @@ function App() {
                             <Route path="/" exact component={Home}>
 
                             </Route>
-                            <PrivateRoute path="/visplekken" exact component={Visplekken}>
+                            <Route path="/visplekken" exact component={Visplekken}>
 
-                            </PrivateRoute>
-                            <PrivateRoute path="/portfolio" exact component={Portfolio}>
+                            </Route>
+                            <Route path="/portfolio" exact component={Portfolio}>
 
-                            </PrivateRoute>
-                            <PrivateRoute path="/upload" exact component={Upload}>
-                            </PrivateRoute>
+                            </Route>
+                            <Route path="/upload" exact component={Upload}>
+                            </Route>
 
                             <Route path="/algemene-voorwaarden" exact component={AlgemeneVoorwaarden}/>
 
@@ -104,12 +106,15 @@ function App() {
 
                             <Route path="/login" exact component={Login}/>
 
+                            <Route path="/account" exact component={Account}/>
+
 
                         </ScrollToTop>
                     </Switch>
 
                     <footer>
-
+                        <NavLink to='/algemene-voorwaarden'>Algemene Voorwaarden</NavLink>
+                        <a>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
                         <p>Alex Kooij - Eindopdracht Novi Fullstack Bootcamp 2022™</p>
                     </footer>
 

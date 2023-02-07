@@ -1,12 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './Visplekken.css'
 import {FaFish} from "react-icons/fa";
 import midlogo from "../../assets/4.jpg";
-import origineellogoPNG from "../../assets/origineelLogoPNG.png"
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 
 
 function Visplekken() {
+
+    useEffect(() => {
+        document.title = "Visplekken";
+    }, []);
+
     return (
 
         <div className='visplekken-grid'>
@@ -21,18 +26,19 @@ function Visplekken() {
                         <button className="logoutBtn">Naar je portfolio</button>
                         <button className="logoutBtn">Uitloggen</button>
                     </div>
-
                 </form>
             </div>
 
+            <div className="search-field">
+                <div className="searchbar">
+                    <SearchBar/>
+                </div>
+            </div>
+
             <div className="mid-content">
-                <img className="midPicture" src={midlogo} alt="foto"/>
 
                 <div className="midText">
-                    <h4>⬇️Meest recente upload⬇️</h4>
-                    <li>Door: HENK1989</li>
-                    <li>Waar: AGNIETENKAPEL ROTTERDAM</li>
-                    <li>Soort vis: ZEELT</li>
+                    <h4>LEGE CONTENT ️</h4>
 
                     <button className="button-container">
                         Naar de portfolio van deze gebruiker =>

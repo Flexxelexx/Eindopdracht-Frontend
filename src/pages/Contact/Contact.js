@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import './Contact.css'
 
+
 function Contact() {
+
+    useEffect(() => {
+        document.title = "Contacteer Ons";
+    }, []);
+
     return (
         <div className='contact-grid'>
             <div className='contact-form'>

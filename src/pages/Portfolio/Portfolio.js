@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './Portfolio.css'
 import {FaFish} from "react-icons/fa";
 import StarRating from '../../components/StarRating/StarRating'
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 
 export default function Portfolio() {
+
+    useEffect(() => {
+        document.title = "Portfolio";
+    }, []);
+
     return (
         <>
             <div className='portfolio-grid'>
@@ -21,6 +27,12 @@ export default function Portfolio() {
                         </div>
 
                     </form>
+                </div>
+
+                <div className="search-field">
+                    <div className="searchbar">
+                        <SearchBar/>
+                    </div>
                 </div>
 
                 <div className="mid-content">
