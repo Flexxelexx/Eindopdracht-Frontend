@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 
-import './Contact.css'
+import './Contact.module.css'
 
 
 function Contact() {

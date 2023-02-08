@@ -1,5 +1,5 @@
 import React from "react";
-import './Login.css'
+import './Login.module.css'
 import {FaFish} from "react-icons/fa";
 import {Link, NavLink} from "react-router-dom";
 

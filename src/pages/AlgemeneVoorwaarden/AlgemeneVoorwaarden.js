@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 
-import './AlgemeneVoorwaarden.css'
+import './AlgemeneVoorwaarden.module.css'
 
 function AlgemeneVoorwaarden() {
 

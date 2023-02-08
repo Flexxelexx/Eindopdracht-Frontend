@@ -1,5 +1,5 @@
 import React,{useEffect} from "react";
-import './Upload.css'
+import './Upload.module.css'
 import {FaFish} from "react-icons/fa";
 import SearchBar from "../../components/SearchBar/SearchBar";
 

@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import './Visplekken.css'
+import './Visplekken.module.css'
 import {FaFish} from "react-icons/fa";
 import midlogo from "../../assets/4.jpg";
 import SearchBar from "../../components/SearchBar/SearchBar";

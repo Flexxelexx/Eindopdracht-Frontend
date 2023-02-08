@@ -3,7 +3,7 @@ import {MdDarkMode} from "react-icons/md";
 import React from "react";
 import useLocalStorage from "use-local-storage";
 
-function Colortheme() {
+function Themebutton() {
 
     const defaultDark = window.matchMedia('(prefers-color-scheme: donker)').matches;
     const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'donker' : 'licht');
@@ -26,4 +26,4 @@ function Colortheme() {
     )
 };
 
-export default Colortheme()
+export default Themebutton()

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 
-import './Admin.css'
+import './Admin.module.css'
 
 import {NavLink} from "react-router-dom";
 

@@ -1,164 +1,42 @@
-.inlog-form {
-    background-color: #D9D9D9;
+.loginform {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: yellow;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 50px;
     border-color: black;
     border-width: thick;
-    grid-area: i;
-}
-
-.search-field {
-    background-color: #D9D9D9;
-    margin-top: 20px;
-    border-radius: 35px;
-    border-color: black;
-    border-width: thick;
-    grid-area: s;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
 }
 
 .fishLogo {
     font-size: 50px;
 }
 
-.newForm {
+.searchbar {
+    width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px;
+    background-color: yellow;
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
 }
 
-.button-container {
-    background-color: black;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 15px;
-    padding: 6px;
-    margin-top: 10px;
-}
-
-.toprofilebtn {
-    background-color: black;
-    color: white;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 15px;
-    padding: 6px;
-    margin-top: 10px;
-}
-
-.loginbtns {
+.loginbuttons {
+    color: yellow;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
     border: none;
     color: white;
     text-align: center;
     cursor: pointer;
 }
-
-.emailInput {
-    width: 100%;
-}
-
-
-.mid-content {
-    border-radius: 50px;
-    background-color: #D9D9D9;
-    grid-area: c;
-}
-
-.midPicture {
-    width: 100%;
-    border-radius: 45px 45px 0px 0px;
-}
-
-.midText {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    list-style: none;
-    font-weight: bold;
-    margin: 25px
-}
-
-.home-grid {
-    filter: drop-shadow(0 0 0.75rem black);
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-areas:
-    "i i . c c c . . ."
-    "s s . c c c . . ."
-    ". . . . . . . . ."
-    ". . . . . . . . ."
-    ". . . . . . . . ."
-
-}
-
-
-@media screen and (max-width: 700px) {
-    main {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin: 15px 10px;
-    }
-}
-
-/*@media screen and (min-width: 700px ) and (max-width: 1000px) {*/
-/*    main {*/
-/*        margin: 15px 10px;*/
-/*        display: grid;*/
-/*        grid-template-columns: repeat(13, 1fr);*/
-/*        grid-template-rows: repeat(8, 1fr);*/
-/*        grid-template-areas:*/
-/*    "l l l . c c c c c c c . ."*/
-/*    "l l l . c c c c c c c . ."*/
-/*    "i i i . c c c c c c c . ."*/
-/*    "i i i . c c c c c c c . ."*/
-/*    ". . . . . . . . . . . . ."*/
-/*    ". . . . . . . . . . . . ."*/
-/*    ". . . . . . . . . . . . ."*/
-/*    ". . . . . . . . . . . . .";*/
-/*    }*/
-
-/*    .logo {*/
-/*        display: flex;*/
-/*    }*/
-
-/*}*/
-
-/*@media screen and (min-width: 1000px ) {*/
-/*    main {*/
-/*        margin: 15px 10px;*/
-/*        display: grid;*/
-/*        grid-template-columns: repeat(10, 1fr);*/
-/*        grid-template-rows: repeat(12, 1fr);*/
-/*        grid-template-areas:*/
-/*    "l l . c c c c c . ."*/
-/*    "l l . c c c c c . ."*/
-/*    "i i . c c c c c . ."*/
-/*    "i i . c c c c c . ."*/
-/*    ". . . . . . . . . ."*/
-/*    ". . . . . . . . . ."*/
-/*    ". . . . . . . . . ."*/
-/*    ". . . . . . . . . ."*/
-/*    ". . . . . . . . . ."*/
-/*    ". . . . . . . . . ."*/
-/*    ". . . . . . . . . ."*/
-/*    ". . . . . . . . . .";*/
-/*    }*/
-
-/*    .logo {*/
-/*        display: flex;*/
-/*    }*/
-/*}*/
-
