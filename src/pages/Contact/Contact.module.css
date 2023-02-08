@@ -1,0 +1,52 @@
+/*.contact-grid {*/
+/*    filter: drop-shadow(0 0 0.75rem black);*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(6, 1fr);*/
+/*    grid-template-rows: repeat(2, 1fr);*/
+/*    grid-template-areas:*/
+/*    ". q q q q ."*/
+/*    ". . . . . .";*/
+/*}*/
+
+
+/*.contact-form {*/
+/*    width: 100%;*/
+/*    border-radius: 50px;*/
+/*    background-color: #D9D9D9;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-items: center;*/
+/*    align-items: center;*/
+/*    grid-area: q;*/
+/*}*/
+
+/*.contact-section {*/
+/*    width: 75%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-items: flex-start;*/
+/*    align-items: center;*/
+/*    margin: 10px;*/
+/*    padding: 10px;*/
+/*}*/
+
+/*.contact-section input {*/
+/*    width: 100%;*/
+/*    border-radius: 10px;*/
+/*    padding: 5px;*/
+/*}.contact-section textarea {*/
+/*    width: 100%;*/
+/*     border-radius: 10px;*/
+/*     padding: 5px;*/
+/* }*/
+
+/*.sendbtn {*/
+/*    font-size: 15px;*/
+/*    border-radius: 15px;*/
+/*    background-color: black;*/
+/*    color: white;*/
+/*    padding: 6px;*/
+/*    margin-top: 15px;*/
+/*    cursor: pointer;*/
+/*}*/
+
