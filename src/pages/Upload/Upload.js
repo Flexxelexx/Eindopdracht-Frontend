@@ -4,7 +4,6 @@ import {FaFish} from "react-icons/fa";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
 import styles from '../Upload/Upload.module.css'
-import Map from "../../components/Map/Map";
 
 
 export default function Upload() {
@@ -12,20 +11,6 @@ export default function Upload() {
     useEffect(() => {
         document.title = "Upload";
     }, []);
-
-    const [position, setPosition] = useState([51.505, -0.09])
-
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                setPosition([position.coords.latitude, position.coords.longitude])
-            },
-            (error) => {
-                console.error(error)
-            },
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-        )
-    }, [])
 
     return (
 
@@ -82,9 +67,6 @@ export default function Upload() {
                     </button>
                 </div>
 
-                <div className={styles.map}>
-                    <Map/>
-                </div>
             </div>
         </div>
     )
