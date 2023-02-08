@@ -1,18 +1,17 @@
-.mainlogo {
-    width: 300px;
-    height: 300px;
-    margin-right: 10px;
-}
-
-.mainlogofitment {
+.navbar {
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    gap: 35px;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.navbarfitment {
-    font-size: 25px;
-    line-height: 1.5;
-    color: black;
+.logocontainer {
+max-width: 350px;
+}
+
+.mainlogo {
+    max-width: 100%;
 }
 
 .themebtn {
@@ -26,15 +25,15 @@
     cursor: pointer;
     border-radius: 25px;
     width: 3%;
-    padding : 10px
+    padding: 10px
 }
 
-[data-theme='donker']{
+[data-theme='donker'] {
     background-color: #253237;
     transition: background-color 2s ease-out;
 }
 
-[data-theme='licht']{
+[data-theme='licht'] {
     background-color: #e0fbfc;
     transition: background-color 2s ease-out;
 }

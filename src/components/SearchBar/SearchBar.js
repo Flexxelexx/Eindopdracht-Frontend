@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 
+import styles from '../SearchBar/Searchbar.module.css'
+
 import './Searchbar.module.css';
 
 const SearchBar = () => {
     return (
     <form action="/" method="get">
          <label htmlFor="header-search">
-             <span className="visually-hidden">Search..</span>
          </label>
         <input
             className='search-input'
@@ -15,7 +16,7 @@ const SearchBar = () => {
         placeholder="search.."
         name="s"
         />
-        <button type="submit" className='searchbtn'>Search</button>
+        <button type="submit" className={styles.buttoncontainer}>Search</button>
     </form>
     )
 }

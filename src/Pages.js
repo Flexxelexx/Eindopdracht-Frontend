@@ -16,14 +16,14 @@ function Pages() {
     return (
         <>
             <Header/>
-            {/*<Switch>*/}
+            <Switch>
             {/*    <ScrollToTop>*/}
 
                     <Route path="/" exact component={Home}/>
 
-            {/*        /!*<Route path="/fishingspots" exact component={Visplekken}/>*!/*/}
+                    <Route path="/fishingspots" exact component={Visplekken}/>
 
-            {/*        /!*<Route path="/upload" exact component={Upload}/>*!/*/}
+                    <Route path="/upload" exact component={Upload}/>
 
             {/*        /!*<Route path="/algemene-voorwaarden" exact component={AlgemeneVoorwaarden}/>*!/*/}
 
@@ -35,7 +35,7 @@ function Pages() {
 
 
             {/*    </ScrollToTop>*/}
-            {/*</Switch>*/}
+            </Switch>
             <Footer/>
         </>
     );

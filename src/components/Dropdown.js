@@ -54,7 +54,7 @@ const Dropdown = props => {
                  onClick={() => pushToRoute("/algemene-voorwaarden")}>
                 Algemene Voorwaarden
             </div>
-            <div className={setClassNames(6)}
+            <div className={setClassNames(7)}
                  onClick={() => pushToRoute("/contact")}>
                 Contacteer ons
             </div>

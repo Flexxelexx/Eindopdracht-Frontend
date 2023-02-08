@@ -4,7 +4,6 @@ import './App.css'
 import './components/Navbar/Navbar.module.css'
 
 import Pages from '../src/Pages'
-import Themebutton from "./components/Theme/Themebutton";
 
 function App() {
 
@@ -20,7 +19,6 @@ function App() {
 
         <>
             <Pages/>
-            <Themebutton/>
         </>
     );
 

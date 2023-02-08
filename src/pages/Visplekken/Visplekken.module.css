@@ -1,40 +1,69 @@
-/*.inlog-form {*/
-/*    background-color: #D9D9D9;*/
-/*    padding-top: 20px;*/
-/*    padding-left: 15px;*/
-/*    padding-right: 15px;*/
-/*    border-radius: 50px;*/
-/*    border-color: black;*/
-/*    border-width: thick;*/
-/*    grid-area: i;*/
-/*}*/
+#content {
+    background-color: rebeccapurple;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
 
-/*.logoutBtn {*/
-/*    margin-top: 25px;*/
-/*}*/
+.loginForm {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: yellow;
+    padding: 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0, 0, 0, 1);
+    list-style: none;
+}
 
-/*.button-container {*/
-/*    background-color: black;*/
-/*    color: white;*/
-/*    border: none;*/
-/*    text-align: center;*/
-/*    text-decoration: none;*/
-/*    border-radius: 15px;*/
-/*    padding: 6px;*/
-/*    margin-top: 10px;*/
-/*    cursor: pointer;*/
-/*}*/
+.fishLogo {
+    font-size: 50px;
+}
 
-/*.visplekken-grid {*/
-/*    filter: drop-shadow(0 0 0.75rem black);*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(9, 1fr);*/
-/*    grid-template-rows: repeat(5, 1fr);*/
-/*    grid-template-areas:*/
-/*    "i i . c c c . . ."*/
-/*    "s s . c c c . . ."*/
-/*    ". . . . . . . . ."*/
-/*    ". . . . . . . . ."*/
-/*    ". . . . . . . . .";*/
-/*}*/
+.searchbar {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: yellow;
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
+}
+
+.midcontent {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: yellow;
+    padding: 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
+}
+
+.uploadform {
+    justify-content: center;
+}
+
+.buttoncontainer {
+    background-color: black;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+

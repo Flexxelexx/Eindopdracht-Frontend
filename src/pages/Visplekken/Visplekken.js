@@ -1,9 +1,8 @@
 import React, {useEffect} from "react";
-import './Visplekken.module.css'
+import styles from '../Visplekken/Visplekken.module.css'
 import {FaFish} from "react-icons/fa";
 import midlogo from "../../assets/4.jpg";
 import SearchBar from "../../components/SearchBar/SearchBar";
-
 
 
 function Visplekken() {
@@ -14,43 +13,43 @@ function Visplekken() {
 
     return (
 
-        <div className='visplekken-grid'>
-            <div className="inlog-form">
-                <form>
-                    <div className="newForm">
+        <div className='outer-container'>
+            <div className="inner-container" id={styles.content}>
+                <div>
+                    <form className={styles.loginForm}>
+
                         <h5>Welkom terug !name </h5>
-                        <div className="fishLogo"><FaFish/></div>
-                        <li>!totaal gevangen! : xxx</li>
-                        <li>!totaal gewicht! : xxx</li>
-                        <li>!totale lengte! : xxx</li>
-                        <button className="logoutBtn">Naar je portfolio</button>
-                        <button className="logoutBtn">Uitloggen</button>
+                        <div className={styles.fishLogo}><FaFish/></div>
+                        <li>CONTENT !totaal gevangen! : xxx</li>
+                        <li>CONTENT !totaal gewicht! : xxx</li>
+                        <li>CONTENT !totale lengte! : xxx</li>
+
+                        <button className={styles.buttoncontainer}>Naar je portfolio</button>
+                        <button className={styles.buttoncontainer}>Uitloggen</button>
+                    </form>
+
+                    <div className={styles.searchbar}>
+                        <SearchBar/>
                     </div>
-                </form>
-            </div>
-
-            <div className="search-field">
-                <div className="searchbar">
-                    <SearchBar/>
                 </div>
-            </div>
 
-            <div className="mid-content">
+                <div className={styles.midcontent}>
+                    <h1>LEGE CONTENT ️</h1>
+                    <h3>BLABLABLA CONTENT</h3>
+                    <h3>BLABLABLA CONTENT</h3>
+                    <h3>BLABLABLA CONTENT</h3>
+                    <h3>BLABLABLA CONTENT</h3>
 
-                <div className="midText">
-                    <h4>LEGE CONTENT ️</h4>
-
-                    <button className="button-container">
-                        Naar de portfolio van deze gebruiker =>
+                    <button className={styles.buttoncontainer}>
+                        Bekijk deze gebruiker =>
                     </button>
                 </div>
-
             </div>
-
-
         </div>
 
-    );
+
+    )
+        ;
 }
 
 export default Visplekken;
