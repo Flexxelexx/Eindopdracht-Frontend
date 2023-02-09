@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 
-import './Contact.module.css'
+import styles from '../Contact/Contact.module.css'
 
 
 function Contact() {
@@ -10,16 +10,18 @@ function Contact() {
     }, []);
 
     return (
-        <div className='contact-grid'>
-            <div className='contact-form'>
-                <section className='contact-section'>
+        <div className='outer-container'>
+            <div className='inner-container' id={styles.formposition}>
+                <div>
+                    <form className={styles.midcontent}>
                     <h2>Waar kunnen wij je mee helpen?</h2>
-                    <h3>Vul hieronder een formulier in en dan zullen wij binnen 24 uur reageren</h3>
-                    <form className='contact-section'>
+                    <h3>Vul hieronder een formulier in en dan zullen wij binnen 24 uur reageren.</h3>
+
                         <h4>Naam:</h4>
                         <input
                             type="text"
                             title="naam"
+                            size="30"
                             placeholder='Vul hier je naam in..'
                             required
                         />
@@ -27,6 +29,7 @@ function Contact() {
                         <input
                             type="text"
                             title="email"
+                            size="30"
                             placeholder='Vul hier je email in..'
                             required
                         />
@@ -34,15 +37,15 @@ function Contact() {
                         <textarea
                             type="text"
                             title="naam"
-                            rows="5"
+                            rows="10"
                             cols="30"
                             placeholder='Stel hier je vraag..'
                             required
                         />
-                        <button className='sendbtn'>Verzend formulier</button>
+                        <button className={styles.buttoncontainer}>Verzend formulier</button>
                     </form>
-                </section>
             </div>
+        </div>
         </div>
     )
 }

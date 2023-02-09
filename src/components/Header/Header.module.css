@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     gap: 35px;
-    justify-content: space-between;
     width: 100%;
 }
 
@@ -11,7 +10,7 @@ max-width: 350px;
 }
 
 .mainlogo {
-    max-width: 100%;
+    max-width: 50%;
 }
 
 .themebtn {
@@ -28,12 +27,3 @@ max-width: 350px;
     padding: 10px
 }
 
-[data-theme='donker'] {
-    background-color: #253237;
-    transition: background-color 2s ease-out;
-}
-
-[data-theme='licht'] {
-    background-color: #e0fbfc;
-    transition: background-color 2s ease-out;
-}

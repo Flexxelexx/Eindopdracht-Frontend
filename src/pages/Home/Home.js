@@ -6,6 +6,8 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 
 function Home() {
 
+
+
     useEffect(() => {
         document.title = "Home FISHiT";
     }, []);

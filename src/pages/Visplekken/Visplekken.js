@@ -34,15 +34,19 @@ function Visplekken() {
                 </div>
 
                 <div className={styles.midcontent}>
-                    <h1>LEGE CONTENT ️</h1>
+                    <h1>Zoek hieronder op stekken️</h1>
                     <h3>BLABLABLA CONTENT</h3>
                     <h3>BLABLABLA CONTENT</h3>
                     <h3>BLABLABLA CONTENT</h3>
                     <h3>BLABLABLA CONTENT</h3>
 
+                    <div>
+                    <input className='searchinput' type="search" name="search"
+                           placeholder="Waar zoek je naar?"/>
                     <button className={styles.buttoncontainer}>
-                        Bekijk deze gebruiker =>
+                        Zoeken!
                     </button>
+                    </div>
                 </div>
             </div>
         </div>

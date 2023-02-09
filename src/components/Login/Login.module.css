@@ -1,30 +1,62 @@
-/*.login-grid {*/
-/*    filter: drop-shadow(0 0 0.75rem black);*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(6, 1fr);*/
-/*    grid-template-rows: repeat(6, 1fr);*/
-/*    grid-template-areas:*/
-/*    ". . f f . ."*/
-/*    ". . f f . ."*/
-/*    ". . f f . ."*/
-/*    ". . . . . ."*/
-/*    ". . . . . ."*/
-/*    ". . . . . .";*/
-/*}*/
+#formposition {
+    justify-content: center;
+    background-color: rebeccapurple;
+}
 
-/*.loginFirst {*/
-/*    grid-area: f;*/
-/*}*/
+.loginForm {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: yellow;
+    padding: 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0, 0, 0, 1);
+    list-style: none;
+}
 
-/*.inlog-form {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    padding: 15px;*/
-/*}*/
+.fishLogo {
+    font-size: 50px;
+}
 
-/*.loginbtns2 {*/
-/*    text-decoration: none;*/
-/*    color: white;*/
-/*    font-weight: 400;*/
-/*}*/
+.searchbar {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: yellow;
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
+}
+
+.midcontent {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: yellow;
+    padding: 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
+}
+
+.buttoncontainer{
+    background-color: black;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+}

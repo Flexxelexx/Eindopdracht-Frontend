@@ -1,39 +1,42 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './Login.module.css'
 import {FaFish} from "react-icons/fa";
 import {Link, NavLink} from "react-router-dom";
 
+import styles from '../Login/Login.module.css'
+
 
 function Login() {
 
+    useEffect(() => {
+        document.title = "Login";
+    }, []);
 
     return (
 
-        <div className='login-grid'>
-            <div className="loginFirst">
-                <form>
-                    <div className="inlog-form">
+        <div className='outer-container'>
+            <div className="inner-container" id={styles.formposition}>
+                <div>
+                    <form className={styles.midcontent}>
                         <h5>Om verder te kunnen gaan dien je in te loggen!</h5>
-                        <div className="fishLogo"><FaFish/></div>
-                        <label>Email</label>
-                        <input className='emailInput' type="text" name="uname" placeholder="Vul hier je email in..."
-                        />
-                        <label>Wachtwoord</label>
-                        <input className='emailInput' type="password" name="wachtwoord"
-                               placeholder="Vul hier je wachtwoord in..."/>
-                        <div className="button-container">
-                            <NavLink to='/' className="loginbtns2">Verzenden</NavLink>
-                            {/*<button className="loginbtns">Verzenden</button>*/}
-                        </div>
-                        <div className="button-container">
-                            <button className="loginbtns">Wachtwoord vergeten?</button>
-                        </div>
-                        <div className="button-container">
-                            <button className="loginbtns">Nog geen lid? Registreer jezelf!</button>
-                        </div>
+                        <div className={styles.fishLogo}><FaFish/></div>
 
-                    </div>
-                </form>
+                        <label>Email:
+                        <input className='emailInput'
+                               type="text"
+                               placeholder="Vul hier je email in..."/>
+                        </label>
+                        <label>Wachtwoord:
+                        <input className='passwordInput'
+                               type="password"
+                               placeholder="Vul hier je wachtwoord in..."/>
+                        </label>
+                        <NavLink to='/' className={styles.buttoncontainer}>Verzenden</NavLink>
+                        <button type="submit" className={styles.buttoncontainer}>Verzenden?</button>
+                        <button type="submit" className={styles.buttoncontainer}>Wachtwoord vergeten?</button>
+                        <button type="submit" className={styles.buttoncontainer}>Nog geen lid? Registreer jezelf!</button>
+                    </form>
+                </div>
             </div>
         </div>
     )

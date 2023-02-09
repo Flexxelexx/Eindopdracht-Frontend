@@ -1,7 +1,64 @@
-/*.pictureFrame {*/
-/*    border-style: solid;*/
-/*    border-color: black;*/
-/*    width: 150px;*/
-/*    height: 150px;*/
-/*    cursor: pointer;*/
-/*}*/
+#content {
+    background-color: rebeccapurple;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.loginForm {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: yellow;
+    padding: 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0, 0, 0, 1);
+    list-style: none;
+}
+
+.fishLogo {
+    font-size: 50px;
+}
+
+.searchbar {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: yellow;
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
+}
+
+.midcontent {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: yellow;
+    padding: 15px;
+    border-radius: 50px;
+    border-color: black;
+    border-width: thick;
+    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
+}
+
+.buttoncontainer {
+    background-color: black;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+}
