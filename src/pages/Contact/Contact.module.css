@@ -1,6 +1,5 @@
 #formposition {
     justify-content: center;
-    background-color: rebeccapurple;
 }
 
 .midcontent {
@@ -9,7 +8,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: yellow;
     padding: 15px;
     border-radius: 50px;
     border-color: black;

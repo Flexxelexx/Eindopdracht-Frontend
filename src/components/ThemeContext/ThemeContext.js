@@ -15,16 +15,26 @@ function ThemeContextProvider({ children }) {
     const [kleur, setKleur] = useState(achtergrondkleuren.Licht);
     const [kleuren, setKleuren] = useState(lettertypkleur.Licht);
 
+    // const switchKleur = () => {
+    //     const newAchtergrond = kleur === achtergrondkleuren.Donker ? achtergrondkleuren.Licht : achtergrondkleuren.Donker;
+    //     const newLetterype = kleuren === lettertypkleur.Licht ? lettertypkleur.Donker : lettertypkleur.Licht;
+    //
+    //     setKleur(newAchtergrond);
+    //     setKleuren(newLetterype);
+    // };
+
     const switchKleur = () => {
+        console.log('before switch:', kleur, kleuren);
         const newAchtergrond = kleur === achtergrondkleuren.Donker ? achtergrondkleuren.Licht : achtergrondkleuren.Donker;
         const newLetterype = kleuren === lettertypkleur.Licht ? lettertypkleur.Donker : lettertypkleur.Licht;
 
         setKleur(newAchtergrond);
         setKleuren(newLetterype);
+        console.log('after switch:', kleur, kleuren);
     };
 
     return (
-        <ThemeContext.Provider value={{ kleur, kleuren, switchKleur }}>
+        <ThemeContext.Provider value={{ kleur, kleuren, switchKleur}}>
             {children}
         </ThemeContext.Provider>
     );

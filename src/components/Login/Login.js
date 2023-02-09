@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import './Login.module.css'
 import {FaFish} from "react-icons/fa";
 import {Link, NavLink} from "react-router-dom";
 
 import styles from '../Login/Login.module.css'
+import {ThemeContext} from "../ThemeContext/ThemeContext";
 
 
 function Login() {
@@ -31,8 +32,7 @@ function Login() {
                                type="password"
                                placeholder="Vul hier je wachtwoord in..."/>
                         </label>
-                        <NavLink to='/' className={styles.buttoncontainer}>Verzenden</NavLink>
-                        <button type="submit" className={styles.buttoncontainer}>Verzenden?</button>
+                        <button type="submit" className={styles.buttoncontainer}>Verzenden</button>
                         <button type="submit" className={styles.buttoncontainer}>Wachtwoord vergeten?</button>
                         <button type="submit" className={styles.buttoncontainer}>Nog geen lid? Registreer jezelf!</button>
                     </form>

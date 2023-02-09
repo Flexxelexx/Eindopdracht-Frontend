@@ -1,12 +1,9 @@
 .buttoncontainer {
-    background-color: black;
-    color: white;
-    border: none;
     text-align: center;
     text-decoration: none;
-    border-radius: 15px;
-    padding: 6px;
-    margin-top: 10px;
+    border:none;
+    background-color:transparent;
+    outline:none;
     cursor: pointer;
 }
 
