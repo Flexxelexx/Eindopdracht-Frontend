@@ -1,33 +1,35 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 
-import './Admin.module.css'
-
-import {NavLink} from "react-router-dom";
-
-
-
+import styles from "../Admin/Admin.module.css";
+import { FaFish } from "react-icons/fa";
 
 function AdminPortal() {
+  useEffect(() => {
+    document.title = "Admin Portal";
+  }, []);
 
-    useEffect(() => {
-        document.title = "Admin Portal";
-    }, []);
+  return (
+    <div className="outer-container">
+      <div className="inner-container" id={styles.content}>
+        <div>
+          <form className={styles.loginform}>
+            <h3>Admin dashboard</h3>
 
-
-    return (
-
-        <div className="admin-form">
-            <h5>Admin dashboard</h5>
-            <label>Name</label>
-            <input className='formInput' type="text"/>
-            <label>PW</label>
-            <input className='formInput' type="password"/>
-            <div className="button-container">
-                <NavLink to='/' className="loginbtns2">Send</NavLink>
+            <div className={styles.fishLogo}>
+              <FaFish />
             </div>
-        </div>
 
-    )
+            <label>Name</label>
+
+            <input className="formInput" type="text" />
+            <label>PW</label>
+            <input className="formInput" type="password" />
+            <button className={styles.buttoncontainer}> Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default AdminPortal;

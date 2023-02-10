@@ -9,9 +9,7 @@
     align-items: center;
     padding: 15px;
     border-radius: 50px;
-    border-color: black;
     border-width: thick;
-    -webkit-box-shadow: 7px -8px 9px -1px rgba(0, 0, 0, 1);
     list-style: none;
 }
 
@@ -27,9 +25,7 @@
     margin-top: 15px;
     padding: 10px 15px;
     border-radius: 50px;
-    border-color: black;
     border-width: thick;
-    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
 }
 
 .midcontent {
@@ -40,9 +36,8 @@
     justify-content: center;
     padding: 15px;
     border-radius: 50px;
-    border-color: black;
     border-width: thick;
-    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
+
 }
 
 .buttoncontainer{

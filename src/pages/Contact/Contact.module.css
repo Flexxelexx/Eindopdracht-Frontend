@@ -10,9 +10,11 @@
     justify-content: center;
     padding: 15px;
     border-radius: 50px;
-    border-color: black;
     border-width: thick;
-    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
+}
+
+.fishLogo {
+    font-size: 50px;
 }
 
 .midcontent h2 , h3 {

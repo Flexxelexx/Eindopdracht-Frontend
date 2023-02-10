@@ -1,8 +1,10 @@
 #content {
     justify-content: space-evenly;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 15px;
 }
+
 
 .loginform {
     max-width: 350px;
@@ -11,9 +13,7 @@
     align-items: center;
     padding: 15px;
     border-radius: 50px;
-    border-color: black;
     border-width: thick;
-    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
 }
 
 .fishLogo {
@@ -28,9 +28,7 @@
     margin-top: 15px;
     padding: 10px 15px;
     border-radius: 50px;
-    border-color: black;
     border-width: thick;
-    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
 }
 
 .welkom {
@@ -40,10 +38,19 @@
     align-items: center;
     padding: 15px;
     border-radius: 50px;
-    border-color: black;
     border-width: thick;
-    -webkit-box-shadow: 7px -8px 9px -1px rgba(0,0,0,1);
 }
+
+.welkomphoto {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 50px;
+    border-width: thick;
+}
+
 
 .buttoncontainer {
     background-color: black;
