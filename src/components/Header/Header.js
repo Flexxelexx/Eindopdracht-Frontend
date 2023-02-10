@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import styles from "../Header/Header.module.css";
 import mainLogo from "../../assets/mainLogo.png";
 import Navbar from "../Navbar/Navbar";
@@ -8,6 +8,7 @@ const Header = () => {
   return (
     <div className="outer-container">
       <div className="inner-container">
+        <div className={styles.border}>
         <nav className={styles.navbar}>
           <div className={styles.logocontainer}>
             <Link to="/">
@@ -23,6 +24,7 @@ const Header = () => {
             <Navbar />
           </div>
         </nav>
+        </div>
       </div>
     </div>
   );

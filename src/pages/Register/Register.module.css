@@ -4,7 +4,7 @@
     gap: 15px;
 }
 
-.loginForm {
+.loginform {
     max-width: 350px;
     display: flex;
     flex-direction: column;
@@ -12,6 +12,7 @@
     padding: 15px;
     border-radius: 50px;
     border-width: thick;
+    box-shadow: 7px -8px 9px -1px;
     list-style: none;
 }
 

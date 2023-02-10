@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
-import styles from "../Account/Account.module.css";
+import styles from '../Register/Register.module.css'
 import { FaFish } from "react-icons/fa";
+import { ThemeContext } from "../../components/ThemeContext/ThemeContext";
 
 function Register() {
   useEffect(() => {
     document.title = "Register";
   }, []);
 
+  const { boxjes } = useContext(ThemeContext);
+
   return (
     <>
       <div className="outer-container">
         <div className="inner-container" id={styles.content}>
           <div>
-            <form className={styles.loginForm}>
+            <form style={{ boxShadow: boxjes }} className={styles.loginform}>
               <h3>Registreren</h3>
 
               <div className={styles.fishLogo}>

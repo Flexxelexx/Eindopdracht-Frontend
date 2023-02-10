@@ -1,19 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Login.module.css";
 import { FaFish } from "react-icons/fa";
 
 import styles from "../Login/Login.module.css";
+import { ThemeContext } from "../ThemeContext/ThemeContext";
 
 function Login() {
   useEffect(() => {
     document.title = "Login";
   }, []);
 
+  const { boxjes } = useContext(ThemeContext);
+
   return (
     <div className="outer-container">
       <div className="inner-container" id={styles.formposition}>
         <div>
-          <form className={styles.midcontent}>
+          <form style={{ boxShadow : boxjes }}
+                className={styles.midcontent}>
             <h3>Login</h3>
             <div className={styles.fishLogo}>
               <FaFish />

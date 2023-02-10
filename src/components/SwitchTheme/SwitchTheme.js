@@ -24,8 +24,8 @@ function SwitchTheme() {
   };
 
   const boxschaduw = {
-    Licht: "7px -8px 9px -1px #DC143C",
-    Donker: "7px -8px 9px -1px #0000FF;",
+    Licht: "#DC143C",
+    Donker: "#111111",
   };
 
   const [kleur, setKleur] = useState(achtergrondkleuren.Licht);
@@ -50,11 +50,11 @@ function SwitchTheme() {
     document.body.style.color = knopkleur;
   }, [knopkleur]);
   useEffect(() => {
-    document.body.style.WebkitBoxShadow = boxjes;
+    document.body.style.boxShadow = boxjes;
   });
 
   const switchKleur = () => {
-    console.log("before switch:", boxjes);
+    console.log("before switch:", kleur, boxjes);
 
     const newAchtergrond =
       kleur === achtergrondkleuren.Donker
@@ -77,7 +77,7 @@ function SwitchTheme() {
     setKnopkleur(newKnopKleur);
     setBoxjes(newBoxjes);
 
-    console.log("after switch:", boxjes);
+    console.log("after switch:", kleur, boxjes);
   };
 
   return (
@@ -88,9 +88,9 @@ function SwitchTheme() {
         onClick={switchKleur}
       >
         {kleur === achtergrondkleuren.Licht ? (
-          <i className="fa-solid fa-lightbulb fa-3x"></i>
+          <i id={styles.lampje} className="fa-solid fa-lightbulb fa-2x">Lampje aan</i>
         ) : (
-          <i className="fa-regular fa-lightbulb fa-3x fa-bounce"></i>
+          <i id={styles.lampje} className="fa-solid fa-lightbulb fa-2x">Lampje uit</i>
         )}
       </button>
     </>

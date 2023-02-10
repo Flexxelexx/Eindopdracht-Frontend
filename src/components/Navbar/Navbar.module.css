@@ -5,6 +5,7 @@
     margin-right: 35px;
 }
 
+
 .navbuttons {
     display: flex;
     flex-direction: column;
@@ -13,4 +14,13 @@
     font-size: 20px;
 }
 
+.knopje {
+    display: flex;
+ flex-direction: column;
+}
+
+#lampje {
+    display: flex;
+    flex-direction: column;
+}
 

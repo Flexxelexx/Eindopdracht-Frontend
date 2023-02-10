@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from "react";
+import React, { useContext, useEffect } from "react";
 
 import styles from "../Home/Home.module.css";
 import { FaFish } from "react-icons/fa";
@@ -8,11 +8,11 @@ import photo from "../../assets/4.jpg";
 import { ThemeContext } from "../../components/ThemeContext/ThemeContext";
 
 function Home() {
-  const { boxjes } = useContext(ThemeContext);
-
   useEffect(() => {
     document.title = "Home FISHiT";
   }, []);
+
+  const { boxjes } = useContext(ThemeContext);
 
   return (
     <div className="outer-container">
@@ -57,7 +57,8 @@ function Home() {
           <h1>WELKOM BIJ FiSHiT!</h1>
           <br />
           <h3> Hier kan jij jouw vangsten opslaan!</h3>
-          <h3>Maar je kan ook naar vangsten van andere mensen kijken.</h3>
+          <h3>Je kan ook naar vangsten van andere mensen kijken.</h3>
+          <br/>
           <h3>
             Vergeet niet eerst in te loggen zodat je optimaal gebruik kunt maken
             van de website!{" "}

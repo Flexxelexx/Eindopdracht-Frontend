@@ -24,9 +24,11 @@ function ThemeContextProvider({ children }) {
   };
 
   const boxschaduw = {
-    Licht: "7px -8px 9px -1px #DC143C",
-    Donker: "7px -8px 9px -1px #0000FF;",
+    Licht: "#DC143C",
+    Donker: "#111111",
   };
+
+
   const [kleur, setKleur] = useState(achtergrondkleuren.Licht);
   const [kleuren, setKleuren] = useState(lettertypkleur.Licht);
   const [navlink, setNavlink] = useState(navlinkkleur.Licht);
@@ -49,11 +51,11 @@ function ThemeContextProvider({ children }) {
     document.body.style.color = knopkleur;
   }, [knopkleur]);
   useEffect(() => {
-    document.body.style.WebkitBoxShadow = boxjes;
+    document.body.style.boxShadow = boxjes;
   });
 
   const switchKleur = () => {
-    console.log("before switch:", boxjes);
+    console.log("before switch:", kleur,  boxjes);
 
     const newAchtergrond =
       kleur === achtergrondkleuren.Donker
@@ -76,7 +78,7 @@ function ThemeContextProvider({ children }) {
     setKnopkleur(newKnopKleur);
     setBoxjes(newBoxjes);
 
-    console.log("after switch:", boxjes);
+    console.log("after switch:", kleur, boxjes);
   };
 
   return (

@@ -1,18 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 import styles from "../Contact/Contact.module.css";
 import { FaFish } from "react-icons/fa";
+import { ThemeContext } from "../../components/ThemeContext/ThemeContext";
 
 function Contact() {
   useEffect(() => {
     document.title = "Contacteer Ons";
   }, []);
 
+  const { boxjes } = useContext(ThemeContext);
+
   return (
     <div className="outer-container">
       <div className="inner-container" id={styles.formposition}>
         <div>
-          <form className={styles.midcontent}>
+          <form style={{ boxShadow: boxjes }} className={styles.midcontent}>
             <h3>Contact</h3>
 
             <div className={styles.fishLogo}>

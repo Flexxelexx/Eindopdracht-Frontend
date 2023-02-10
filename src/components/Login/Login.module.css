@@ -10,6 +10,7 @@
     padding: 15px;
     border-radius: 50px;
     border-width: thick;
+    box-shadow: 7px -8px 9px -1px;
     list-style: none;
 }
 
@@ -26,6 +27,7 @@
     padding: 10px 15px;
     border-radius: 50px;
     border-width: thick;
+    box-shadow: 7px -8px 9px -1px;
 }
 
 .midcontent {
@@ -37,6 +39,7 @@
     padding: 15px;
     border-radius: 50px;
     border-width: thick;
+    box-shadow: 7px -8px 9px -1px;
 
 }
 

@@ -14,43 +14,12 @@
     padding: 15px;
     border-radius: 50px;
     border-width: thick;
+    box-shadow: 7px -8px 9px -1px;
 }
 
 .fishLogo {
     font-size: 50px;
 }
-
-.searchbar {
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-    padding: 10px 15px;
-    border-radius: 50px;
-    border-width: thick;
-}
-
-.welkom {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    border-radius: 50px;
-    border-width: thick;
-}
-
-.welkomphoto {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    border-radius: 50px;
-    border-width: thick;
-}
-
 
 .buttoncontainer {
     background-color: black;
