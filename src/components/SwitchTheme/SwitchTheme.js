@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./SwitchTheme.module.css";
 
 function SwitchTheme() {
+
   const lettertypkleur = {
     Licht: "#253237",
     Donker: "#FF0000",

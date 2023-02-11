@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import styles from "../Visplekken/Visplekken.module.css";
+import styles from "../Vangsten/Vangsten.module.css";
 import { FaFish } from "react-icons/fa";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import StarRatingVisplek from "../../components/StarRating/StarRatingVisplek";
+import StarRatingVangst from "../../components/StarRating/StarRatingVangst";
+import StarRatingVissen from "../../components/StarRating/StarRatingVissen";
 
-function Visplekken() {
+function Vissen() {
   useEffect(() => {
-    document.title = "Visplekken";
+    document.title = "Vissen";
   }, []);
 
   return (
@@ -47,7 +48,7 @@ function Visplekken() {
         </div>
 
         <div className={styles.midcontent}>
-          <h1>Zoek op visplekken</h1>
+          <h1>Zoek op vissen</h1>
           <div>
             <input
               className="searchinput"
@@ -61,11 +62,11 @@ function Visplekken() {
           <h3>BLABLABLA CONTENT</h3>
           <h3>BLABLABLA CONTENT</h3>
           <h3>BLABLABLA CONTENT</h3>
-          <StarRatingVisplek />
+          <StarRatingVissen />
         </div>
       </div>
     </div>
   );
 }
 
-export default Visplekken;
+export default Vissen;

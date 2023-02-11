@@ -1,5 +1,6 @@
 .border {
     box-shadow: inset 0px 0px 61px 31px rgba(0,0,0,0.75);
+    border-radius: 25px;
 }
 .navbar {
     display: flex;

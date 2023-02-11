@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-import "./StarRating.module.css";
+import "./StarRatingVisplek.module.css";
 
 const StarRating = () => {
   const [rating, setRating] = useState(0);
@@ -32,10 +32,10 @@ const StarRating = () => {
       })}
 
       {rating === 0 && (
-        <h3>Jij hebt deze vangst nog geen beoordeling gegeven!</h3>
+        <h3>Jij hebt deze vis nog geen beoordeling gegeven!</h3>
       )}
-      {rating === 1 && <h3>Jij hebt deze vangst 1 ster gegeven!</h3>}
-      {rating > 1 && <h3>Jij hebt deze vangst {rating} sterren gegeven!</h3>}
+      {rating === 1 && <h3>Jij hebt deze vis 1 ster gegeven!</h3>}
+      {rating > 1 && <h3>Jij hebt deze vis {rating} sterren gegeven!</h3>}
     </div>
   );
 };

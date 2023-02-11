@@ -11,6 +11,8 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import AdminPortal from "./pages/Admin/Admin";
 import Register from "./pages/Register/Register";
+import Vangsten from "./pages/Vangsten/Vangsten";
+import Vissen from "./pages/Vissen/Vissen";
 
 function Pages() {
   return (
@@ -19,7 +21,11 @@ function Pages() {
       <Switch>
         <Route path="/" exact component={Home} />
 
-        <Route path="/fishingspots" exact component={Visplekken} />
+        <Route path="/visplekken" exact component={Visplekken} />
+
+        <Route path="/vangsten" exact component={Vangsten} />
+
+        <Route path="/vissen" exact component={Vissen} />
 
         <Route path="/upload" exact component={Upload} />
 
