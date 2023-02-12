@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MenuItems } from "./MenuItems";
 import "./Dropdown.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Dropdown() {
 
@@ -18,14 +18,14 @@ function Dropdown() {
           {MenuItems.map((item, index) => {
             return (
               <li key={index}>
-                <Link
+                <NavLink
                   className={item.cName}
                   to={item.path}
                   onClick={() => setClick(false)}
                 >
                   {item.icon}
                   {item.title}
-                </Link>
+                </NavLink>
               </li>
             );
           })}

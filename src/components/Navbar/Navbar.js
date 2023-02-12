@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import styles from "../Navbar/Navbar.module.css";
 import SwitchTheme from "../SwitchTheme/SwitchTheme";
@@ -9,10 +9,10 @@ import Dropdown from "../Dropdown/Dropdown";
 function Navbar() {
   const { kleuren } = useContext(ThemeContext);
 
-  const [click, setClick] = useState(true);
-  const [dropdown, setDropdown] = useState(true);
+  const [click, setClick] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
 
-  const handleClick = () => setClick(!click);
+  // const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
   const onMouseEnter = () => {
@@ -44,20 +44,20 @@ function Navbar() {
             Home
           </NavLink>
         </li>
-
-        <div className={click ? 'nav-menu active' : 'nav-menu'}>
+        <div
+          className={click ? 'nav-menu active' : 'nav-menu'}>
           <li
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
           >
-            <Link
+            <NavLink
               to="/zoeken"
               className={styles.navbuttons}
               onClick={closeMobileMenu}
             >
               <i className="fa-solid fa-magnifying-glass-location fa-2x" />
               Zoeken
-            </Link>
+            </NavLink>
             {dropdown && <Dropdown />}
           </li>
         </div>
