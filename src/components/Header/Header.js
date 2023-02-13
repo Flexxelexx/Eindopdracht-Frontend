@@ -2,6 +2,7 @@ import React  from "react";
 import styles from "../Header/Header.module.css";
 import mainLogo from "../../assets/mainLogo.png";
 import Navbar from "../Navbar/Navbar";
+
 import { Link } from "react-router-dom";
 
 const Header = () => {

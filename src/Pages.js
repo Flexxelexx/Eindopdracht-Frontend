@@ -13,6 +13,7 @@ import AdminPortal from "./pages/Admin/Admin";
 import Register from "./pages/Register/Register";
 import Vangsten from "./pages/Vangsten/Vangsten";
 import Vissen from "./pages/Vissen/Vissen";
+import Zoeken from "./pages/Zoeken/Zoeken";
 
 function Pages() {
   return (
@@ -20,6 +21,8 @@ function Pages() {
       <Header />
       <Switch>
         <Route path="/" exact component={Home} />
+
+        <Route path="/zoeken" exact component={Zoeken} />
 
         <Route path="/visplekken" exact component={Visplekken} />
 

@@ -44,12 +44,8 @@ function Navbar() {
             Home
           </NavLink>
         </li>
-        <div
-          className={click ? 'nav-menu active' : 'nav-menu'}>
-          <li
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
+        <div className={click ? "nav-menu active" : "nav-menu"}>
+          <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             <NavLink
               to="/zoeken"
               className={styles.navbuttons}
