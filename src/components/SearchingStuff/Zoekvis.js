@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-import { Vislijst} from "./Vislijst";
+import { Vislijst } from "./Vislijst";
 
 function Zoekvis() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showList, setShowList] = useState(false);
-  const items = [
-    "Aal",
-    "Baars",
-    "Barbeel",
-    "Brasem",
-    "Brasemblei",
-    "Kolblei",
-    "Karper",
-    "Sneep",
-    "Snoek",
-    "Zeelt"
-  ];
+  // const items = [
+  //   "Aal",
+  //   "Baars",
+  //   "Barbeel",
+  //   "Brasem",
+  //   "Brasemblei",
+  //   "Kolblei",
+  //   "Karper",
+  //   "Sneep",
+  //   "Snoek",
+  //   "Zeelt"
+  // ];
 
   const handleClick = () => {
     setShowList(!showList);
@@ -26,10 +26,10 @@ function Zoekvis() {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
-  const filteredItems = items.filter((item) =>
-    item.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  //
+  // const filteredItems = items.filter((item) =>
+  //   item.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
   return (
     <div>

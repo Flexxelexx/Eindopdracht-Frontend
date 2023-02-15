@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import styles from "../Vangsten/Vangsten.module.css";
 import { FaFish } from "react-icons/fa";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import StarRatingVangst from "../../components/StarRating/StarRatingVangst";
 import StarRatingVissen from "../../components/StarRating/StarRatingVissen";
 
 function Vissen() {
