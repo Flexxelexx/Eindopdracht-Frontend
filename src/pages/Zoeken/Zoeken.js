@@ -63,22 +63,14 @@ function Zoeken() {
           <h4>Je kan in deze versie alleen op stad zoeken in visplekken</h4>
           <br />
 
-          <label>Zoek op visplekken</label>
-          {/*<input*/}
-          {/*  type="password"*/}
-          {/*  name="wachtwoord"*/}
-          {/*  placeholder="Zoeken.."*/}
-          {/*/>*/}
+          {/*<label>Zoek op steden</label>*/}
+
           <Zoekvisplek/>
           <button className={styles.buttoncontainer}>Zoek visplek</button>
           <br/>
 
-          <label>Zoek op vissen</label>
-          {/*<input*/}
-          {/*  type="password"*/}
-          {/*  name="wachtwoord"*/}
-          {/*  placeholder="Zoeken.."*/}
-          {/*/>*/}
+          <label>Zoek op vissoorten</label>
+
           <Zoekvis/>
           <button className={styles.buttoncontainer}>Zoek vis</button>
           <br/>

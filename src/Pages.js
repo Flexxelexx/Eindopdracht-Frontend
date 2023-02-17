@@ -5,7 +5,7 @@ import Visplekken from "./pages/Visplekken/Visplekken";
 import Upload from "./pages/Upload/Upload";
 import AlgemeneVoorwaarden from "./pages/AlgemeneVoorwaarden/AlgemeneVoorwaarden";
 import Contact from "./pages/Contact/Contact";
-import Login from "./components/Login/Login";
+import Login from "./pages/Login/Login";
 import Account from "./pages/Account/Account";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";

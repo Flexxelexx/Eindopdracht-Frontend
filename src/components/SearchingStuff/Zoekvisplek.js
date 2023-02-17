@@ -1,59 +1,54 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-
-import { Vispleklijst} from "./Vispleklijst";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 function Zoekvisplek() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showList, setShowList] = useState(false);
 
-  // const items = [
-  //   "Alblasserdam",
-  //   "Bodegraven",
-  //   "Boskoop",
-  //   "Gorinchem",
-  //   "Gouda",
-  //   "Haastrecht",
-  //   "Oudewater",
-  //   "Rotterdam",
-  //   "Waddinxveen",
-  //   "Zevenhuizen"
-  // ];
+    const [fishingspots, setFishingspots] = useState([]);
+    const [selectedCity, setSelectedCity] = useState(null);
 
-  const handleClick = () => {
-    setShowList(!showList);
-  };
+    useEffect(() => {
+        async function fetchFishingspots() {
+            try {
+                const response = await axios.get('http://localhost:8080/fishingspots');
+                console.log(response.data);
+                setFishingspots(response.data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+        fetchFishingspots();
+    }, []);
 
-  // const filteredItems = items.filter((item) =>
-  //   item.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
+    const handleCitySelect = (event) => {
+        setSelectedCity(event.target.value);
+    };
 
-  return (
-    <div>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleChange}
-        onClick={handleClick}
-      />
-      {showList && (
-        <ul>
-          {Vispleklijst.map((item, index) => (
-            <li key={index}>
-              <NavLink
-              to={item.path}>
-                {item.title}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+    const uniqueCities = [...new Set(fishingspots.map(fishingspot => fishingspot.city))];
+
+    return (
+        <div>
+            <select onChange={handleCitySelect}>
+                <option value="">Selecteer een stad</option>
+                {uniqueCities.map(city => (
+                    <option key={city} value={city}>
+                        {city}
+                    </option>
+                ))}
+            </select>
+            {selectedCity && (
+                <ul>
+                    {fishingspots
+                        .filter(fishingspot => fishingspot.city === selectedCity)
+                        .map(fishingspot => (
+                            <li key={fishingspot.id}>
+                                {fishingspot.name} - {fishingspot.location}
+                            </li>
+                        ))}
+                </ul>
+            )}
+        </div>
+    );
 }
 
 export default Zoekvisplek;

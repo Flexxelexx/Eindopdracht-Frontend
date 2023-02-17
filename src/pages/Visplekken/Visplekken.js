@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
+// import axios from 'axios';
 import styles from "../Visplekken/Visplekken.module.css";
 import { FaFish } from "react-icons/fa";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import StarRatingVisplek from "../../components/StarRating/StarRatingVisplek";
 
 function Visplekken() {
+
   useEffect(() => {
     document.title = "Visplekken";
   }, []);
@@ -51,9 +53,9 @@ function Visplekken() {
           <div>
             <input
               className="searchinput"
-              type="search"
+             type="search"
               name="search"
-              placeholder="Waar zoek je naar?"
+            placeholder="Waar zoek je naar?"
             />
             <button className={styles.buttoncontainer}>Zoeken!</button>
           </div>

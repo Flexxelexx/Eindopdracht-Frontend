@@ -1,58 +1,58 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-
-import { Vislijst } from "./Vislijst";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 function Zoekvis() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showList, setShowList] = useState(false);
-  // const items = [
-  //   "Aal",
-  //   "Baars",
-  //   "Barbeel",
-  //   "Brasem",
-  //   "Brasemblei",
-  //   "Kolblei",
-  //   "Karper",
-  //   "Sneep",
-  //   "Snoek",
-  //   "Zeelt"
-  // ];
 
-  const handleClick = () => {
-    setShowList(!showList);
+  const [speciesfish, setSpeciesfish] = useState([]);
+  const [selectedSpecie, setSelectedspecie] = useState(null)
+
+  useEffect(() => {
+    async function fetchSpecies() {
+      try {
+        const response = await axios.get('http://localhost:8080/uploads/species/Aal');
+        console.log(response.data);
+        setSpeciesfish(response.data);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    fetchSpecies();
+  }, []);
+
+  const handleSpecieSelect = (event) => {
+    setSelectedspecie(event.target.value);
   };
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-  //
-  // const filteredItems = items.filter((item) =>
-  //   item.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
+  const uniqueSpecies = [...new Set(speciesfish.map(specie => specie.specie))];
 
   return (
-    <div>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleChange}
-        onClick={handleClick}
-      />
-      {showList && (
-        <ul>
-          {Vislijst.map((item, index) => (
-            <li key={index}>
-              <NavLink
-              to={item.path}>
-                {item.title}
-              </NavLink>
-            </li>
+      <div>
+        <select onChange={handleSpecieSelect}>
+          <option value="">
+            Selecteer een soort
+          </option>
+          {uniqueSpecies.map(specie => (
+              <option key={specie} value={specie}>
+                {specie}
+              </option>
           ))}
-        </ul>
-      )}
-    </div>
-  );
+        </select>
+        {selectedSpecie && (
+            <ul>
+              {speciesfish
+                  .filter(specie => specie.specie === selectedSpecie)
+                  .map(specie => (
+                      <li key={specie.id}>
+                        {specie.name} - {specie.location}
+                      </li>
+                  ))}
+
+            </ul>
+        )}
+      </div>
+  )
 }
+
 
 export default Zoekvis;
