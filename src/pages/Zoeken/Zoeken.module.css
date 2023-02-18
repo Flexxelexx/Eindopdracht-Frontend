@@ -34,9 +34,6 @@
 }
 
 .welkom {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     padding: 15px;
     border-radius: 50px;
@@ -67,3 +64,19 @@
     cursor: pointer;
 }
 
+h2, h5 {
+  text-align: center;
+}
+
+.midden {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 15px;
+}

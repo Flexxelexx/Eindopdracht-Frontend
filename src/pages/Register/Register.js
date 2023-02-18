@@ -47,7 +47,6 @@ function Register() {
         <>
             <div className="outer-container">
                 <div className="inner-container" id={styles.content}>
-                    <div>
                         <form
                             style={{boxShadow: boxjes}}
                             className={styles.loginform}
@@ -112,7 +111,7 @@ function Register() {
 
 
                     </div>
-                </div>
+
             </div>
         </>
     );

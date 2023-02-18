@@ -3,15 +3,15 @@ import axios from "axios";
 
 function Zoekvis() {
 
-  const [speciesfish, setSpeciesfish] = useState([]);
-  const [selectedSpecie, setSelectedspecie] = useState(null)
+  const [uploads, setUploads] = useState([]);
+  const [selectedUploads, setSelecteduploads] = useState(null)
 
   useEffect(() => {
     async function fetchSpecies() {
       try {
-        const response = await axios.get('http://localhost:8080/uploads/species/Aal');
+        const response = await axios.get('http://localhost:8080/uploads');
         console.log(response.data);
-        setSpeciesfish(response.data);
+        setUploads(response.data);
       } catch (e) {
         console.error(e);
       }
@@ -21,10 +21,10 @@ function Zoekvis() {
   }, []);
 
   const handleSpecieSelect = (event) => {
-    setSelectedspecie(event.target.value);
+    setSelecteduploads(event.target.value);
   };
 
-  const uniqueSpecies = [...new Set(speciesfish.map(specie => specie.specie))];
+  const uniqueSpecies = [...new Set(uploads.map(upload => upload.speciesFish))];
 
   return (
       <div>
@@ -32,19 +32,19 @@ function Zoekvis() {
           <option value="">
             Selecteer een soort
           </option>
-          {uniqueSpecies.map(specie => (
-              <option key={specie} value={specie}>
-                {specie}
+          {uniqueSpecies.map(speciesFish => (
+              <option key={speciesFish} value={speciesFish}>
+                {speciesFish}
               </option>
           ))}
         </select>
-        {selectedSpecie && (
+        {selectedUploads && (
             <ul>
-              {speciesfish
-                  .filter(specie => specie.specie === selectedSpecie)
-                  .map(specie => (
-                      <li key={specie.id}>
-                        {specie.name} - {specie.location}
+              {uploads
+                  .filter(upload => upload.speciesFish === selectedUploads)
+                  .map(upload => (
+                      <li key={upload.id}>
+                        {upload.name} - {upload.location}
                       </li>
                   ))}
 

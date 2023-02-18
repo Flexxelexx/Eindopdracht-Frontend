@@ -1,83 +1,124 @@
-import React, { useContext, useEffect } from "react";
-
-import styles from "../Home/Home.module.css";
-import { FaFish } from "react-icons/fa";
-import SearchBar from "../../components/SearchBar/SearchBar";
-
-import { ThemeContext } from "../../components/ThemeContext/ThemeContext";
+import React, {useContext, useEffect, useState} from "react";
+import styles from "./Zoeken.module.css"
+import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
 import Zoekvis from "../../components/SearchingStuff/Zoekvis";
 import Zoekvisplek from "../../components/SearchingStuff/Zoekvisplek";
 
+
+import axios from "axios";
+import {Link} from "react-router-dom";
+
 function Zoeken() {
+    const [uploads, setUploads] = useState([]);
 
-  useEffect(() => {
-    document.title = "Zoeken";
-  }, []);
+    const [sortColumn, setSortColumn] = useState('id');
+    const [sortDirection, setSortDirection] = useState('asc');
 
-  const { boxjes } = useContext(ThemeContext);
+    const sortedUploads = [...uploads].sort((a, b) => {
+        if (sortDirection === 'asc') {
+            return a[sortColumn] < b[sortColumn] ? -1 : 1;
+        } else {
+            return a[sortColumn] > b[sortColumn] ? -1 : 1;
+        }
+    });
 
-  return (
-    <div className="outer-container">
-      <div className="inner-container" id={styles.content}>
-        <div>
-          <form style={{ boxShadow: boxjes }} className={styles.loginform}>
-            <h5>LOG IN</h5>
-            <div className={styles.fishLogo}>
-              <FaFish />
+    function handleSort(column) {
+        if (column === sortColumn) {
+            setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+        } else {
+            setSortColumn(column);
+            setSortDirection('asc');
+        }
+    }
+
+    useEffect(() => {
+        async function fetchUploads() {
+            try {
+                const response = await axios.get('http://localhost:8080/uploads');
+                setUploads(response.data);
+                console.log(response.data)
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+        fetchUploads();
+    }, []);
+
+    useEffect(() => {
+        document.title = "Zoeken";
+    }, []);
+
+
+    const {boxjes} = useContext(ThemeContext);
+
+    return (
+        <>
+            <div className="outer-container">
+                <div className="inner-container" id={styles.content}>
+                    <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>
+                        <h2>Zoek hier op visplekken of vissen</h2>
+                        <br/>
+                        <h5>Je kan in deze versie alleen op stad zoeken in visplekken</h5>
+                        <br/>
+                        <div className={styles.midden}>
+                        <label>Zoek op steden</label>
+                        <div className={styles.search}>
+                            <Zoekvisplek/>
+                            <button className={styles.buttoncontainer}>Go!</button>
+                            <br/>
+                        </div>
+                        <label>Zoek op vissoorten</label>
+                        <div className={styles.search}>
+                            <Zoekvis/>
+                            <button className={styles.buttoncontainer}>Go!</button>
+                            <br/>
+                        </div>
+                        </div>
+                        <br/>
+                        <h2>Zie hier alle uploads :</h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th onClick={() => handleSort('username')}>
+                                    Gevangen door {sortColumn === 'username' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
+                                <th onClick={() => handleSort('speciesFish')}>
+                                    Soort vis {sortColumn === 'speciesFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
+                                <th onClick={() => handleSort('weightFish')}>
+                                    Gewicht in kg {sortColumn === 'weightFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
+                                <th onClick={() => handleSort('lengthFish')}>
+                                    Lengte in cm {sortColumn === 'lengthFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
+                                <th onClick={() => handleSort('charsFish')}>
+                                    Bijzonderheden {sortColumn === 'charsFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
+                                <th onClick={() => handleSort('locationCaught')}>
+                                    Locatie {sortColumn === 'locationCaught' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
+                                <th>Bekijken</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {sortedUploads.map((upload) => {
+                                return <tr key={upload.id}>
+                                    <td>XXX</td>
+                                    <td>{upload.username}</td>
+                                    <td>{upload.speciesFish}</td>
+                                    <td>{upload.weightFish}</td>
+                                    <td>{upload.lengthFish}</td>
+                                    <td>{upload.charsFish}</td>
+                                    <td>{upload.locationCaught}</td>
+                                    <td>
+                                        <Link to={{ pathname: `/details/${upload.id}`, state: { upload } }}>bekijken</Link>
+                                    </td>
+                                </tr>
+                            })}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
-            <label>Email</label>
-            <input
-              type="text"
-              name="uname"
-              placeholder="Vul hier je email in..."
-            />
+        </>
+    );
 
-            <label>Wachtwoord</label>
-
-            <input
-              type="password"
-              name="wachtwoord"
-              placeholder="Vul hier je wachtwoord in..."
-            />
-
-            <button className={styles.buttoncontainer}>Verzenden</button>
-            <button className={styles.buttoncontainer}>
-              Wachtwoord vergeten?
-            </button>
-            <button className={styles.buttoncontainer}>
-              Nog geen lid? Registreer jezelf!
-            </button>
-          </form>
-
-          <div style={{ WebkitBoxShadow: boxjes }} className={styles.searchbar}>
-            <SearchBar />
-          </div>
-        </div>
-
-        <div style={{ WebkitBoxShadow: boxjes }} className={styles.welkom}>
-          <h1>ZOEKEN</h1>
-          <br />
-
-          <h3>Zoek hier op visplekken of vissen</h3>
-          <h4>Je kan in deze versie alleen op stad zoeken in visplekken</h4>
-          <br />
-
-          {/*<label>Zoek op steden</label>*/}
-
-          <Zoekvisplek/>
-          <button className={styles.buttoncontainer}>Zoek visplek</button>
-          <br/>
-
-          <label>Zoek op vissoorten</label>
-
-          <Zoekvis/>
-          <button className={styles.buttoncontainer}>Zoek vis</button>
-          <br/>
-        </div>
-      </div>
-    </div>
-  );
 }
-
 export default Zoeken;

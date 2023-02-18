@@ -5,38 +5,13 @@
 }
 
 
-.loginForm {
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    border-radius: 50px;
-    border-width: thick;
-    box-shadow: 7px -8px 9px -1px;
-    list-style: none;
-}
 
 .fishLogo {
     font-size: 50px;
 }
 
-.searchbar {
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-    padding: 10px 15px;
-    border-radius: 50px;
-    border-width: thick;
-    box-shadow: 7px -8px 9px -1px;
-}
-
 .midcontent {
     max-width: 500px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 15px;

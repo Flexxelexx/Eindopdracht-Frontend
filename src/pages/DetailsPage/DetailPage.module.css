@@ -1,0 +1,19 @@
+#content {
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.welkom {
+    padding: 15px;
+    border-radius: 50px;
+    border-width: thick;
+    box-shadow: 7px -8px 9px -1px;
+}
+
+th {
+    cursor: pointer;
+    position: relative;
+}
+

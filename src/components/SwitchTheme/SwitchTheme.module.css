@@ -1,13 +1,6 @@
 .buttoncontainer {
-    text-align: center;
-    text-decoration: none;
     border:none;
-    background-color:transparent;
+    border-radius: 25px;
     outline:none;
     cursor: pointer;
-}
-
-#lampje {
-    display: flex;
-    flex-direction: column;
 }

@@ -1,35 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import styles from "../Navbar/Navbar.module.css";
 import SwitchTheme from "../SwitchTheme/SwitchTheme";
 import { ThemeContext } from "../ThemeContext/ThemeContext";
-import Dropdown from "../Dropdown/Dropdown";
+
 
 function Navbar() {
   const { kleuren } = useContext(ThemeContext);
 
-  const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
-
-  // const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(true);
-    } else {
-      setDropdown(true);
-    }
-  };
-
-  const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(true);
-    } else {
-      setDropdown(true);
-    }
-  };
 
   return (
     <nav>
@@ -44,54 +23,23 @@ function Navbar() {
             Home
           </NavLink>
         </li>
-        <div className={click ? "nav-menu active" : "nav-menu"}>
-          <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+          <li>
             <NavLink
               to="/zoeken"
+              style={{ color : kleuren }}
               className={styles.navbuttons}
-              onClick={closeMobileMenu}
             >
               <i className="fa-solid fa-magnifying-glass-location fa-2x" />
               Zoeken
             </NavLink>
-            {dropdown && <Dropdown />}
           </li>
-        </div>
-
-        {/*<li>*/}
-        {/*  <NavLink*/}
-        {/*    to="/visplekken"*/}
-        {/*    style={{ color: kleuren }}*/}
-        {/*    className={styles.navbuttons}*/}
-        {/*  >*/}
-        {/*    <i className="fa-solid fa-water fa-2x" /> Fishingspots*/}
-        {/*  </NavLink>*/}
-        {/*</li>*/}
-        {/*<li>*/}
-        {/*  <NavLink*/}
-        {/*    to="/vangsten"*/}
-        {/*    style={{ color: kleuren }}*/}
-        {/*    className={styles.navbuttons}*/}
-        {/*  >*/}
-        {/*    <i className="fa-solid fa-fish-fins fa-2x" /> Vangsten*/}
-        {/*  </NavLink>*/}
-        {/*</li>*/}
-        {/*<li>*/}
-        {/*  <NavLink*/}
-        {/*    to="/vissen"*/}
-        {/*    style={{ color: kleuren }}*/}
-        {/*    className={styles.navbuttons}*/}
-        {/*  >*/}
-        {/*    <i className="fa-solid fa-fish fa-2x" /> Vissen*/}
-        {/*  </NavLink>*/}
-        {/*</li>*/}
         <li>
           <NavLink
             to="/upload"
             style={{ color: kleuren }}
             className={styles.navbuttons}
           >
-            <i className="fa-solid fa-upload fa-2x" /> Upload
+            <i className="fa-solid fa-upload fa-2x" /> Uploads
           </NavLink>
         </li>
         <li>
@@ -104,42 +52,35 @@ function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink
+        </li>
+        <li>
+        <NavLink
             to="/contact"
             style={{ color: kleuren }}
             className={styles.navbuttons}
+        >
+          <i className="fa-solid fa-circle-info fa-2x" /> Contact
+        </NavLink>
+        </li>
+        <li>
+          <NavLink
+              to="/register"
+              style={{ color: kleuren }}
+              className={styles.navbuttons}
           >
-            <i className="fa-solid fa-circle-info fa-2x" /> Contact
+            <i className="fa-solid fa-hippo fa-2x" /> Register
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/login"
-            style={{ color: kleuren }}
-            className={styles.navbuttons}
+              to="/login"
+              style={{ color: kleuren }}
+              className={styles.navbuttons}
           >
             <i className="fa-solid fa-download fa-2x" /> Login
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/admin"
-            style={{ color: kleuren }}
-            className={styles.navbuttons}
-          >
-            <i className="fa-solid fa-lock fa-2x" /> Admin
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/register"
-            style={{ color: kleuren }}
-            className={styles.navbuttons}
-          >
-            <i className="fa-solid fa-hippo fa-2x" /> Register
-          </NavLink>
-        </li>
-        <li className={styles.knopje}>
           <SwitchTheme />
         </li>
       </ul>

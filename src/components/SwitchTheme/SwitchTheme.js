@@ -89,9 +89,9 @@ function SwitchTheme() {
         onClick={switchKleur}
       >
         {kleur === achtergrondkleuren.Licht ? (
-          <i id={styles.lampje} className="fa-solid fa-lightbulb fa-2x">Lampje aan</i>
+            <i className="fa-solid fa-lightbulb fa-2x">Aan</i>
         ) : (
-          <i id={styles.lampje} className="fa-solid fa-lightbulb fa-2x">Lampje uit</i>
+            <i className="fa-solid fa-lightbulb fa-2x">Uit</i>
         )}
       </button>
     </>
