@@ -80,3 +80,8 @@ h2, h5 {
     align-items: baseline;
     gap: 15px;
 }
+
+td > img {
+    width: 60px;
+    border-radius: 50%;
+}

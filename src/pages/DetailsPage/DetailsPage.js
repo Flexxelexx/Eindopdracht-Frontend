@@ -20,8 +20,11 @@ function DetailsPage() {
             <p>Gewicht in kg: {upload.weightFish}</p>
             <p>Lengte in cm: {upload.lengthFish}</p>
             <p>Bijzonderheden: {upload.charsFish}</p>
-            <p>Locatie: {upload.locationCaught}</p>
-            <p>Foto: xxx</p>
+            <br/>
+            <p>
+                <a href={upload.locationCaught} target={"_blank"} rel="noreferrer">Locatie bekijken</a>
+            </p>
+            <p>Foto: {upload.image}</p>
         </div>
             </div>
         </div>

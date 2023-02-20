@@ -10,7 +10,7 @@ function Zoekvis() {
     async function fetchSpecies() {
       try {
         const response = await axios.get('http://localhost:8080/uploads');
-        console.log(response.data);
+        // console.log(response.data);
         setUploads(response.data);
       } catch (e) {
         console.error(e);

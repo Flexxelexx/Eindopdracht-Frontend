@@ -16,7 +16,7 @@ function Login() {
 
     async function loginUser(e) {
         e.preventDefault();
-        console.log(username, userPassword);
+        // console.log(username, userPassword);
 
         try {
             const response = await axios.post('http://localhost:8080/login', {
@@ -24,7 +24,7 @@ function Login() {
                 password: userPassword
             });
 
-            console.log(response.data);
+            // console.log(response.data);
             toggleAddSuccess(true);
         } catch (e) {
             console.error(e)

@@ -18,7 +18,7 @@ function Register() {
 
     async function addUser(e) {
         e.preventDefault();
-        console.log(userfirstname, username, useremail, userpassword, userdob);
+        // console.log(userfirstname, username, useremail, userpassword, userdob);
 
 
         try {
@@ -30,7 +30,7 @@ function Register() {
                 dob: userdob,
             });
 
-            console.log(response.data);
+            // console.log(response.data);
             toggleAddSuccess(true);
         } catch (e) {
             console.log(e);

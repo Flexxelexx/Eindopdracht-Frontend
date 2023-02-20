@@ -10,7 +10,7 @@ function Zoekvisplek() {
         async function fetchFishingspots() {
             try {
                 const response = await axios.get('http://localhost:8080/fishingspots');
-                console.log(response.data);
+                // console.log(response.data);
                 setFishingspots(response.data);
             } catch (e) {
                 console.error(e);

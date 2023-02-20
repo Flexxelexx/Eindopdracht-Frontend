@@ -4,21 +4,21 @@
     gap: 15px;
 }
 
-
-
 .fishLogo {
     font-size: 50px;
 }
 
 .midcontent {
-    max-width: 500px;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 15px;
     border-radius: 50px;
     border-width: thick;
     box-shadow: 7px -8px 9px -1px;
 }
+
 .buttoncontainer {
     background-color: black;
     color: white;
@@ -29,4 +29,22 @@
     padding: 6px;
     margin-top: 10px;
     cursor: pointer;
+}
+
+.midcontentLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.midcontentRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photoform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
