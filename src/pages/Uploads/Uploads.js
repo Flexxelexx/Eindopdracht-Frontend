@@ -5,61 +5,114 @@ import {FaFish} from "react-icons/fa";
 import axios from "axios";
 
 export default function Uploads() {
+
     useEffect(() => {
         document.title = "Uploads";
     }, []);
 
-    const [speciesfish, setSpeciesfish] = useState();
-    const [weightfish, setWeightfish] = useState();
-    const [lengthfish, setLengthfish] = useState();
-    const [charsfish, setCharsfish] = useState();
-    const [city, setCity] = useState();
-    const [location, setLocation] = useState();
-    const [addSuccess, toggleAddSuccess] = useState(false);
-    const [file, setFile] = useState(null);
-    const [previewUrl, setPreviewUrl] = useState('');
+    const [speciesfish, setSpeciesfish] = useState('');
+    const [weightfish, setWeightfish] = useState('');
+    const [lengthfish, setLengthfish] = useState( '');
+    const [charsfish, setCharsfish] = useState('');
+    const [city, setCity] = useState('');
+    const [location, setLocation] = useState('');
+    const [rodLength, setRodLength] = useState('');
+    const [kindofreel, setKindOfReel] = useState('');
+    const [lure, setLure] = useState('');
+    const [linelength, setLine] = useState('');
 
-    function handleImageChange(e) {
-        const uploadedFile = e.target.files[0];
-        // console.log(uploadedFile);
-        setFile(uploadedFile);
-        setPreviewUrl(URL.createObjectURL(uploadedFile));
+    const [file, setFile] = useState([]);
+    const [data, setData] = useState({});
+
+
+    const [addSuccess, toggleAddSuccess] = useState(false);
+
+    let formData = new FormData();
+
+    function handleChange(e) {
+        const upload = e.target.files[0];
+        setFile(upload);
     }
 
-    async function addUpload(e) {
+    async function addPhoto(e) {
+        formData.append("file", file)
         e.preventDefault();
-        // console.log(speciesfish, weightfish, lengthfish, charsfish, city, location, photo)
-
         try {
-            const response = await axios.post('http://localhost:8080/uploads', {
-                speciesFish: speciesfish,
-                weightFish: weightfish,
-                lengthFish: lengthfish,
-                locationCaught: location,
-                charsFish: charsfish,
-                cityCaught: city,
+            const imageResponse = await axios.post('http://localhost:8080/single/uploadDb', formData, {
+                headers: {
+                    "Content-Type ": 'multipart/form-data'
+                },
             });
-
-            console.log(response.data);
-            toggleAddSuccess(true)
+            setData(imageResponse.data);
+            console.log(imageResponse.data)
         } catch (e) {
             console.error(e);
+            throw e;
         }
     }
+
+
+    async function addUpload(e) {
+        e.preventDefault()
+        console.log(weightfish);
+        try {
+
+            const response = await axios.post('http://localhost:8080/uploads', {
+                weightFish: weightfish,
+                lengthFish: lengthfish,
+                charsFish: charsfish,
+                speciesFish: speciesfish,
+                locationCaught: location,
+                cityCaught: city,
+                rodLength: rodLength,
+                kindOfReel: kindofreel,
+                kindOfLure: lure,
+                lineLength: linelength,
+                file: data
+            });
+
+
+            console.log(response.data);
+            toggleAddSuccess(true);
+        } catch (e) {
+            console.error(e);
+            throw e;
+        }
+    }
+
 
     return (
         <div className="outer-container">
             <div className="inner-container" id={styles.content}>
                 <form
                     className={styles.midcontent}
-                    onSubmit={addUpload}>
+                    onSubmit={addPhoto}>
+                    <label htmlFor="upload-image">
+                        Kies afbeelding:
+                        <br/>
+                        <input type="file"
+                               name="image-field"
+                               id="upload-image"
+                               onChange={handleChange}/>
+                    </label>
+                    <p>Druk eerst op 'foto uploaden' voor je verder gaat met het formulier!</p>
+                    <br/>
 
-                    <div className={styles.midcontentLeft}>
-                        <h3>Upload</h3>
-                        {addSuccess === true && <p>Upload is toegevoegd!</p>}
+                    <button
+                        type="submit"
+                        className={styles.buttoncontainer}
+                    >
+                        Foto uploaden
+                    </button>
+                </form>
+                <form
+                    className={styles.midcontent}
+                    onSubmit={addUpload}>
+                    <div className={styles.contentLeft}>
                         <div className={styles.fishLogo}>
                             <FaFish/>
                         </div>
+                        <br/>
                         <label>Vissoort:</label>
                         <input
                             type="text"
@@ -98,11 +151,51 @@ export default function Uploads() {
                             onChange={(e) => setCharsfish(e.target.value)}/>
                     </div>
 
+                    <div className={styles.contentMidLeft}>
+                        <div className={styles.fishLogo}>
+                            <FaFish/>
+                        </div>
+                        <label>Lengte hengel:</label>
+                        <input
+                            type="text"
+                            placeholder="Vul hier de lengte in..."
+                            id="rod-length"
+                            value={rodLength}
+                            onChange={(e) => setRodLength(e.target.value)}/>
+
+                        <label>Molen of Reel:</label>
+                        <input
+                            type="text"
+                            placeholder="Vul hier je molen/reel in..."
+                            id="reel-molen"
+                            value={kindofreel}
+                            onChange={(e) => setKindOfReel(e.target.value)}/>
+
+                        <label>Aassoort:</label>
+                        <input
+                            type="text"
+                            placeholder="Vul hier je aassoort in..."
+                            id="kind-lure"
+                            value={lure}
+                            onChange={(e) => setLure(e.target.value)}/>
+
+                        <label>Lijn:</label>
+                        <input
+                            type="text"
+                            placeholder="Vul hier je lijn in..."
+                            id="kind-of-line"
+                            value={linelength}
+                            onChange={(e) => setLine(e.target.value)}/>
+                    </div>
+
                     <div className={styles.midcontentRight}>
+                        <div className={styles.fishLogo}>
+                            <FaFish/>
+                        </div>
                         <label>Plaatsnaam:</label>
                         <input
                             type="text"
-                            placeholder="Vul hier de plaats naam in.."
+                            placeholder="Vul hier de plaatsnaam in.."
                             id="city-fish"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
@@ -110,31 +203,22 @@ export default function Uploads() {
                         <label>Google maps dropped pin link:</label>
                         <input
                             type="text"
-                            placeholder="Plak hier je link in.."
+                            placeholder="Plak hier je link.."
                             id="location-fish"
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                         />
-                        <label htmlFor="upload-image">
-                            Kies afbeelding:
-                            <br/>
-                            <input type="file" name="image-field" id="upload-image"
-                                   onChange={handleImageChange}/>
-                        </label>
-                        <label>
-                            Preview:
-                            <img src={previewUrl} alt="Voorbeeld van de afbeelding die zojuist gekozen is" className="image-preview"/>
-                        </label>
-                        <br/>
                         <button
                             type="submit"
                             className={styles.buttoncontainer}
                         >
                             Upload verzenden
                         </button>
+                        {addSuccess === true && <p>Upload is toegevoegd!</p>}
                     </div>
                 </form>
             </div>
         </div>
-    );
+    )
+        ;
 }

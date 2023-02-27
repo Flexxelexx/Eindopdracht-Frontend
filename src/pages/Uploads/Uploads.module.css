@@ -4,6 +4,13 @@
     gap: 15px;
 }
 
+.header {
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .fishLogo {
     font-size: 50px;
 }
@@ -31,7 +38,13 @@
     cursor: pointer;
 }
 
-.midcontentLeft {
+.contentLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contentMidLeft {
     display: flex;
     flex-direction: column;
     align-items: center;

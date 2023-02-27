@@ -1,11 +1,10 @@
-import React, {useContext} from "react";
-import {useLocation} from "react-router-dom";
-import styles from "../DetailsPage/DetailPage.module.css"
-import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
+import React, { useContext } from "react";
+import { useLocation } from "react-router-dom";
+import styles from "../UserPage/UserPage.module.css.module.css"
 
-function DetailsPage() {
+function UserPage() {
     const location = useLocation();
-    const {upload} = location.state;
+    const { upload } = location.state;
 
     const {boxjes} = useContext(ThemeContext);
 
@@ -15,10 +14,7 @@ function DetailsPage() {
                 <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>
                     <h2>Vangst nummer: {upload.id}</h2>
                     <br/>
-                    <p>
-                        Gevangen door:
-                        <a href={upload.locationCaught} target={"_blank"} rel="noreferrer">{upload.charsFish}</a>
-                    </p>
+                    <p>Gevangen door: {upload.username}</p>
                     <p>Soort vis: {upload.speciesFish}</p>
                     <p>Gewicht in kg: {upload.weightFish}</p>
                     <p>Lengte in cm: {upload.lengthFish}</p>
@@ -37,5 +33,4 @@ function DetailsPage() {
         </div>
     );
 }
-
-export default DetailsPage;
+export default UserPage;

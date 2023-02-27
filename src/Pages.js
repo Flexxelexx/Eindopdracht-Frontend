@@ -13,6 +13,7 @@ import AdminPortal from "./pages/Admin/Admin";
 import Register from "./pages/Register/Register";
 import Zoeken from "./pages/Zoeken/Zoeken";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
+import UserPage from "./pages/UserPage/UserPage";
 
 function Pages() {
     return (
@@ -36,6 +37,8 @@ function Pages() {
                 <Route path="/register" exact component={Register}/>
 
                 <Route path="/details/:id" component={DetailsPage}/>
+
+                <Route path="/users/:id" component={UserPage}/>
 
                 <Route
                     path="/algemene-voorwaarden"
