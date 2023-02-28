@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 
 function Zoeken() {
     const [uploads, setUploads] = useState([]);
+    const [users, setUsers] = useState([]);
 
     const [sortColumn, setSortColumn] = useState('id');
     const [sortDirection, setSortDirection] = useState('asc');
@@ -32,6 +33,20 @@ function Zoeken() {
             setSortDirection('asc');
         }
     }
+
+    useEffect(() => {
+        async function fetchUsers() {
+            try {
+                const response = await axios.get('http://localhost:8080/users');
+                setUsers(response.data);
+                console.log(response.data)
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+        fetchUsers();
+    },[]);
 
     useEffect(() => {
         async function fetchUploads() {
@@ -64,6 +79,7 @@ function Zoeken() {
                             <tr>
                                 <th>VangstNR</th>
                                 <th> Foto</th>
+                                <th>Gevangen door:</th>
                                 <th onClick={() => handleSort('speciesFish')}>
                                     Soort
                                     vis {sortColumn === 'speciesFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
@@ -83,7 +99,6 @@ function Zoeken() {
                             <tbody>
 
                             {sortedUploads.map((upload) => {
-                                console.log(upload)
                                 return (
                                     <tr key={upload.id}>
                                         <td>{upload.id}</td>
@@ -91,6 +106,8 @@ function Zoeken() {
                                             upload.file.url !== null ?
                                                 <td><img src={upload.file.url} alt="xx"/></td> : <p>Geen foto</p>
                                         }
+                                        <td>{users.username}</td>
+
                                         <td>{upload.speciesFish}</td>
                                         <td>{upload.weightFish}</td>
                                         <td>{upload.lengthFish}</td>

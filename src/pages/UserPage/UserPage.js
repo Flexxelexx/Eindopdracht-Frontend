@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
-import styles from "../UserPage/UserPage.module.css.module.css"
+import styles from "../UserPage/UserPage.module.css";
+import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
 
 function UserPage() {
     const location = useLocation();
