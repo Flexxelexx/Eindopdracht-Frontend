@@ -17,7 +17,7 @@ function DetailsPage() {
                     <br/>
                     <p>
                         Gevangen door:
-                        <a href={upload.locationCaught} target={"_blank"} rel="noreferrer">{upload.charsFish}</a>
+                         <a href={upload.username} target={"_blank"} rel="noreferrer">{upload.username}</a>
                     </p>
                     <p>Soort vis: {upload.speciesFish}</p>
                     <p>Gewicht in kg: {upload.weightFish}</p>

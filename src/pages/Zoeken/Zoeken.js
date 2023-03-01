@@ -46,7 +46,7 @@ function Zoeken() {
         }
 
         fetchUsers();
-    },[]);
+    }, []);
 
     useEffect(() => {
         async function fetchUploads() {
@@ -97,7 +97,6 @@ function Zoeken() {
                             </tr>
                             </thead>
                             <tbody>
-
                             {sortedUploads.map((upload) => {
                                 return (
                                     <tr key={upload.id}>
@@ -106,8 +105,7 @@ function Zoeken() {
                                             upload.file.url !== null ?
                                                 <td><img src={upload.file.url} alt="xx"/></td> : <p>Geen foto</p>
                                         }
-                                        <td>{users.username}</td>
-
+                                        <td>{upload.username}</td>
                                         <td>{upload.speciesFish}</td>
                                         <td>{upload.weightFish}</td>
                                         <td>{upload.lengthFish}</td>

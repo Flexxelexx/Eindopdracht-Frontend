@@ -5,7 +5,7 @@ import './Login.css'
 import axios from "axios";
 
 
-function Login() {
+function LoginComp() {
     const {setAuth} = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
@@ -27,7 +27,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://localhost:8080/login', JSON.stringify({user, pwd}),
+            const response = await axios.post('http://localhost:8080/auth', JSON.stringify({user, pwd}),
                 {
                     headers: {"Content-Type": 'application/json'},
                     withCredentials: true
@@ -47,7 +47,7 @@ if (!err?.response) {
 } else if (err.response?.status === 401) {
     setErrMsg('Unauthorized');
 }   else {
-    setErrMsg('Login failed');
+    setErrMsg('SignIn failed');
 }
 errRef.current.focus();
         }
@@ -105,4 +105,4 @@ errRef.current.focus();
     )
 }
 
-export default Login;
+export default LoginComp;
