@@ -1,11 +1,9 @@
 import React, {useContext, useEffect} from "react";
 
 import styles from "../Home/Home.module.css";
-import {FaFish} from "react-icons/fa";
-import Login from "../../components/Login/LoginComp";
-
 import photo from "../../assets/4.jpg";
 import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
+import LoginComp from "../../components/Login/LoginComp";
 
 function Home() {
     useEffect(() => {
@@ -19,7 +17,7 @@ function Home() {
             <div className="inner-container" id={styles.content}>
 
                 <div>
-                    <Login/>
+                    <LoginComp/>
                 </div>
 
                 <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>

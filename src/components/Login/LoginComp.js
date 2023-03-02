@@ -1,108 +1,42 @@
-import React, {useRef, useState, useEffect, useContext} from "react";
-import AuthContext from "../../context/AuthProvider";
+import React, {useState, useContext} from "react";
 import './Login.css'
 
 import axios from "axios";
+import {AuthContext} from "../AuthContext/AuthContext";
 
 
 function LoginComp() {
-    const {setAuth} = useContext(AuthContext);
-    const userRef = useRef();
-    const errRef = useRef();
 
-    const [user, setUser] = useState('');
-    const [pwd, setPwd] = useState('');
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
+    const [ username, setUsername ] = useState( "" )
+    const [ password, setPassword ] = useState( "" )
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
+    const { login } = useContext( AuthContext )
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [user, pwd])
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
+    async function handleLogin(e) {
+        e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8080/auth', JSON.stringify({user, pwd}),
-                {
-                    headers: {"Content-Type": 'application/json'},
-                    withCredentials: true
-                }
-            );
-            console.log(JSON.stringify(response?.data));
-            const accessToken = response?.data?.accessToken;
-            setAuth({user, pwd, accessToken})
-            setUser('');
-            setPwd('');
-            setSuccess(true)
-        } catch (err) {
-if (!err?.response) {
-    setErrMsg('No server response');
-} else if (err.response?.status === 400) {
-    setErrMsg('Missing Username or Password');
-} else if (err.response?.status === 401) {
-    setErrMsg('Unauthorized');
-}   else {
-    setErrMsg('SignIn failed');
-}
-errRef.current.focus();
+            const response = await axios.post('http://localhost:8080/login',{
+                username: username,
+                password: password,
+            })
+            console.log(response.data)
+            login(response.data.token)
+        } catch ( e ) {
+            console.error( e )
         }
-
-
     }
 
-    return (
-        <>
-            {success ? (
-                <section>
-                    <h1>Je bent ingelogd!</h1>
-                    <br/>
-                    <p>
-                        <a href="/">Naar de homepagina</a>
-                    </p>
-                </section>
-            ) : (
-                <section>
-                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Login</h1>
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="username">Username:</label>
-                        <input
-                            className="inputfield"
-                            type="text"
-                            id="username"
-                            ref={userRef}
-                            autoComplete="off"
-                            onChange={(e) => setUser(e.target.value)}
-                            value={user}
-                            required
-                        />
 
-                        <label htmlFor="password">Password:</label>
-                        <input
-                            className="inputfield"
-                            type="password"
-                            id="password"
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            required
-                        />
-                        <button>Sign in</button>
-                    </form>
-                    <p>
-                        Heb je nog geen account?<br/>
-                        <span className="line">
-                    <a href="/register">Sign up</a>
-                </span>
-                    </p>
-                </section>
-            )}
-        </>
-    )
+    return (
+        <main className="container">
+            <h1>Login</h1>
+            <form onSubmit={ handleLogin }>
+                <input placeholder="Username" type="username" value={ username } onChange={ e => setUsername( e.target.value ) }/>
+                <input placeholder="Password" type="password" value={ password } onChange={ e => setPassword( e.target.value ) }/>
+                <button type="submit">Login</button>
+            </form>
+        </main>
+    );
 }
 
 export default LoginComp;

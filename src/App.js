@@ -5,13 +5,16 @@ import "./components/Navbar/Navbar.module.css";
 
 import Pages from "../src/Pages";
 import { ThemeContextProvider } from "./components/ThemeContext/ThemeContext";
+import AuthContextProvider from "./components/AuthContext/AuthContext";
 
 function App() {
   return (
     <>
+        <AuthContextProvider>
       <ThemeContextProvider>
         <Pages />
       </ThemeContextProvider>
+        </AuthContextProvider>
     </>
   );
 }
