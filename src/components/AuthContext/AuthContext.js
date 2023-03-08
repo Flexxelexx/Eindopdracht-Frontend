@@ -12,14 +12,13 @@ function AuthContextProvider({children}) {
         user: null,
         status: "pending"
     });
+
     const history = useHistory()
 
     useEffect(() => {
-        // haal de JWT op uit Local Storage
-        const storedToken = localStorage.getItem('token')
+        const storedToken = localStorage.getItem('')
 
 
-        // als er WEL een token is, haal dan opnieuw de gebruikersdata op
         if (storedToken) {
             const decodedToken = jwt_decode(storedToken)
 
@@ -31,7 +30,6 @@ function AuthContextProvider({children}) {
                 localStorage.removeItem('token')
             }
         } else {
-            // als er GEEN token is doen we niks
             setAuth({
                 ...auth,
                 isAuth: false,
@@ -53,7 +51,7 @@ function AuthContextProvider({children}) {
         fetchUserData(jwt, decodedToken.sub, "/account")
     }
 
-    async function fetchUserData(jwt, username, redirect) {
+    async function fetchUserData(jwt, username, redirectUrl) {
         try {
             const response = await axios.get(`http://localhost:8080/users/${username}`, {
                 headers: {
@@ -61,18 +59,19 @@ function AuthContextProvider({children}) {
                     "Authorization": `Bearer ${jwt}`,
                 }
             })
+
             setAuth({
                 ...auth,
                 isAuth: true,
                 user: {
+                    username: response.data.username,
                     email: response.data.email,
-                    id: response.data.id,
-                    username: response.data.username
+                    id: response.data.id
                 },
                 status: "done"
             })
-            if (redirect) {
-                history.push(redirect)
+            if (redirectUrl) {
+                history.push(redirectUrl)
             }
             console.log(response)
         } catch (e) {

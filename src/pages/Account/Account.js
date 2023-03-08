@@ -1,60 +1,41 @@
-import React, {useEffect} from "react";
-
+import React, {useEffect, useState} from "react";
 import styles from "../Account/Account.module.css";
-
-import {FaFish} from "react-icons/fa";
-
+import axios from "axios";
 
 
 function Account() {
 
+    const [user, setUser] = useState({});
 
     useEffect(() => {
-        document.title = "Account";
-    }, []);
+        async function fetchUser() {
+            try {
+                const response = await axios.get(`http://localhost:8080/users/`);
+                setUser(response.data);
+                console.log(response.data)
+            } catch (e) {
+                console.error(e)
+            }
+        }
 
+        fetchUser();
+    }, []);
 
 
     return (
         <>
-            <div className="outer-container">
-                <div className="inner-container" id={styles.content}>
-
-                    <form className={styles.midcontent}>
-                        <h3>Jouw Account</h3>
-                        <div className={styles.fishLogo}>
-                            <FaFish/>
+            {user && (
+                <div className="outer-container">
+                    <div className="inner-container" id={styles.content}>
+                        <div>
+                            <p>{user.firstname}</p>
+                            <p>{user.username}</p>
+                            <p>{user.email}</p>
+                            <p>{user.dob}</p>
                         </div>
-
-                        <label>Naam:</label>
-                        <input
-                            type="text"
-                            placeholder="!content.name"/>
-
-                        <label>Profielnaam</label>
-                        <input
-                            type="text"
-                            placeholder="!content.username"/>
-
-                        <label>Email</label>
-                        <input
-                            type="text"
-                            placeholder="!content.email"/>
-
-                        <label>Locatie:</label>
-                        <input
-                            type="text"
-                            placeholder="!content.city"/>
-
-                        <button className={styles.buttoncontainer}>
-                            Kies bestand voor je profielfoto
-                        </button>
-
-                        <button className={styles.buttoncontainer}>Verzenden</button>
-                    </form>
-
+                    </div>
                 </div>
-            </div>
+            )}
         </>
     );
 }

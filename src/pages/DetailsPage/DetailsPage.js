@@ -1,11 +1,12 @@
 import React, {useContext} from "react";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import styles from "../DetailsPage/DetailPage.module.css"
 import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
 
 function DetailsPage() {
     const location = useLocation();
     const {upload} = location.state;
+
 
     const {boxjes} = useContext(ThemeContext);
 
@@ -17,7 +18,10 @@ function DetailsPage() {
                     <br/>
                     <p>
                         Gevangen door:
-                         <a href={upload.username} target={"_blank"} rel="noreferrer">{upload.username}</a>
+                        <Link to={{
+                            pathname: `/users/${upload.username}`,
+                            state: {upload}
+                        }}>{upload.username}</Link>
                     </p>
                     <p>Soort vis: {upload.speciesFish}</p>
                     <p>Gewicht in kg: {upload.weightFish}</p>

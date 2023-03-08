@@ -4,7 +4,6 @@ import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
 // import Zoekvis from "../../components/SearchingStuff/Zoekvis";
 // import Zoekvisplek from "../../components/SearchingStuff/Zoekvisplek";
 
-
 import axios from "axios";
 import {Link} from "react-router-dom";
 

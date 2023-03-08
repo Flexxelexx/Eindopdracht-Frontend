@@ -14,6 +14,7 @@ import Register from "./pages/Register/Register";
 import Zoeken from "./pages/Zoeken/Zoeken";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import UserPage from "./pages/UserPage/UserPage";
+import OverOns from "./pages/OverOns/OverOns"
 
 function Pages() {
     return (
@@ -40,11 +41,10 @@ function Pages() {
 
                 <Route path="/users/:id" component={UserPage}/>
 
-                <Route
-                    path="/algemene-voorwaarden"
-                    exact
-                    component={AlgemeneVoorwaarden}
-                />
+                <Route path="/algemene-voorwaarden" exact component={AlgemeneVoorwaarden}/>
+
+                <Route path="/over-ons" exact component={OverOns}/>
+
             </Switch>
             <Footer/>
         </>
