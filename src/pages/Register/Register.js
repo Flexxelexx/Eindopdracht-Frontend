@@ -18,7 +18,7 @@ function Register() {
 
     async function addUser(e) {
         e.preventDefault();
-        try {
+            try {
             const response = await axios.post('http://localhost:8080/users', {
                 firstname: userfirstname,
                 username: username,

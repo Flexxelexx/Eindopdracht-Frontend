@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from './Uploads.module.css'
 import {FaFish} from "react-icons/fa";
 
 import axios from "axios";
+import {AuthContext} from "../../components/AuthContext/AuthContext";
 
 export default function Uploads() {
 
@@ -12,7 +13,7 @@ export default function Uploads() {
 
     const [speciesfish, setSpeciesfish] = useState('');
     const [weightfish, setWeightfish] = useState('');
-    const [lengthfish, setLengthfish] = useState( '');
+    const [lengthfish, setLengthfish] = useState('');
     const [charsfish, setCharsfish] = useState('');
     const [city, setCity] = useState('');
     const [location, setLocation] = useState('');
@@ -23,6 +24,8 @@ export default function Uploads() {
 
     const [file, setFile] = useState([]);
     const [data, setData] = useState({});
+
+    const {user} = useContext(AuthContext);
 
 
     const [addSuccess, toggleAddSuccess] = useState(false);
@@ -54,8 +57,12 @@ export default function Uploads() {
 
     async function addUpload(e) {
         e.preventDefault()
-        console.log(weightfish);
         try {
+
+            const token = localStorage.getItem('token')
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            };
 
             const response = await axios.post('http://localhost:8080/uploads', {
                 weightFish: weightfish,
@@ -69,7 +76,7 @@ export default function Uploads() {
                 kindOfLure: lure,
                 lineLength: linelength,
                 file: data
-            });
+            }, config);
 
 
             console.log(response.data);
@@ -79,7 +86,6 @@ export default function Uploads() {
             throw e;
         }
     }
-
 
     return (
         <div className="outer-container">
@@ -215,6 +221,9 @@ export default function Uploads() {
                             Upload verzenden
                         </button>
                         {addSuccess === true && <p>Upload is toegevoegd!</p>}
+                        {addSuccess === true && <p>Klik nu hier om je upload aan je account te linken!</p>}
+                        {/*{addSuccess === true && <button type="submit" onSubmit={connectUpload}>Klik</button>}*/}
+
                     </div>
                 </form>
             </div>

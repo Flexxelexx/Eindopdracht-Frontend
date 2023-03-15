@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 
 import styles from "../OverOns/OverOns.module.css"
 
@@ -7,6 +7,11 @@ import {FaFish} from "react-icons/fa";
 
 
 function OverOns() {
+
+
+    useEffect(() => {
+        document.title = "Over ons";
+    }, []);
 
     const {boxjes} = useContext(ThemeContext);
 

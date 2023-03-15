@@ -16,7 +16,7 @@ function AuthContextProvider({children}) {
     const history = useHistory()
 
     useEffect(() => {
-        const storedToken = localStorage.getItem('')
+        const storedToken = localStorage.getItem('token')
 
 
         if (storedToken) {
@@ -24,7 +24,7 @@ function AuthContextProvider({children}) {
 
             if (Math.floor(Date.now() / 1000) < decodedToken.exp) {
                 console.log("De gebruiker is NOG STEEDS ingelogd 🔓")
-                fetchUserData(storedToken, decodedToken.sub)
+                fetchUserData(storedToken, decodedToken)
             } else {
                 console.log("De token is verlopen")
                 localStorage.removeItem('token')
