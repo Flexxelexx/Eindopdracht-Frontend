@@ -12,7 +12,7 @@ function DetailsPage() {
 
     return (
         <div className="outer-container">
-            <div className="inner-container" id={styles.content}>
+            <div className="inner-container">
                 <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>
                     <h2>Vangst nummer: {upload.id}</h2>
                     <br/>

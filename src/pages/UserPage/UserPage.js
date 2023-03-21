@@ -11,7 +11,11 @@ function UserPage() {
     useEffect(() => {
         async function fetchUsers() {
             try {
-                const response = await axios.get('http://localhost:8080/users');
+                const token = localStorage.getItem('token')
+                const config = {
+                    headers: { Authorization: `Bearer ${token}` }
+                };
+                const response = await axios.get('http://localhost:8080/users', config);
                 setUsers(response.data);
                 console.log(response.data)
             } catch (e) {
@@ -35,7 +39,11 @@ function UserPage() {
     useEffect(() => {
         async function fetchUploads() {
             try {
-                const response = await axios.get('http://localhost:8080/uploads/');
+                const token = localStorage.getItem('token')
+                const config = {
+                    headers: { Authorization: `Bearer ${token}` }
+                };
+                const response = await axios.get('http://localhost:8080/uploads/', config);
                 setUploads(response.data);
                 console.log(response.data)
             } catch (e) {
@@ -55,7 +63,7 @@ function UserPage() {
 
     return (
         <div className="outer-container">
-            <div className="inner-container" id={styles.content}>
+            <div className="inner-container">
                 <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>
                     <h2>{upload.username}</h2>
                     <br/>

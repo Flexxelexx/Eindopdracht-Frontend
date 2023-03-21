@@ -13,7 +13,7 @@ function AdminPortal() {
 
   return (
     <div className="outer-container">
-      <div className="inner-container" id={styles.content}>
+      <div className="inner-container">
         <div>
           <form style={{ boxShadow : boxjes}} className={styles.loginform}>
             <h3>Admin dashboard</h3>

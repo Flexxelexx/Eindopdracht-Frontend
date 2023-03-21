@@ -83,5 +83,6 @@ h2, h5 {
 
 td > img {
     width: 200px;
+    height: 150px;
     border-radius: 25%;
 }

@@ -7,6 +7,10 @@ import axios from "axios";
 
 function Register() {
 
+    useEffect(() => {
+        document.title = "Register";
+    }, []);
+
     const [userfirstname, setUserfirstname] = useState('');
     const [username, setUsername] = useState('');
     const [useremail, setUseremail] = useState('');
@@ -17,32 +21,34 @@ function Register() {
     const [addSuccess, toggleAddSuccess] = useState(false);
 
     async function addUser(e) {
-        e.preventDefault();
-            try {
-            const response = await axios.post('http://localhost:8080/users', {
-                firstname: userfirstname,
-                username: username,
-                email: useremail,
-                password: userpassword,
-                dob: userdob,
-            });
+        e.preventDefault()
+        const userData = JSON.stringify({
+            firstname: `${userfirstname}`,
+            username: `${username}`,
+            email: `${useremail}`,
+            password: `${userpassword}`,
+            dob: `${userdob}`
+        })
+        const customConfig = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
 
-            // console.log(response.data);
-            toggleAddSuccess(true);
+        try {
+            const response = await axios.post("http://localhost:8080/users", userData, customConfig);
+            console.log('created account', response.data);
+            toggleAddSuccess(true)
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     }
-
-    useEffect(() => {
-        document.title = "Register";
-    }, []);
 
 
     return (
         <>
             <div className="outer-container">
-                <div className="inner-container" id={styles.content}>
+                <div className="inner-container">
                     <form
                         style={{boxShadow: boxjes}}
                         className={styles.loginform}
@@ -54,7 +60,9 @@ function Register() {
                             <FaFish/>
                         </div>
 
-                        {addSuccess === true && <p>Gebruiker is toegevoegd!</p>}
+                        {addSuccess === true && <p>Je account is toegevoegd!</p>}
+                        {addSuccess === true && <p>Log nu snel in en ga aan de slag!</p>}
+                        <br/>
 
                         <label>Naam:</label>
                         <input
@@ -96,7 +104,6 @@ function Register() {
                             value={userdob}
                             onChange={(e) => setUserdob(e.target.value)}
                         />
-
                         <button
                             type="submit"
                             className={styles.buttoncontainer}

@@ -1,18 +1,19 @@
 import React, {useState, useContext} from "react";
-import styles from './Login.module.css'
+import styles from "./Login.module.css"
 
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext"
-import {ThemeContext} from "styled-components";
+import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
+import {NavLink} from "react-router-dom";
 
 
 function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const {loginFunction, logoutFunction} = useContext(AuthContext);
-    const [loggedIn, setLoggedIn] = useState(false);
+    const {boxjes, kleuren} = useContext(ThemeContext);
 
-    const {boxjes} = useContext(ThemeContext)
+    const {isAuthenticated} = useContext(AuthContext)
 
 
     async function clickHandler() {
@@ -28,7 +29,6 @@ function Login() {
         try {
             const response = await axios.post("http://localhost:8080/login", userData, customConfig);
             loginFunction(response.data);
-            setLoggedIn(true)
         } catch (e) {
             console.error(e);
             alert('invalid username or password, please try again')
@@ -44,30 +44,42 @@ function Login() {
         <>
             <div className="outer-container">
                 <div className="inner-container">
-                    <div className={styles.searchbar}>
-                        <label>
-                            <input
-                                className="login-input"
-                                type="text"
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="username"
-                            />
-                        </label>
-                        <label>
-                            <input
-                                className="login-input"
-                                type="password"
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="password"
-                            />
-
-                        </label>
-                        {loggedIn ? (
-                            <button type="button" className={styles.buttoncontainer} onClick={clickLogout}> logout
-                            </button>
+                    <div style={{WebkitBoxShadow: boxjes}} className={styles.loginForm}>
+                        {isAuthenticated ? (
+                            <>
+                                <p>Je bent nu ingelogd :-)</p>
+                                <NavLink
+                                    to="/account"
+                                    style={{color: kleuren}}
+                                    className={styles.navbuttons}
+                                    >
+                                    Klik hier om naar je account te gaan!
+                                </NavLink>
+                                <button type="button" className={styles.buttoncontainer} onClick={clickLogout}> logout
+                                </button>
+                            </>
                         ) : (
-                            <button type="button" className={styles.buttoncontainer} onClick={clickHandler}> login
-                            </button>
+                            <>
+                                <label>
+                                    <input
+                                        className="login-input"
+                                        type="text"
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="username"
+                                    />
+                                </label>
+                                <label>
+                                    <input
+                                        className="login-input"
+                                        type="password"
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        placeholder="password"
+                                    />
+
+                                </label>
+                                <button type="button" className={styles.buttoncontainer} onClick={clickHandler}> login
+                                </button>
+                            </>
                         )}
                     </div>
                 </div>

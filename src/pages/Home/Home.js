@@ -3,7 +3,6 @@ import React, {useContext, useEffect} from "react";
 import styles from "../Home/Home.module.css";
 import photo from "../../assets/4.jpg";
 import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
-import LoginComp from "../../components/Login/LoginComp";
 
 function Home() {
     useEffect(() => {
@@ -15,11 +14,6 @@ function Home() {
     return (
         <div className="outer-container">
             <div className="inner-container" id={styles.content}>
-
-                <div>
-                    <LoginComp/>
-                </div>
-
                 <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>
                     <h1>WELKOM BIJ FiSHiT!</h1>
                     <br/>
@@ -28,7 +22,7 @@ function Home() {
                     <br/>
                     <h3>
                         Vergeet niet eerst in te loggen zodat je optimaal gebruik kunt maken
-                        van de website!{" "}
+                        van de website!
                     </h3>
                     <br/>
                     <h2>Happy Hunting!</h2>

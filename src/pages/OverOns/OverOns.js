@@ -17,7 +17,7 @@ function OverOns() {
 
     return (
         <div className="outer-container">
-            <div className="inner-container" id={styles.content}>
+            <div className="inner-container">
 
                 <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>
                     <div className={styles.fishLogo}>

@@ -16,3 +16,9 @@ th {
     cursor: pointer;
     position: relative;
 }
+
+p img {
+    width: 800px;
+    height: 650px;
+    border-radius: 25%;
+}

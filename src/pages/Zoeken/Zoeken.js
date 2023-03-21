@@ -1,13 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
 import styles from "./Zoeken.module.css"
 import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
-// import Zoekvis from "../../components/SearchingStuff/Zoekvis";
-// import Zoekvisplek from "../../components/SearchingStuff/Zoekvisplek";
 
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-function Zoeken() {
+function Zoeken(e) {
     const [uploads, setUploads] = useState([]);
     const [users, setUsers] = useState([]);
 
@@ -36,7 +34,13 @@ function Zoeken() {
     useEffect(() => {
         async function fetchUsers() {
             try {
-                const response = await axios.get('http://localhost:8080/users');
+
+
+                const token = localStorage.getItem('token')
+                const config = {
+                    headers: { Authorization: `Bearer ${token}` }
+                };
+                const response = await axios.get('http://localhost:8080/users', config);
                 setUsers(response.data);
                 console.log(response.data)
             } catch (e) {
@@ -50,7 +54,11 @@ function Zoeken() {
     useEffect(() => {
         async function fetchUploads() {
             try {
-                const response = await axios.get('http://localhost:8080/uploads');
+                const token = localStorage.getItem('token')
+                const config = {
+                    headers: { Authorization: `Bearer ${token}` }
+                };
+                const response = await axios.get('http://localhost:8080/uploads', config);
                 setUploads(response.data);
                 console.log(response.data)
             } catch (e) {
@@ -70,7 +78,7 @@ function Zoeken() {
     return (
         <>
             <div className="outer-container">
-                <div className="inner-container" id={styles.content}>
+                <div className="inner-container">
                     <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>
                         <h2>Zie hier alle uploads :</h2>
                         <table>

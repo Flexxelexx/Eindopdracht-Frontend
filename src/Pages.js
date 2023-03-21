@@ -5,7 +5,7 @@ import Home from "./pages/Home/Home";
 import Uploads from "./pages/Uploads/Uploads";
 import AlgemeneVoorwaarden from "./pages/AlgemeneVoorwaarden/AlgemeneVoorwaarden";
 import Contact from "./pages/Contact/Contact";
-import SignIn from "./pages/Login/SignIn";
+import SignIn from "./pages/Login/Login";
 import Account from "./pages/Account/Account";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";

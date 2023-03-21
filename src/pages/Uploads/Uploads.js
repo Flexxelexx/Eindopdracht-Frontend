@@ -3,7 +3,7 @@ import styles from './Uploads.module.css'
 import {FaFish} from "react-icons/fa";
 
 import axios from "axios";
-import {AuthContext} from "../../components/AuthContext/AuthContext";
+import {AuthContext} from "../../context/AuthContext";
 
 export default function Uploads() {
 
@@ -11,6 +11,7 @@ export default function Uploads() {
         document.title = "Uploads";
     }, []);
 
+    const [uploadID, setUploadID] = useState(0);
     const [speciesfish, setSpeciesfish] = useState('');
     const [weightfish, setWeightfish] = useState('');
     const [lengthfish, setLengthfish] = useState('');
@@ -54,12 +55,30 @@ export default function Uploads() {
         }
     }
 
+    useEffect(() => {
+        async function connectLoggedInToUpload() {
+            const token = localStorage.getItem('token')
+            console.log(uploadID)
+            try {
+                const response = await axios.post(`http://localhost:8080/users/${user.accountID}/upload/${uploadID}`,{
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }});
+                console.log(response.data)
+            } catch (e) {
+                console.error(e)
+            }
+        }
+        connectLoggedInToUpload();
+    }, [uploadID])
+
 
     async function addUpload(e) {
         e.preventDefault()
         try {
 
             const token = localStorage.getItem('token')
+            console.log(token)
             const config = {
                 headers: { Authorization: `Bearer ${token}` }
             };
@@ -79,7 +98,8 @@ export default function Uploads() {
             }, config);
 
 
-            console.log(response.data);
+            console.log(response);
+            setUploadID(response.data);
             toggleAddSuccess(true);
         } catch (e) {
             console.error(e);
@@ -87,9 +107,10 @@ export default function Uploads() {
         }
     }
 
+
     return (
         <div className="outer-container">
-            <div className="inner-container" id={styles.content}>
+            <div className="inner-container">
                 <form
                     className={styles.midcontent}
                     onSubmit={addPhoto}>
@@ -217,12 +238,12 @@ export default function Uploads() {
                         <button
                             type="submit"
                             className={styles.buttoncontainer}
+                            // hier dan die connectUserToUpload?
                         >
                             Upload verzenden
                         </button>
                         {addSuccess === true && <p>Upload is toegevoegd!</p>}
                         {addSuccess === true && <p>Klik nu hier om je upload aan je account te linken!</p>}
-                        {/*{addSuccess === true && <button type="submit" onSubmit={connectUpload}>Klik</button>}*/}
 
                     </div>
                 </form>
