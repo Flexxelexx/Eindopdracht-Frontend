@@ -2,6 +2,7 @@ import {createContext, useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 export const AuthContext = createContext({});
 
@@ -13,45 +14,29 @@ function AuthContextProvider({children}) {
         status: "pending"
     });
 
-    const history = useHistory()
-
     useEffect(() => {
-        const storedToken = localStorage.getItem('token')
+        console.log('De context is zojuist opnieuw opgestart!');
+        // is er een token?
+        const token = localStorage.getItem('token');
+        console.log(token);
 
 
-        if (storedToken) {
-            const decodedToken = jwt_decode(storedToken)
+        if (token) {
 
-            if (Math.floor(Date.now() / 1000) < decodedToken.exp) {
-                console.log("De gebruiker is NOG STEEDS ingelogd 🔓")
-                fetchUserData(storedToken, decodedToken)
-            } else {
-                console.log("De token is verlopen")
-                localStorage.removeItem('token')
-            }
+            const decodedToken = jwtDecode(token);
+
+            fetchUserData(decodedToken.sub, token);
         } else {
+
             setAuth({
                 ...auth,
-                isAuth: false,
-                user: null,
-                status: "done"
-            })
+                status: 'done',
+            });
         }
-    }, [])
+    }, []);
 
-    function login(jwt) {
-        console.log("De gebruiker is ingelogd 🔓")
-        localStorage.setItem('token', jwt)
-        const decodedToken = jwt_decode(jwt);
-        setAuth({
-            ...auth,
-            isAuth: true,
-            username: decodedToken.sub
-        });
-        fetchUserData(jwt, decodedToken.sub, "/account")
-    }
 
-    async function fetchUserData(jwt, username, redirectUrl) {
+    async function fetchUserData(jwt, username) {
         try {
             const response = await axios.get(`http://localhost:8080/users/${username}`, {
                 headers: {
@@ -67,40 +52,47 @@ function AuthContextProvider({children}) {
                     username: response.data.username,
                     email: response.data.email,
                     id: response.data.id
-                },
-                status: "done"
+                }
             })
-            if (redirectUrl) {
-                history.push(redirectUrl)
-            }
-            console.log(response)
         } catch (e) {
             console.error(e)
-            setAuth({
-                ...auth,
-                status: "done"
-            })
         }
     }
 
+    function login(jwt) {
+        console.log(jwt)
+
+        localStorage.setItem('token', jwt);
+
+        const decodedToken = jwtDecode(jwt);
+        console.log('decoded token:', decodedToken);
+
+
+        fetchUserData(decodedToken.sub, jwt);
+
+
+        console.log('Gebruiker is ingelogd!');
+
+    }
+
+
     function logout() {
-        console.log("De gebruiker is uitgelogd 🔒")
-        localStorage.removeItem('token')
         setAuth({
             ...auth,
             isAuth: false,
             user: null,
-            status: "done"
-        })
-        history.push("/login")
+        });
+
+        localStorage.clear();
+        console.log('Gebruiker is uitgelogd!');
     }
 
     const contextData = {
         isAuth: auth.isAuth,
         user: auth.user,
         status: auth.status,
-        login: login,
-        logout: logout
+        loginF: login,
+        logoutF: logout
     }
 
     return (
