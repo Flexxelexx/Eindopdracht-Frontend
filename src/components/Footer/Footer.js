@@ -4,7 +4,7 @@ import styles from "../Footer/Footer.module.css";
 
 function Footer() {
   return (
-    <footer className="outer-container">
+    <div className="outer-container">
       <div className="inner-container" id={styles.footer}>
         <div className={styles.extendednav}>
           <i className="fa-solid fa-cog fa-spin" />
@@ -22,7 +22,7 @@ function Footer() {
           <i className="fa-solid fa-cog fa-spin fa-spin-reverse" />
         </div>
       </div>
-    </footer>
+    </div>
   );
 }
 

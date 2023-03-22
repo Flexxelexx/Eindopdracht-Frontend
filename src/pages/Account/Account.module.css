@@ -1,35 +1,28 @@
-#content {
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.fishLogo {
-    font-size: 50px;
-}
-
-.midcontent {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
+.welkom {
     align-items: center;
-    justify-content: center;
     padding: 15px;
     border-radius: 50px;
     border-width: thick;
     box-shadow: 7px -8px 9px -1px;
 }
 
-.buttoncontainer {
-    background-color: black;
-    color: white;
-    border: none;
-    text-align: center;
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    font-weight: bold;
     text-decoration: none;
-    border-radius: 15px;
-    padding: 6px;
-    margin-top: 10px;
-    cursor: pointer;
+    color: #333;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #e9e9e9;
+    border-color: #aaa;
+    color: #555;
 }
 
 table, td, th {
@@ -37,7 +30,6 @@ table, td, th {
 }
 
 th {
-    background-color: black;
     text-align: left;
 }
 
@@ -46,8 +38,9 @@ td, th {
 }
 
 td > img {
-    width: 60px;
-    border-radius: 50%;
+    width: 200px;
+    height: 150px;
+    border-radius: 25%;
 }
 
 table {

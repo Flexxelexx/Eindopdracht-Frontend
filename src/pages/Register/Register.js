@@ -59,11 +59,6 @@ function Register() {
                         <div className={styles.fishLogo}>
                             <FaFish/>
                         </div>
-
-                        {addSuccess === true && <p>Je account is toegevoegd!</p>}
-                        {addSuccess === true && <p>Log nu snel in en ga aan de slag!</p>}
-                        <br/>
-
                         <label>Naam:</label>
                         <input
                             type="text"
@@ -104,12 +99,17 @@ function Register() {
                             value={userdob}
                             onChange={(e) => setUserdob(e.target.value)}
                         />
+                        <br/>
                         <button
                             type="submit"
-                            className={styles.buttoncontainer}
+                            className={styles.button}
                         >
                             Maak gebruiker aan
                         </button>
+                        <br/>
+                        {addSuccess === true && <p>Je account is toegevoegd!</p>}
+                        {addSuccess === true && <p>Log nu snel in en ga aan de slag!</p>}
+
                     </form>
 
 

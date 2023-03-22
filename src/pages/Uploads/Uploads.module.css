@@ -4,60 +4,41 @@
     gap: 15px;
 }
 
-.header {
-    display: flex;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
 
 .fishLogo {
     font-size: 50px;
 }
 
-.midcontent {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 15px;
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #e9e9e9;
+    border-color: #aaa;
+    color: #555;
+}
+
+
+.allcontent {
     border-radius: 50px;
     border-width: thick;
     box-shadow: 7px -8px 9px -1px;
 }
 
-.buttoncontainer {
-    background-color: black;
-    color: white;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 15px;
-    padding: 6px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.contentLeft {
+.formcontent {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.contentMidLeft {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.midcontentRight {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.photoform {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}

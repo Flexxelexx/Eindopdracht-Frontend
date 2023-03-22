@@ -20,6 +20,7 @@ function Navbar() {
     return (
         <nav>
             <ul className={styles.navlist}>
+
                 <li>
                     <NavLink
                         to="/"
@@ -30,6 +31,9 @@ function Navbar() {
                         Home
                     </NavLink>
                 </li>
+
+                {isAuthenticated ? (
+                    <>
                 <li>
                     <NavLink
                         to="/zoeken"
@@ -40,6 +44,24 @@ function Navbar() {
                         Zoeken
                     </NavLink>
                 </li>
+                    </>
+                ) : (
+                    <>
+                    <li>
+                        <NavLink
+                            to="/login"
+                            style={{color: kleuren}}
+                            className={styles.navbuttons}
+                        >
+                            <i className="fa-solid fa-magnifying-glass-location fa-2x"/>
+                            Zoeken
+                        </NavLink>
+                    </li>
+                    </>
+                )}
+
+                {isAuthenticated ? (
+                    <>
                 <li>
                     <NavLink
                         to="/upload"
@@ -49,6 +71,23 @@ function Navbar() {
                         <i className="fa-solid fa-upload fa-2x"/> Uploads
                     </NavLink>
                 </li>
+                    </>
+                ) : (
+                    <>
+                    <li>
+                        <NavLink
+                            to="/login"
+                            style={{color: kleuren}}
+                            className={styles.navbuttons}
+                        >
+                            <i className="fa-solid fa-upload fa-2x"/> Uploads
+                        </NavLink>
+                    </li>
+                    </>
+                )}
+
+                {isAuthenticated ? (
+                    <>
                 <li>
                     <NavLink
                         to="/account"
@@ -58,8 +97,20 @@ function Navbar() {
                         <i className="fa-regular fa-id-card fa-2x"/> Account
                     </NavLink>
                 </li>
-                <li>
-                </li>
+                    </>
+                ) : (
+                    <>
+                        <li>
+                            <NavLink
+                                to="/login"
+                                style={{color: kleuren}}
+                                className={styles.navbuttons}
+                            >
+                                <i className="fa-regular fa-id-card fa-2x"/> Account
+                            </NavLink>
+                        </li>
+                    </>
+                )}
                 <li>
                     <NavLink
                         to="/contact"
@@ -69,6 +120,7 @@ function Navbar() {
                         <i className="fa-solid fa-circle-info fa-2x"/> Contact
                     </NavLink>
                 </li>
+
                 <li>
                     <NavLink
                         to="/register"

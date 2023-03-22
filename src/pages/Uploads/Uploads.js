@@ -1,7 +1,10 @@
 import React, {useContext, useEffect, useState} from "react";
 import styles from './Uploads.module.css'
 import {FaFish} from "react-icons/fa";
-
+import {BiCurrentLocation} from "react-icons/bi";
+import {GiFishingPole} from "react-icons/gi"
+import {FaPhotoVideo} from "react-icons/fa"
+import {FiSave} from "react-icons/fi"
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
 
@@ -58,17 +61,18 @@ export default function Uploads() {
     useEffect(() => {
         async function connectLoggedInToUpload() {
             const token = localStorage.getItem('token')
-            console.log(uploadID)
             try {
-                const response = await axios.post(`http://localhost:8080/users/${user.accountID}/upload/${uploadID}`,{
+                const response = await axios.post(`http://localhost:8080/users/${user.accountID}/upload/${uploadID}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
-                    }});
+                    }
+                });
                 console.log(response.data)
             } catch (e) {
                 console.error(e)
             }
         }
+
         connectLoggedInToUpload();
     }, [uploadID])
 
@@ -80,19 +84,29 @@ export default function Uploads() {
             const token = localStorage.getItem('token')
             console.log(token)
             const config = {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: {Authorization: `Bearer ${token}`}
             };
+
+            const capitalizeFirstLetter = (str) => {
+                return str.charAt(0).toUpperCase() + str.slice(1);
+            };
+
+            const capiSpeciesfish = capitalizeFirstLetter(speciesfish);
+            const capiCity = capitalizeFirstLetter(city);
+            const capiKindofReel = capitalizeFirstLetter(kindofreel);
+            const capiLure = capitalizeFirstLetter(lure);
+
 
             const response = await axios.post('http://localhost:8080/uploads', {
                 weightFish: weightfish,
                 lengthFish: lengthfish,
                 charsFish: charsfish,
-                speciesFish: speciesfish,
+                speciesFish: capiSpeciesfish,
                 locationCaught: location,
-                cityCaught: city,
+                cityCaught: capiCity,
                 rodLength: rodLength,
-                kindOfReel: kindofreel,
-                kindOfLure: lure,
+                kindOfReel: capiKindofReel,
+                kindOfLure: capiLure,
                 lineLength: linelength,
                 file: data
             }, config);
@@ -111,36 +125,57 @@ export default function Uploads() {
     return (
         <div className="outer-container">
             <div className="inner-container">
-                <form
-                    className={styles.midcontent}
-                    onSubmit={addPhoto}>
-                    <label htmlFor="upload-image">
-                        Kies afbeelding:
-                        <br/>
-                        <input type="file"
-                               name="image-field"
-                               id="upload-image"
-                               onChange={handleChange}/>
-                    </label>
-                    <p>Druk eerst op 'foto uploaden' voor je verder gaat met het formulier!</p>
-                    <br/>
+                <div className={styles.allcontent}>
 
-                    <button
-                        type="submit"
-                        className={styles.buttoncontainer}
-                    >
-                        Foto uploaden
-                    </button>
-                </form>
-                <form
-                    className={styles.midcontent}
-                    onSubmit={addUpload}>
-                    <div className={styles.contentLeft}>
+                    <form
+                        onSubmit={addPhoto}
+                        className={styles.formcontent}>
+
+                        <div className={styles.fishLogo}>
+                            <FaPhotoVideo/>
+                        </div>
+
+                        <label className={styles.formcontent}>
+                            <h3>Stap 1: Foto uploaden</h3>
+                            <b>_________________________________</b>
+                            <br/>
+                            Kies afbeelding:
+                            <br/>
+
+                            <input type="file"
+                                   name="image-field"
+                                   id="upload-image"
+                                   onChange={handleChange}
+                            />
+                            <br/>
+                            <button
+                                type="submit"
+                                className={styles.button}
+                            >
+                                Foto uploaden
+                            </button>
+                            <br/>
+                            <b>===========================================</b>
+                            <b>Let op!</b>
+                            <b>Druk eerst op 'foto uploaden' en ga dan verder met het formulier!</b>
+                            <b>Foto is niet verplicht maar wel essentieel!</b>
+                            <b>===========================================</b>
+                        </label>
+                    </form>
+                    <br/>
+                    <form
+                        onSubmit={addUpload}
+                        className={styles.formcontent}>
+
                         <div className={styles.fishLogo}>
                             <FaFish/>
                         </div>
+                        <h3>Stap 2: Wat voor vis is het?</h3>
+                        <b>_________________________________</b>
                         <br/>
+
                         <label>Vissoort:</label>
+
                         <input
                             type="text"
                             placeholder="Vul hier de soort vis in..."
@@ -176,12 +211,19 @@ export default function Uploads() {
                             id="chars-fish"
                             value={charsfish}
                             onChange={(e) => setCharsfish(e.target.value)}/>
-                    </div>
+                    </form>
+                    <br/>
+                    <form
+                        onSubmit={addUpload}
+                        className={styles.formcontent}>
 
-                    <div className={styles.contentMidLeft}>
                         <div className={styles.fishLogo}>
-                            <FaFish/>
+                            <GiFishingPole/>
                         </div>
+                        <h3>Stap 3: Welke gear heb je gebruikt?</h3>
+                        <b>_________________________________</b>
+                        <br/>
+
                         <label>Lengte hengel:</label>
                         <input
                             type="text"
@@ -213,12 +255,19 @@ export default function Uploads() {
                             id="kind-of-line"
                             value={linelength}
                             onChange={(e) => setLine(e.target.value)}/>
-                    </div>
+                    </form>
+                    <br/>
+                    <form
+                        onSubmit={addUpload}
+                        className={styles.formcontent}>
 
-                    <div className={styles.midcontentRight}>
                         <div className={styles.fishLogo}>
-                            <FaFish/>
+                            <BiCurrentLocation/>
                         </div>
+                        <h3>Stap 4: Waar heb je deze vis gevangen?</h3>
+                        <b>_________________________________</b>
+                        <br/>
+
                         <label>Plaatsnaam:</label>
                         <input
                             type="text"
@@ -235,18 +284,23 @@ export default function Uploads() {
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                         />
+                        <br/>
+                        <div className={styles.fishLogo}>
+                            <FiSave/>
+                        </div>
+                        <h3>Stap 5: Sla jouw vangst op!</h3>
+                        <b>_________________________________</b>
+                        {addSuccess === true && <p>Upload is toegevoegd!</p>}
+                        <br/>
                         <button
                             type="submit"
-                            className={styles.buttoncontainer}
-                            // hier dan die connectUserToUpload?
+                            className={styles.button}
                         >
-                            Upload verzenden
+                            Vangst opslaan!
                         </button>
-                        {addSuccess === true && <p>Upload is toegevoegd!</p>}
-                        {addSuccess === true && <p>Klik nu hier om je upload aan je account te linken!</p>}
 
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     )

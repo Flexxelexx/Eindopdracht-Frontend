@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import styles from "./Login.module.css"
 
 import axios from "axios";
@@ -13,7 +13,13 @@ function Login() {
     const {loginFunction, logoutFunction} = useContext(AuthContext);
     const {boxjes, kleuren} = useContext(ThemeContext);
 
-    const {isAuthenticated} = useContext(AuthContext)
+    const {isAuthenticated, user} = useContext(AuthContext);
+
+
+    useEffect(() => {
+        document.title = "Login";
+    }, []);
+
 
 
     async function clickHandler() {
@@ -47,38 +53,56 @@ function Login() {
                     <div style={{WebkitBoxShadow: boxjes}} className={styles.loginForm}>
                         {isAuthenticated ? (
                             <>
-                                <p>Je bent nu ingelogd :-)</p>
+                                <form className={styles.loggedInForm}>
+                                <p>Je bent nu ingelogd met het account:</p>
+                                    <br/>
+                                    <p>{user.username}</p>
+                                    <br/>
                                 <NavLink
                                     to="/account"
                                     style={{color: kleuren}}
                                     className={styles.navbuttons}
                                     >
-                                    Klik hier om naar je account te gaan!
+                                    Klik hier om naar jouw account te gaan!
                                 </NavLink>
+                                    <br/>
+                                    <p>of</p>
+                                    <br/>
+                                    <NavLink
+                                        to="/upload"
+                                        style={{color: kleuren}}
+                                        className={styles.navbuttons}
+                                    >
+                                        Ga snel naar uploaden!
+                                    </NavLink>
+                                    <br/>
                                 <button type="button" className={styles.buttoncontainer} onClick={clickLogout}> logout
                                 </button>
+                                </form>
                             </>
                         ) : (
                             <>
-                                <label>
+                                <form className={styles.notLoggedInForm}>
+                                <h2>Login</h2>
+
+                                    <span>Gebruikersnaam: </span>
                                     <input
                                         className="login-input"
                                         type="text"
                                         onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="username"
+                                        placeholder="gebruikersnaam.."
                                     />
-                                </label>
-                                <label>
+                                    <span>Wachtwoord: </span>
                                     <input
                                         className="login-input"
                                         type="password"
                                         onChange={(e) => setPassword(e.target.value)}
-                                        placeholder="password"
+                                        placeholder="wachtwoord.."
                                     />
-
-                                </label>
-                                <button type="button" className={styles.buttoncontainer} onClick={clickHandler}> login
+                                    <br/>
+                                <button type="button" className={styles.buttoncontainer} onClick={clickHandler}> Login
                                 </button>
+                                </form>
                             </>
                         )}
                     </div>

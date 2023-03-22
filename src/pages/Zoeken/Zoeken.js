@@ -38,7 +38,7 @@ function Zoeken(e) {
 
                 const token = localStorage.getItem('token')
                 const config = {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: {Authorization: `Bearer ${token}`}
                 };
                 const response = await axios.get('http://localhost:8080/users', config);
                 setUsers(response.data);
@@ -56,7 +56,7 @@ function Zoeken(e) {
             try {
                 const token = localStorage.getItem('token')
                 const config = {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: {Authorization: `Bearer ${token}`}
                 };
                 const response = await axios.get('http://localhost:8080/uploads', config);
                 setUploads(response.data);
@@ -80,7 +80,7 @@ function Zoeken(e) {
             <div className="outer-container">
                 <div className="inner-container">
                     <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>
-                        <h2>Zie hier alle uploads :</h2>
+                        <h2>Zie hier alle vangsten :</h2>
                         <table>
                             <thead>
                             <tr>
@@ -89,7 +89,8 @@ function Zoeken(e) {
                                 <th>Gevangen door:</th>
                                 <th onClick={() => handleSort('speciesFish')}>
                                     Soort
-                                    vis {sortColumn === 'speciesFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
+                                    vis {sortColumn === 'speciesFish' && (sortDirection === 'asc' ? '↕' : '↕')}
+                                </th>
                                 <th onClick={() => handleSort('weightFish')}>
                                     Gewicht in
                                     kg {sortColumn === 'weightFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
@@ -100,7 +101,7 @@ function Zoeken(e) {
                                     Plaatsnaam {sortColumn === 'cityCaught' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
                                 <th onClick={() => handleSort('locationCaught')}>
                                     Locatie {sortColumn === 'locationCaught' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
-                                <th>Upload Bekijken</th>
+                                <th>Upload bekijken</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -109,23 +110,26 @@ function Zoeken(e) {
                                     <tr key={upload.id}>
                                         <td>{upload.id}</td>
                                         {
-                                            upload.file.url !== null ?
-                                                <td><img src={upload.file.url} alt="xx"/></td> : <p>Geen foto</p>
+                                            upload.file.url !== null ? (
+                                                <td><img src={upload.file.url} alt="xx"/></td> ) : ( <p>Geen foto</p> )
                                         }
                                         <td>{upload.username}</td>
                                         <td>{upload.speciesFish}</td>
-                                        <td>{upload.weightFish}</td>
-                                        <td>{upload.lengthFish}</td>
+                                        <td>{upload.weightFish} kg</td>
+                                        <td>{upload.lengthFish} m</td>
                                         <td>{upload.cityCaught}</td>
                                         <td>
-                                            <a href={upload.locationCaught} target={"_blank"} rel="noreferrer">Locatie
-                                                bekijken</a>
+                                            <a href={upload.locationCaught} target={"_blank"} rel="noreferrer"
+                                               className={styles.button}>Bekijken</a>
                                         </td>
                                         <td>
-                                            <Link to={{
-                                                pathname: `/details/${upload.id}`,
-                                                state: {upload}
-                                            }}>bekijken</Link>
+                                            <Link
+                                                className={styles.button}
+                                                to={{
+                                                    pathname: `/details/${upload.id}`,
+                                                    state: {upload}
+                                                }}
+                                            >Bekijken</Link>
                                         </td>
                                     </tr>
                                 );

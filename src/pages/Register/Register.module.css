@@ -20,36 +20,22 @@
     font-size: 50px;
 }
 
-.searchbar {
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-    padding: 10px 15px;
-    border-radius: 50px;
-    border-width: thick;
-}
-
-.midcontent {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    border-radius: 50px;
-    border-width: thick;
-}
-
-.buttoncontainer {
-    background-color: black;
-    color: white;
-    border: none;
-    text-align: center;
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    font-weight: bold;
     text-decoration: none;
-    border-radius: 15px;
-    padding: 6px;
-    margin-top: 10px;
-    cursor: pointer;
+    color: #333;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 25%;
+}
+
+.button:hover {
+    background-color: #e9e9e9;
+    border-color: #aaa;
+    color: #555;
 }

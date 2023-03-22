@@ -13,7 +13,7 @@ function UserPage() {
             try {
                 const token = localStorage.getItem('token')
                 const config = {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: {Authorization: `Bearer ${token}`}
                 };
                 const response = await axios.get('http://localhost:8080/users', config);
                 setUsers(response.data);
@@ -41,7 +41,7 @@ function UserPage() {
             try {
                 const token = localStorage.getItem('token')
                 const config = {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: {Authorization: `Bearer ${token}`}
                 };
                 const response = await axios.get('http://localhost:8080/uploads/', config);
                 setUploads(response.data);
@@ -95,14 +95,16 @@ function UserPage() {
                                     <td>{upload.lengthFish}</td>
                                     <td>{upload.cityCaught}</td>
                                     <td>
-                                        <a href={upload.locationCaught} target={"_blank"} rel="noreferrer">Locatie
-                                            bekijken</a>
+                                        <a href={upload.locationCaught} target={"_blank"} rel="noreferrer"
+                                           className={styles.button}>Bekijken</a>
                                     </td>
                                     <td>
-                                        <Link to={{
-                                            pathname: `/details/${upload.id}`,
-                                            state: {upload}
-                                        }}>bekijken</Link>
+                                        <Link
+                                            className={styles.button}
+                                            to={{
+                                                pathname: `/details/${upload.id}`,
+                                                state: {upload}
+                                            }}>Bekijken</Link>
                                     </td>
                                 </tr>
                             );
