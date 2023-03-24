@@ -49,37 +49,19 @@ function AdminPortal() {
         <div className="outer-container">
           <div className="inner-container">
             <div style={{WebkitBoxShadow: boxjes}} className={styles.loginForm}>
-              {/*{isAuthenticated ? (*/}
-              {/*    <>*/}
+              {isAuthenticated ? (
+                  <>
                     <form className={styles.loggedInForm}>
                       <p>Je bent nu ingelogd met het account:</p>
                       <br/>
-                      {/*<p>{user.username}</p>*/}
-                      <br/>
-                      <NavLink
-                          to="/account"
-                          style={{color: kleuren}}
-                          className={styles.navbuttons}
-                      >
-                        Klik hier om naar jouw account te gaan!
-                      </NavLink>
-                      <br/>
-                      <p>of</p>
-                      <br/>
-                      <NavLink
-                          to="/upload"
-                          style={{color: kleuren}}
-                          className={styles.navbuttons}
-                      >
-                        Ga snel naar uploaden!
-                      </NavLink>
+                      <p>{user.username} (de admin)</p>
                       <br/>
                       <button type="button" className={styles.buttoncontainer} onClick={clickLogout}> logout
                       </button>
                     </form>
-              {/*    </>*/}
-              {/*) : (*/}
-              {/*    <>*/}
+                  </>
+              ) : (
+                  <>
                     <form className={styles.notLoggedInForm}>
                       <h2>Admin login</h2>
 
@@ -101,8 +83,8 @@ function AdminPortal() {
                       <button type="button" className={styles.buttoncontainer} onClick={clickHandler}> Login
                       </button>
                     </form>
-              {/*    </>*/}
-              {/*)}*/}
+                  </>
+              )}
             </div>
           </div>
         </div>
