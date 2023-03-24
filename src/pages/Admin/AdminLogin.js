@@ -4,13 +4,13 @@ import styles from "./Admin.module.css";
 import { ThemeContext } from "../../components/ThemeContext/ThemeContext";
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
-import {NavLink} from "react-router-dom";
+
 
 function AdminPortal() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const {loginFunction, logoutFunction} = useContext(AuthContext);
-  const {boxjes, kleuren} = useContext(ThemeContext);
+  const {boxjes} = useContext(ThemeContext);
 
   const {isAuthenticated, user} = useContext(AuthContext);
 
@@ -36,7 +36,7 @@ function AdminPortal() {
       loginFunction(response.data);
     } catch (e) {
       console.error(e);
-      alert('invalid username or password, please try again')
+      alert('*blub* Oeps, deze combinatie klopt niet. Probeer het opnieuw. *blub*')
     }
   }
 

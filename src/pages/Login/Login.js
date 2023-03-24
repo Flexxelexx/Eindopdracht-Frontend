@@ -37,7 +37,7 @@ function Login() {
             loginFunction(response.data);
         } catch (e) {
             console.error(e);
-            alert('invalid username or password, please try again')
+            alert('*blub* Oeps, deze combinatie klopt niet. Probeer het opnieuw. *blub*')
         }
     }
 

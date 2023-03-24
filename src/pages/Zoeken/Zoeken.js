@@ -4,10 +4,22 @@ import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
 
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
+import {AiOutlineDelete} from "react-icons/ai";
 
 function Zoeken(e) {
+
+    useEffect(() => {
+        document.title = "Zoeken";
+    }, []);
+
+    const token = localStorage.getItem('token');
     const [uploads, setUploads] = useState([]);
     const [users, setUsers] = useState([]);
+    const [isDeleted, setIsDeleted] = useState(false);
+
+    const {user} = useContext(AuthContext);
+    const userRole = user.rolename;
 
     const [sortColumn, setSortColumn] = useState('id');
     const [sortDirection, setSortDirection] = useState('asc');
@@ -30,6 +42,26 @@ function Zoeken(e) {
             setSortDirection('asc');
         }
     }
+
+    async function DeleteUpload (uploadID) {
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        };
+
+        try {
+            const result = await axios.delete(`https://localhost:8080/uploads/${uploadID}`, config);
+            console.log(`deleted upload: ${uploadID}`)
+            setIsDeleted(true)
+            console.log(result)
+        } catch (e) {
+            console.log(e)
+            setIsDeleted(false)
+        }
+    }
+
 
     useEffect(() => {
         async function fetchUsers() {
@@ -70,9 +102,6 @@ function Zoeken(e) {
     }, []);
 
 
-    useEffect(() => {
-        document.title = "Zoeken";
-    }, []);
 
 
     return (
@@ -95,13 +124,14 @@ function Zoeken(e) {
                                     Gewicht in
                                     kg {sortColumn === 'weightFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
                                 <th onClick={() => handleSort('lengthFish')}>
-                                    Lengte in
-                                    cm {sortColumn === 'lengthFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
+                                    Lengte {sortColumn === 'lengthFish' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
                                 <th onClick={() => handleSort('cityCaught')}>
                                     Plaatsnaam {sortColumn === 'cityCaught' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
                                 <th onClick={() => handleSort('locationCaught')}>
                                     Locatie {sortColumn === 'locationCaught' && (sortDirection === 'asc' ? '↕' : '↕')}</th>
                                 <th>Upload bekijken</th>
+                                {userRole === 'ROLE_ADMIN' &&
+                                 <th>Verwijderen</th>}
                             </tr>
                             </thead>
                             <tbody>
@@ -110,8 +140,10 @@ function Zoeken(e) {
                                     <tr key={upload.id}>
                                         <td>{upload.id}</td>
                                         {
-                                            upload.file.url !== null ? (
-                                                <td><img src={upload.file.url} alt="xx"/></td> ) : ( <p>Geen foto</p> )
+                                            upload.file && upload.file.url !== null ? (
+                                                <td><img src={upload.file.url} alt="xx"/></td>
+                                            ) : (
+                                                <td><p>Geen foto geupload</p></td>)
                                         }
                                         <td>{upload.username}</td>
                                         <td>{upload.speciesFish}</td>
@@ -131,6 +163,14 @@ function Zoeken(e) {
                                                 }}
                                             >Bekijken</Link>
                                         </td>
+                                        {userRole === 'ROLE_ADMIN' &&
+                                            <td>
+                                            <button
+                                                onClick={() => DeleteUpload(upload.id)}
+                                                className={styles.button}>
+                                                <AiOutlineDelete/>
+                                            </button>
+                                            </td>}
                                     </tr>
                                 );
                             })}

@@ -90,8 +90,10 @@ function Account() {
                                         <tr key={upload.id}>
                                             <td>{upload.id}</td>
                                             {
-                                                upload.file.url !== null ?
-                                                    <td><img src={upload.file.url} alt="xx"/></td> : <p>Geen foto</p>
+                                                upload.file && upload.file.url !== null ? (
+                                                    <td><img src={upload.file.url} alt="xx"/></td>
+                                                ) : (
+                                                    <td><p>Geen foto geupload</p></td>)
                                             }
                                             <td>{upload.speciesFish}</td>
                                             <td>{upload.weightFish}</td>

@@ -8,6 +8,7 @@ import {FiSave} from "react-icons/fi"
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
 
+
 export default function Uploads() {
 
     useEffect(() => {
@@ -26,7 +27,7 @@ export default function Uploads() {
     const [lure, setLure] = useState('');
     const [linelength, setLine] = useState('');
 
-    const [file, setFile] = useState([]);
+    const [file, setFile] = useState('');
     const [data, setData] = useState({});
 
     const {user} = useContext(AuthContext);
@@ -41,43 +42,8 @@ export default function Uploads() {
         setFile(upload);
     }
 
-    async function addPhoto(e) {
-        formData.append("file", file)
-        e.preventDefault();
-        try {
-            const imageResponse = await axios.post('http://localhost:8080/single/uploadDb', formData, {
-                headers: {
-                    "Content-Type ": 'multipart/form-data'
-                },
-            });
-            setData(imageResponse.data);
-            console.log(imageResponse.data)
-        } catch (e) {
-            console.error(e);
-            throw e;
-        }
-    }
-
-    useEffect(() => {
-        async function connectLoggedInToUpload() {
-            const token = localStorage.getItem('token')
-            try {
-                const response = await axios.post(`http://localhost:8080/users/${user.accountID}/upload/${uploadID}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                console.log(response.data)
-            } catch (e) {
-                console.error(e)
-            }
-        }
-
-        connectLoggedInToUpload();
-    }, [uploadID])
-
-
     async function addUpload(e) {
+        formData.append("file", file)
         e.preventDefault()
         try {
 
@@ -97,23 +63,34 @@ export default function Uploads() {
             const capiLure = capitalizeFirstLetter(lure);
 
 
-            const response = await axios.post('http://localhost:8080/uploads', {
-                weightFish: weightfish,
-                lengthFish: lengthfish,
-                charsFish: charsfish,
-                speciesFish: capiSpeciesfish,
-                locationCaught: location,
-                cityCaught: capiCity,
-                rodLength: rodLength,
-                kindOfReel: capiKindofReel,
-                kindOfLure: capiLure,
-                lineLength: linelength,
-                file: data
-            }, config);
+            const [imageResponse, uploadResponse] = await Promise.all([
 
+                axios.post('http://localhost:8080/single/uploadDb', formData, {
+                    headers: {
+                        "Content-Type ": 'multipart/form-data',
+                        ...config.headers
+                    },
+                }),
 
-            console.log(response);
-            setUploadID(response.data);
+                axios.post('http://localhost:8080/uploads', {
+                    weightFish: weightfish,
+                    lengthFish: lengthfish,
+                    charsFish: charsfish,
+                    speciesFish: capiSpeciesfish,
+                    locationCaught: location,
+                    cityCaught: capiCity,
+                    rodLength: rodLength,
+                    kindOfReel: capiKindofReel,
+                    kindOfLure: capiLure,
+                    lineLength: linelength,
+                    file: data
+                }, config),
+            ]);
+
+            console.log(uploadResponse);
+            console.log(imageResponse);
+            setData(imageResponse.data);
+            setUploadID(uploadResponse.data);
             toggleAddSuccess(true);
         } catch (e) {
             console.error(e);
@@ -122,13 +99,40 @@ export default function Uploads() {
     }
 
 
+
+    useEffect(() => {
+        async function connectLoggedInToUpload() {
+            if (!uploadID) {
+                return;
+            }
+
+            const token = localStorage.getItem('token')
+            try {
+                const response = await axios.post(`http://localhost:8080/users/${user.accountID}/upload/${uploadID}`, {}, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                console.log(response.data)
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+        connectLoggedInToUpload();
+
+        return () => {
+        };
+    }, [uploadID]);
+
+
     return (
         <div className="outer-container">
             <div className="inner-container">
                 <div className={styles.allcontent}>
 
                     <form
-                        onSubmit={addPhoto}
+                        // onSubmit={addPhoto}
                         className={styles.formcontent}>
 
                         <div className={styles.fishLogo}>
@@ -148,18 +152,18 @@ export default function Uploads() {
                                    onChange={handleChange}
                             />
                             <br/>
-                            <button
-                                type="submit"
-                                className={styles.button}
-                            >
-                                Foto uploaden
-                            </button>
-                            <br/>
-                            <b>===========================================</b>
-                            <b>Let op!</b>
-                            <b>Druk eerst op 'foto uploaden' en ga dan verder met het formulier!</b>
-                            <b>Foto is niet verplicht maar wel essentieel!</b>
-                            <b>===========================================</b>
+                            {/*<button*/}
+                            {/*    type="submit"*/}
+                            {/*    className={styles.button}*/}
+                            {/*>*/}
+                            {/*    Foto uploaden*/}
+                            {/*</button>*/}
+                            {/*<br/>*/}
+                            {/*<b>===========================================</b>*/}
+                            {/*<b>Let op!</b>*/}
+                            {/*<b>Druk eerst op 'foto uploaden' en ga dan verder met het formulier!</b>*/}
+                            {/*<b>Foto is niet verplicht maar wel essentieel!</b>*/}
+                            {/*<b>===========================================</b>*/}
                         </label>
                     </form>
                     <br/>

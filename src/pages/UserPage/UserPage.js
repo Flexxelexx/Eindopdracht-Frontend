@@ -6,6 +6,17 @@ import axios from "axios";
 
 function UserPage() {
 
+
+    const location = useLocation();
+    const {upload} = location.state;
+
+    const {boxjes} = useContext(ThemeContext);
+
+    useEffect(() => {
+        document.title = `${upload.username} - Profiel`;
+    }, [upload.username]);
+
+
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -27,8 +38,6 @@ function UserPage() {
     }, []);
 
 
-    const location = useLocation();
-    const {upload} = location.state;
 
     const [uploads, setUploads] = useState([]);
 
@@ -43,7 +52,7 @@ function UserPage() {
                 const config = {
                     headers: {Authorization: `Bearer ${token}`}
                 };
-                const response = await axios.get('http://localhost:8080/uploads/', config);
+                const response = await axios.get('http://localhost:8080/uploads', config);
                 setUploads(response.data);
                 console.log(response.data)
             } catch (e) {
@@ -54,12 +63,6 @@ function UserPage() {
         fetchUploads();
     }, []);
 
-
-    const {boxjes} = useContext(ThemeContext);
-
-    useEffect(() => {
-        document.title = `${upload.username} - Profiel`;
-    }, [upload.username]);
 
     return (
         <div className="outer-container">
@@ -87,8 +90,10 @@ function UserPage() {
                                 <tr key={upload.id}>
                                     <td>{upload.id}</td>
                                     {
-                                        upload.file.url !== null ?
-                                            <td><img src={upload.file.url} alt="xx"/></td> : <p>Geen foto</p>
+                                        upload.file && upload.file.url !== null ? (
+                                            <td><img src={upload.file.url} alt="xx"/></td>
+                                        ) : (
+                                            <td><p>Geen foto geupload</p></td>)
                                     }
                                     <td>{upload.speciesFish}</td>
                                     <td>{upload.weightFish}</td>

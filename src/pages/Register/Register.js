@@ -110,6 +110,7 @@ function Register() {
                         {addSuccess === true && <p>Je account is toegevoegd!</p>}
                         {addSuccess === true && <p>Log nu snel in en ga aan de slag!</p>}
 
+
                     </form>
 
 
