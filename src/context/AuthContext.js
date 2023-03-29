@@ -48,7 +48,7 @@ function AuthContextProvider({ children }) {
                 }
             });
 
-            console.log(response)
+            // console.log(response)
             setAuth({
                 ...auth,
                 isAuth: true,

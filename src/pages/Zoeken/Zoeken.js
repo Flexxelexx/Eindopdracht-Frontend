@@ -52,7 +52,7 @@ function Zoeken(e) {
         };
 
         try {
-            const result = await axios.delete(`https://localhost:8080/uploads/${uploadID}`, config);
+            const result = await axios.delete(`http://localhost:8080/uploads/${uploadID}`, config);
             console.log(`deleted upload: ${uploadID}`)
             setIsDeleted(true)
             console.log(result)

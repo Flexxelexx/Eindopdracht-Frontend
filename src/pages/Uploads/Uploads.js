@@ -28,8 +28,6 @@ export default function Uploads() {
     const [linelength, setLine] = useState('');
 
     const [file, setFile] = useState('');
-    const [data, setData] = useState({});
-
     const {user} = useContext(AuthContext);
 
 
@@ -45,6 +43,7 @@ export default function Uploads() {
     async function addUpload(e) {
         formData.append("file", file)
         e.preventDefault()
+
         try {
 
             const token = localStorage.getItem('token')
@@ -63,15 +62,7 @@ export default function Uploads() {
             const capiLure = capitalizeFirstLetter(lure);
 
 
-            const [imageResponse, uploadResponse] = await Promise.all([
-
-                axios.post('http://localhost:8080/single/uploadDb', formData, {
-                    headers: {
-                        "Content-Type ": 'multipart/form-data',
-                        ...config.headers
-                    },
-                }),
-
+            axios.post('http://localhost:8080/single/uploadDb', formData, config).then(function (photoResponse) {
                 axios.post('http://localhost:8080/uploads', {
                     weightFish: weightfish,
                     lengthFish: lengthfish,
@@ -83,230 +74,227 @@ export default function Uploads() {
                     kindOfReel: capiKindofReel,
                     kindOfLure: capiLure,
                     lineLength: linelength,
-                    file: data
-                }, config),
-            ]);
-
-            console.log(uploadResponse);
-            console.log(imageResponse);
-            setData(imageResponse.data);
-            setUploadID(uploadResponse.data);
-            toggleAddSuccess(true);
-        } catch (e) {
-            console.error(e);
-            throw e;
-        }
-    }
-
-
-
-    useEffect(() => {
-        async function connectLoggedInToUpload() {
-            if (!uploadID) {
-                return;
-            }
-
-            const token = localStorage.getItem('token')
-            try {
-                const response = await axios.post(`http://localhost:8080/users/${user.accountID}/upload/${uploadID}`, {}, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
+                    file: photoResponse.data
+                }, config).then(function (uploadResponse) {
+                    const token = localStorage.getItem('token')
+                    try {
+                        const connectResponse = axios.post(`http://localhost:8080/users/${user.accountID}/upload/${uploadResponse.data}`, {}, {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        });
+                        console.log(connectResponse)
+                    } catch (e) {
+                        console.error(e)
                     }
-                });
-                console.log(response.data)
-            } catch (e) {
-                console.error(e)
+                })
+            });
+                toggleAddSuccess(true);
+            }
+        catch
+            (e)
+            {
+                console.error(e);
+                throw e;
             }
         }
 
-        connectLoggedInToUpload();
 
-        return () => {
-        };
-    }, [uploadID]);
+        useEffect(() => {
+            async function connectLoggedInToUpload() {
+                if (!uploadID) {
+                    return;
+                }
+
+                const token = localStorage.getItem('token')
+                try {
+                    const response = await axios.post(`http://localhost:8080/users/${user.accountID}/upload/${uploadID}`, {}, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                    console.log(response.data)
+                } catch (e) {
+                    console.error(e)
+                }
+            }
+
+            connectLoggedInToUpload();
+
+            return () => {
+            };
+        }, [uploadID]);
 
 
-    return (
-        <div className="outer-container">
-            <div className="inner-container">
-                <div className={styles.allcontent}>
+        return (
+            <div className="outer-container">
+                <div className="inner-container">
+                    <div className={styles.allcontent}>
 
-                    <form
-                        // onSubmit={addPhoto}
-                        className={styles.formcontent}>
+                        <form
+                            // onSubmit={addPhoto}
+                            className={styles.formcontent}>
 
-                        <div className={styles.fishLogo}>
-                            <FaPhotoVideo/>
-                        </div>
+                            <div className={styles.fishLogo}>
+                                <FaPhotoVideo/>
+                            </div>
 
-                        <label className={styles.formcontent}>
-                            <h3>Stap 1: Foto uploaden</h3>
+                            <label className={styles.formcontent}>
+                                <h3>Stap 1: Foto uploaden</h3>
+                                <b>_________________________________</b>
+                                <br/>
+                                Kies afbeelding:
+                                <br/>
+
+                                <input type="file"
+                                       name="image-field"
+                                       id="upload-image"
+                                       onChange={handleChange}
+                                />
+                                <br/>
+                            </label>
+                        </form>
+                        <br/>
+                        <form
+                            onSubmit={addUpload}
+                            className={styles.formcontent}>
+
+                            <div className={styles.fishLogo}>
+                                <FaFish/>
+                            </div>
+                            <h3>Stap 2: Wat voor vis is het?</h3>
                             <b>_________________________________</b>
                             <br/>
-                            Kies afbeelding:
+
+                            <label>Vissoort:</label>
+
+                            <input
+                                type="text"
+                                placeholder="Vul hier de soort vis in..."
+                                id="name-fish"
+                                value={speciesfish}
+                                onChange={(e) => setSpeciesfish(e.target.value)}
+                                required
+                            />
+
+                            <label>Gewicht:</label>
+                            <input
+                                type="text"
+                                placeholder="Werk met punten..."
+                                id="weight-fish"
+                                value={weightfish}
+                                onChange={(e) => setWeightfish(e.target.value)}
+                                required
+                            />
+
+                            <label>Lengte:</label>
+                            <input
+                                type="text"
+                                placeholder="Werk met punten..."
+                                id="length-fish"
+                                value={lengthfish}
+                                onChange={(e) => setLengthfish(e.target.value)}
+                                required/>
+
+                            <label>Kenmerken:</label>
+                            <input
+                                type="text"
+                                placeholder="Vul hier kenmerken in..."
+                                id="chars-fish"
+                                value={charsfish}
+                                onChange={(e) => setCharsfish(e.target.value)}/>
+                        </form>
+                        <br/>
+                        <form
+                            onSubmit={addUpload}
+                            className={styles.formcontent}>
+
+                            <div className={styles.fishLogo}>
+                                <GiFishingPole/>
+                            </div>
+                            <h3>Stap 3: Welke gear heb je gebruikt?</h3>
+                            <b>_________________________________</b>
                             <br/>
 
-                            <input type="file"
-                                   name="image-field"
-                                   id="upload-image"
-                                   onChange={handleChange}
+                            <label>Lengte hengel:</label>
+                            <input
+                                type="text"
+                                placeholder="Vul hier de lengte in..."
+                                id="rod-length"
+                                value={rodLength}
+                                onChange={(e) => setRodLength(e.target.value)}/>
+
+                            <label>Molen of Reel:</label>
+                            <input
+                                type="text"
+                                placeholder="Vul hier je molen/reel in..."
+                                id="reel-molen"
+                                value={kindofreel}
+                                onChange={(e) => setKindOfReel(e.target.value)}/>
+
+                            <label>Aassoort:</label>
+                            <input
+                                type="text"
+                                placeholder="Vul hier je aassoort in..."
+                                id="kind-lure"
+                                value={lure}
+                                onChange={(e) => setLure(e.target.value)}/>
+
+                            <label>Lijn:</label>
+                            <input
+                                type="text"
+                                placeholder="Vul hier je lijn in..."
+                                id="kind-of-line"
+                                value={linelength}
+                                onChange={(e) => setLine(e.target.value)}/>
+                        </form>
+                        <br/>
+                        <form
+                            onSubmit={addUpload}
+                            className={styles.formcontent}>
+
+                            <div className={styles.fishLogo}>
+                                <BiCurrentLocation/>
+                            </div>
+                            <h3>Stap 4: Waar heb je deze vis gevangen?</h3>
+                            <b>_________________________________</b>
+                            <br/>
+
+                            <label>Plaatsnaam:</label>
+                            <input
+                                type="text"
+                                placeholder="Vul hier de plaatsnaam in.."
+                                id="city-fish"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                            />
+                            <label>Google maps dropped pin link:</label>
+                            <input
+                                type="text"
+                                placeholder="Plak hier je link.."
+                                id="location-fish"
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
                             />
                             <br/>
-                            {/*<button*/}
-                            {/*    type="submit"*/}
-                            {/*    className={styles.button}*/}
-                            {/*>*/}
-                            {/*    Foto uploaden*/}
-                            {/*</button>*/}
-                            {/*<br/>*/}
-                            {/*<b>===========================================</b>*/}
-                            {/*<b>Let op!</b>*/}
-                            {/*<b>Druk eerst op 'foto uploaden' en ga dan verder met het formulier!</b>*/}
-                            {/*<b>Foto is niet verplicht maar wel essentieel!</b>*/}
-                            {/*<b>===========================================</b>*/}
-                        </label>
-                    </form>
-                    <br/>
-                    <form
-                        onSubmit={addUpload}
-                        className={styles.formcontent}>
+                            <div className={styles.fishLogo}>
+                                <FiSave/>
+                            </div>
+                            <h3>Stap 5: Sla jouw vangst op!</h3>
+                            <b>_________________________________</b>
+                            {addSuccess === true && <p>Upload is toegevoegd!</p>}
+                            <br/>
+                            <button
+                                type="submit"
+                                className={styles.button}
+                            >
+                                Vangst opslaan!
+                            </button>
 
-                        <div className={styles.fishLogo}>
-                            <FaFish/>
-                        </div>
-                        <h3>Stap 2: Wat voor vis is het?</h3>
-                        <b>_________________________________</b>
-                        <br/>
-
-                        <label>Vissoort:</label>
-
-                        <input
-                            type="text"
-                            placeholder="Vul hier de soort vis in..."
-                            id="name-fish"
-                            value={speciesfish}
-                            onChange={(e) => setSpeciesfish(e.target.value)}
-                            required
-                        />
-
-                        <label>Gewicht:</label>
-                        <input
-                            type="text"
-                            placeholder="Werk met punten..."
-                            id="weight-fish"
-                            value={weightfish}
-                            onChange={(e) => setWeightfish(e.target.value)}
-                            required
-                        />
-
-                        <label>Lengte:</label>
-                        <input
-                            type="text"
-                            placeholder="Werk met punten..."
-                            id="length-fish"
-                            value={lengthfish}
-                            onChange={(e) => setLengthfish(e.target.value)}
-                            required/>
-
-                        <label>Kenmerken:</label>
-                        <input
-                            type="text"
-                            placeholder="Vul hier kenmerken in..."
-                            id="chars-fish"
-                            value={charsfish}
-                            onChange={(e) => setCharsfish(e.target.value)}/>
-                    </form>
-                    <br/>
-                    <form
-                        onSubmit={addUpload}
-                        className={styles.formcontent}>
-
-                        <div className={styles.fishLogo}>
-                            <GiFishingPole/>
-                        </div>
-                        <h3>Stap 3: Welke gear heb je gebruikt?</h3>
-                        <b>_________________________________</b>
-                        <br/>
-
-                        <label>Lengte hengel:</label>
-                        <input
-                            type="text"
-                            placeholder="Vul hier de lengte in..."
-                            id="rod-length"
-                            value={rodLength}
-                            onChange={(e) => setRodLength(e.target.value)}/>
-
-                        <label>Molen of Reel:</label>
-                        <input
-                            type="text"
-                            placeholder="Vul hier je molen/reel in..."
-                            id="reel-molen"
-                            value={kindofreel}
-                            onChange={(e) => setKindOfReel(e.target.value)}/>
-
-                        <label>Aassoort:</label>
-                        <input
-                            type="text"
-                            placeholder="Vul hier je aassoort in..."
-                            id="kind-lure"
-                            value={lure}
-                            onChange={(e) => setLure(e.target.value)}/>
-
-                        <label>Lijn:</label>
-                        <input
-                            type="text"
-                            placeholder="Vul hier je lijn in..."
-                            id="kind-of-line"
-                            value={linelength}
-                            onChange={(e) => setLine(e.target.value)}/>
-                    </form>
-                    <br/>
-                    <form
-                        onSubmit={addUpload}
-                        className={styles.formcontent}>
-
-                        <div className={styles.fishLogo}>
-                            <BiCurrentLocation/>
-                        </div>
-                        <h3>Stap 4: Waar heb je deze vis gevangen?</h3>
-                        <b>_________________________________</b>
-                        <br/>
-
-                        <label>Plaatsnaam:</label>
-                        <input
-                            type="text"
-                            placeholder="Vul hier de plaatsnaam in.."
-                            id="city-fish"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                        />
-                        <label>Google maps dropped pin link:</label>
-                        <input
-                            type="text"
-                            placeholder="Plak hier je link.."
-                            id="location-fish"
-                            value={location}
-                            onChange={(e) => setLocation(e.target.value)}
-                        />
-                        <br/>
-                        <div className={styles.fishLogo}>
-                            <FiSave/>
-                        </div>
-                        <h3>Stap 5: Sla jouw vangst op!</h3>
-                        <b>_________________________________</b>
-                        {addSuccess === true && <p>Upload is toegevoegd!</p>}
-                        <br/>
-                        <button
-                            type="submit"
-                            className={styles.button}
-                        >
-                            Vangst opslaan!
-                        </button>
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
-        ;
-}
+        )
+            ;
+    }

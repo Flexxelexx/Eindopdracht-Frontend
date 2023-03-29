@@ -3,6 +3,8 @@ import {Link, useLocation} from "react-router-dom";
 import styles from "../UserPage/UserPage.module.css";
 import {ThemeContext} from "../../components/ThemeContext/ThemeContext";
 import axios from "axios";
+import {AuthContext} from "../../context/AuthContext";
+import {AiOutlineDelete} from "react-icons/ai";
 
 function UserPage() {
 
@@ -10,14 +12,36 @@ function UserPage() {
     const location = useLocation();
     const {upload} = location.state;
 
+    const token = localStorage.getItem('token');
     const {boxjes} = useContext(ThemeContext);
+    const {user} = useContext(AuthContext);
+    const userRole = user.rolename;
+    const [isDeleted, setIsDeleted] = useState(false);
+    const [users, setUsers] = useState([]);
+
 
     useEffect(() => {
         document.title = `${upload.username} - Profiel`;
     }, [upload.username]);
 
+    async function DeleteUser () {
 
-    const [users, setUsers] = useState([]);
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        };
+
+        try {
+            const result = await axios.delete(`http://localhost:8080/users/${upload.id.user}/deleteuser`, config);
+            console.log(`deleted user: ${upload.id.user}`)
+            setIsDeleted(true)
+            console.log(result)
+        } catch (e) {
+            console.log(e)
+            setIsDeleted(false)
+        }
+    }
 
     useEffect(() => {
         async function fetchUsers() {
@@ -35,7 +59,7 @@ function UserPage() {
         }
 
         fetchUsers();
-    }, []);
+    }, [isDeleted]);
 
 
 
@@ -43,8 +67,9 @@ function UserPage() {
 
     const userUploads = uploads.filter((upload) => {
         return upload.username === location.state.upload.username;
-    })
 
+    })
+    console.log(upload.username)
     useEffect(() => {
         async function fetchUploads() {
             try {
@@ -54,7 +79,7 @@ function UserPage() {
                 };
                 const response = await axios.get('http://localhost:8080/uploads', config);
                 setUploads(response.data);
-                console.log(response.data)
+                // console.log(response.data)
             } catch (e) {
                 console.error(e)
             }
@@ -70,6 +95,12 @@ function UserPage() {
                 <div style={{WebkitBoxShadow: boxjes}} className={styles.welkom}>
                     <h2>{upload.username}</h2>
                     <br/>
+                    {userRole === 'ROLE_ADMIN' &&
+                            <button
+                                onClick={() => DeleteUser(upload.id.user)}
+                                className={styles.button}>
+                                <AiOutlineDelete/>
+                            </button>}
                     <p>Alle vangsten van {upload.username}:</p>
                     <table>
                         <thead>
