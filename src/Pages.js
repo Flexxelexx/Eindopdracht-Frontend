@@ -49,6 +49,7 @@ function Pages() {
                 <Route path="/beepetiebaapetiebooHowAboutYou" exact component={CreateAdmin}/>
 
             </Switch>
+
             <Footer/>
         </>
     );
