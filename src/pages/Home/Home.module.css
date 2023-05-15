@@ -1,61 +1,59 @@
 .loginform {
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    box-shadow: 7px -8px 9px -1px;
-    border-radius: 50px;
-    border-width: thick;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 7px -8px 9px -1px;
+  border-radius: 50px;
+  border-width: thick;
 }
 
 .fishLogo {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .searchbar {
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-    padding: 10px 15px;
-    box-shadow: 7px -8px 9px -1px;
-    border-radius: 50px;
-    border-width: thick;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  padding: 10px 15px;
+  box-shadow: 7px -8px 9px -1px;
+  border-radius: 50px;
+  border-width: thick;
 }
 
 .welkom {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    border-radius: 50px;
-    border-width: thick;
-    box-shadow: 7px -8px 9px -1px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border-radius: 50px;
+  border-width: thick;
+  box-shadow: 7px -8px 9px -1px;
 }
 
 .welkomphoto {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    border-radius: 50px;
-    border-width: thick;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border-radius: 50px;
+  border-width: thick;
 }
-
 
 .buttoncontainer {
-    background-color: black;
-    color: white;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 15px;
-    padding: 6px;
-    margin-top: 10px;
-    cursor: pointer;
+  background-color: black;
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 15px;
+  padding: 6px;
+  margin-top: 10px;
+  cursor: pointer;
 }
-

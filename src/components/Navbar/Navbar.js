@@ -1,168 +1,164 @@
-import React, {useContext} from "react";
-import {NavLink} from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 import styles from "../Navbar/Navbar.module.css";
 import SwitchTheme from "../SwitchTheme/SwitchTheme";
-import {ThemeContext} from "../ThemeContext/ThemeContext";
-import {AuthContext} from "../../context/AuthContext";
-
+import { ThemeContext } from "../ThemeContext/ThemeContext";
+import { AuthContext } from "../../context/AuthContext";
+import Navlink from "../Navlink/Navlink";
 
 function Navbar() {
-    const {kleuren} = useContext(ThemeContext);
+  const { kleuren } = useContext(ThemeContext);
 
-    const {isAuthenticated, logoutFunction} = useContext(AuthContext)
+  const { isAuthenticated, logoutFunction } = useContext(AuthContext);
+
+  async function clickLogout() {
+    logoutFunction();
+  }
+
+  return (
+    <nav>
+      <ul className={styles.navlist}>
+        <li>
+
+          <Navlink
+          page="/"
+          symbol="fa-solid fa-home-user fa-2x"
+          value="Home"
+          />
+
+        </li>
+
+        {isAuthenticated ? (
+          <>
+            <li>
+
+              <Navlink
+                  page="/zoeken"
+                  symbol="fa-solid fa-magnifying-glass-location fa-2x"
+                  value="Zoeken"
+              />
+
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+
+              <Navlink
+                  page="/login"
+                  symbol="fa-solid fa-magnifying-glass-location fa-2x"
+                  value="Zoeken"
+              />
+
+            </li>
+          </>
+        )}
+
+        {isAuthenticated ? (
+          <>
+            <li>
+
+              <Navlink
+                  page="/upload"
+                  symbol="fa-solid fa-upload fa-2x"
+                  value="Uploads"
+              />
+
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
 
 
-    async function clickLogout() {
-        logoutFunction();
-    }
+              <Navlink
+                  page="/login"
+                  symbol="fa-solid fa-upload fa-2x"
+                  value="Uploads"
+              />
 
-    return (
-        <nav>
-            <ul className={styles.navlist}>
+            </li>
+          </>
+        )}
 
-                <li>
-                    <NavLink
-                        to="/"
-                        style={{color: kleuren}}
-                        className={styles.navbuttons}
-                    >
-                        <i className="fa-solid fa-home-user fa-2x"/>
-                        Home
-                    </NavLink>
-                </li>
+        {isAuthenticated ? (
+          <>
+            <li>
 
-                {isAuthenticated ? (
-                    <>
-                <li>
-                    <NavLink
-                        to="/zoeken"
-                        style={{color: kleuren}}
-                        className={styles.navbuttons}
-                    >
-                        <i className="fa-solid fa-magnifying-glass-location fa-2x"/>
-                        Zoeken
-                    </NavLink>
-                </li>
-                    </>
-                ) : (
-                    <>
-                    <li>
-                        <NavLink
-                            to="/login"
-                            style={{color: kleuren}}
-                            className={styles.navbuttons}
-                        >
-                            <i className="fa-solid fa-magnifying-glass-location fa-2x"/>
-                            Zoeken
-                        </NavLink>
-                    </li>
-                    </>
-                )}
+              <Navlink
+                  page="/account"
+                  symbol="fa-regular fa-id-card fa-2x"
+                  value="Account"
+              />
 
-                {isAuthenticated ? (
-                    <>
-                <li>
-                    <NavLink
-                        to="/upload"
-                        style={{color: kleuren}}
-                        className={styles.navbuttons}
-                    >
-                        <i className="fa-solid fa-upload fa-2x"/> Uploads
-                    </NavLink>
-                </li>
-                    </>
-                ) : (
-                    <>
-                    <li>
-                        <NavLink
-                            to="/login"
-                            style={{color: kleuren}}
-                            className={styles.navbuttons}
-                        >
-                            <i className="fa-solid fa-upload fa-2x"/> Uploads
-                        </NavLink>
-                    </li>
-                    </>
-                )}
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
 
-                {isAuthenticated ? (
-                    <>
-                <li>
-                    <NavLink
-                        to="/account"
-                        style={{color: kleuren}}
-                        className={styles.navbuttons}
-                    >
-                        <i className="fa-regular fa-id-card fa-2x"/> Account
-                    </NavLink>
-                </li>
-                    </>
-                ) : (
-                    <>
-                        <li>
-                            <NavLink
-                                to="/login"
-                                style={{color: kleuren}}
-                                className={styles.navbuttons}
-                            >
-                                <i className="fa-regular fa-id-card fa-2x"/> Account
-                            </NavLink>
-                        </li>
-                    </>
-                )}
-                <li>
-                    <NavLink
-                        to="/contact"
-                        style={{color: kleuren}}
-                        className={styles.navbuttons}
-                    >
-                        <i className="fa-solid fa-circle-info fa-2x"/> Contact
-                    </NavLink>
-                </li>
+              <Navlink
+                  page="/login"
+                  symbol="fa-regular fa-id-card fa-2x"
+                  value="Account"
+              />
 
-                <li>
-                    <NavLink
-                        to="/register"
-                        style={{color: kleuren}}
-                        className={styles.navbuttons}
-                    >
-                        <i className="fa-solid fa-hippo fa-2x"/> Register
-                    </NavLink>
-                </li>
+            </li>
+          </>
+        )}
+        <li>
 
-                    {isAuthenticated ? (
-                            <>
-                            <li>
-                            <NavLink
-                                to="/login"
-                                style={{color: kleuren}}
-                                className={styles.navbuttons}
-                                onClick={clickLogout}
-                            >
-                                <i className="fa-solid fa-download fa-2x"/>  Logout
-                            </NavLink>
-                            </li>
-                            </>
-                            ) : (
-                            <>
-                                <li>
-                                <NavLink
-                                    to="/login"
-                                    style={{color: kleuren}}
-                                    className={styles.navbuttons}
-                                >
-                                    <i className="fa-solid fa-download fa-2x"/> Login
-                                </NavLink>
-                            </li>
-                            </>
-                            )}
-                        <li>
-                            <SwitchTheme/>
-                        </li>
-                        </ul>
-                        </nav>
-                        );
-                    }
+          <Navlink
+              page="/contact"
+              symbol="fa-solid fa-circle-info fa-2x"
+              value="Contact"
+          />
 
-                    export default Navbar;
+        </li>
+
+        <li>
+
+          <Navlink
+              page="/register"
+              symbol="fa-solid fa-hippo fa-2x"
+              value="Register"
+          />
+
+        </li>
+
+        {isAuthenticated ? (
+          <>
+            <li>
+
+              <Navlink
+                  page="/login"
+                  symbol="fa-solid fa-download fa-2x"
+                  value="Logout"
+                  onclick={clickLogout}
+              />
+
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+
+              <Navlink
+                  page="/login"
+                  symbol="fa-solid fa-download fa-2x"
+                  value="Login"
+              />
+
+            </li>
+          </>
+        )}
+        <li>
+          <SwitchTheme />
+        </li>
+      </ul>
+    </nav>
+  );
+}
+
+export default Navbar;

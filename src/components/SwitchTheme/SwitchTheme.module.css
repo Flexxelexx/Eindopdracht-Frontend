@@ -1,7 +1,7 @@
 .buttoncontainer {
-    border:none;
-    border-radius: 25px;
-    outline:none;
-    cursor: pointer;
-    background-color: transparent;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
 }

@@ -1,20 +1,19 @@
 #footer {
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .navbuttons {
-    color: black;
-    text-decoration: none;
-    font-size: 20px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 .extendednav {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 15px;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
 }

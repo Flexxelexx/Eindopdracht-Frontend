@@ -1,25 +1,24 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-    transition: background-color 1s ease;
+  transition: background-color 1s ease;
 }
 
 .outer-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .inner-container {
-    flex-basis: 1400px;
-    padding: 10px;
-    margin: 10px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
+  flex-basis: 1400px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
-

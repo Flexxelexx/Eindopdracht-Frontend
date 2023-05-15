@@ -10,11 +10,11 @@ import AuthContextProvider from "./context/AuthContext";
 function App() {
   return (
     <>
-        <AuthContextProvider>
-      <ThemeContextProvider>
-        <Pages />
-      </ThemeContextProvider>
-        </AuthContextProvider>
+      <AuthContextProvider>
+        <ThemeContextProvider>
+          <Pages />
+        </ThemeContextProvider>
+      </AuthContextProvider>
     </>
   );
 }

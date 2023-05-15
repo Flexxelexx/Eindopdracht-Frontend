@@ -28,7 +28,6 @@ function ThemeContextProvider({ children }) {
     Donker: "#111111",
   };
 
-
   const [kleur, setKleur] = useState(achtergrondkleuren.Licht);
   const [kleuren, setKleuren] = useState(lettertypkleur.Licht);
   const [navlink, setNavlink] = useState(navlinkkleur.Licht);
@@ -55,7 +54,7 @@ function ThemeContextProvider({ children }) {
   });
 
   const switchKleur = () => {
-    console.log("before switch:", kleur,  boxjes);
+    console.log("before switch:", kleur, boxjes);
 
     const newAchtergrond =
       kleur === achtergrondkleuren.Donker

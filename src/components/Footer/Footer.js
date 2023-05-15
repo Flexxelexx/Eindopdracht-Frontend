@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import styles from "../Footer/Footer.module.css";
+import Navlink from "../Navlink/Navlink";
 
 function Footer() {
   return (
@@ -8,12 +8,15 @@ function Footer() {
       <div className="inner-container" id={styles.footer}>
         <div className={styles.extendednav}>
           <i className="fa-solid fa-cog fa-spin" />
-          <NavLink to="/algemene-voorwaarden" className={styles.navbuttons}>
-            Algemene Voorwaarden
-          </NavLink>
-          <NavLink to="/over-ons" className={styles.navbuttons}>
-            Over ons
-          </NavLink>
+
+          <Navlink
+          page="/algemene-voorwaarden"
+          value="Algemene voorwaarden"/>
+
+          <Navlink
+              page="/over-ons"
+              value="Over ons"/>
+
           <i className="fa-solid fa-cog fa-spin fa-spin-reverse" />
         </div>
         <div className={styles.extendednav}>

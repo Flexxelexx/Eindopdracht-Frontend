@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./SwitchTheme.module.css";
 
 function SwitchTheme() {
-
   const lettertypkleur = {
     Licht: "#253237",
     Donker: "#FF0000",
@@ -89,9 +88,9 @@ function SwitchTheme() {
         onClick={switchKleur}
       >
         {kleur === achtergrondkleuren.Licht ? (
-            <i className="fa-solid fa-lightbulb fa-2x">Aan</i>
+          <i className="fa-solid fa-lightbulb fa-2x">Aan</i>
         ) : (
-            <i className="fa-solid fa-lightbulb fa-2x">Uit</i>
+          <i className="fa-solid fa-lightbulb fa-2x">Uit</i>
         )}
       </button>
     </>
