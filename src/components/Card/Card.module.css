@@ -1,0 +1,10 @@
+.welkom {
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 50px;
+    border-width: thick;
+    box-shadow: 7px -8px 9px -1px;
+}

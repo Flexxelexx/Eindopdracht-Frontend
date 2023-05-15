@@ -1,33 +1,32 @@
 .border {
-    box-shadow: inset 0px 0px 61px 31px rgba(0,0,0,0.75);
-    border-radius: 25px;
+  box-shadow: inset 0px 0px 61px 31px rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
 }
 .navbar {
-    display: flex;
-    align-items: center;
-    gap: 35px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  width: 100%;
 }
 
 .logocontainer {
-max-width: 350px;
+  max-width: 350px;
 }
 
 .mainlogo {
-    max-width: 50%;
+  max-width: 50%;
 }
 
 .themebtn {
-    background-color: black;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 25px;
-    width: 3%;
-    padding: 10px
+  background-color: black;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+  width: 3%;
+  padding: 10px;
 }
-

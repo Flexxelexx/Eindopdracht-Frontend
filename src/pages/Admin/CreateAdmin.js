@@ -4,43 +4,45 @@ import axios from "axios";
 import styles from "../Register/Register.module.css";
 import {FaFish} from "react-icons/fa";
 import {NavLink} from "react-router-dom";
+import Button from "../../components/Button/Button";
+import Input from "../../components/Input/Input";
 
 function CreateAdmin() {
-
     useEffect(() => {
         document.title = "Admin creation";
     }, []);
 
-
-    const [username, setUsername] = useState('');
-    const [userpassword, setUserpassword] = useState('');
-
+    const [username, setUsername] = useState("");
+    const [userpassword, setUserpassword] = useState("");
 
     const {boxjes} = useContext(ThemeContext);
     const [addSuccess, toggleAddSuccess] = useState(false);
 
     async function addAdmin(e) {
-        e.preventDefault()
+        e.preventDefault();
         const adminData = JSON.stringify({
             username: `${username}`,
-            password: `${userpassword}`
-        })
+            password: `${userpassword}`,
+        });
         const customConfig = {
             headers: {
-                'Content-Type': 'application/json'
-            }
+                "Content-Type": "application/json",
+            },
         };
 
         try {
-            const response = await axios.post("http://localhost:8080/users/createadmin", adminData, customConfig);
-            console.log('created admin');
-            console.log(response.data)
-            toggleAddSuccess(true)
+            const response = await axios.post(
+                "http://localhost:8080/users/createadmin",
+                adminData,
+                customConfig
+            );
+            console.log("created admin");
+            console.log(response.data);
+            toggleAddSuccess(true);
         } catch (e) {
             console.error(e);
         }
     }
-
 
     return (
         <>
@@ -49,55 +51,48 @@ function CreateAdmin() {
                     <form
                         style={{boxShadow: boxjes}}
                         className={styles.loginform}
-                        onSubmit={addAdmin}>
-
+                        onSubmit={addAdmin}
+                    >
                         <h3>Admin aanmaken</h3>
 
                         <div className={styles.fishLogo}>
                             <FaFish/>
                         </div>
-                        <label>Profielnaam:</label>
-                        <input
+
+                        <Input
+                            label="Profielnaam"
                             type="text"
                             placeholder="Vul hier je profielnaam in..."
-                            id="screen-name"
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}/>
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
 
-                        <label>Wachtwoord:</label>
-                        <input
+                        <Input
+                            label="Wachtwoord"
                             type="text"
                             placeholder="Vul hier je wachtwoord in..."
-                            id="user-password"
                             value={userpassword}
-                            onChange={(e) => setUserpassword(e.target.value)}/>
+                            onChange={(e) => setUserpassword(e.target.value)}
+                        />
 
                         <br/>
-                        <button
+                        <Button
                             type="submit"
+                            value="Maak admin aan"
                             className={styles.button}
-                        >
-                            Maak admin aan
-                        </button>
+                            clickHandler={addAdmin}/>
                         <br/>
                         {addSuccess === true && <p>Je admin account is toegevoegd!</p>}
                         {addSuccess === true && <p>Gebruik deze krachten met mate..</p>}
-                        {addSuccess === true &&
+                        {addSuccess === true && (
                             <p>
-                                <NavLink
-                            to="/admin"
-                            className={styles.navbuttons}
-                        >
-                            Ga snel naar inloggen!
-                        </NavLink>
+                                <NavLink to="/admin" className={styles.navbuttons}>
+                                    Ga snel naar inloggen!
+                                </NavLink>
                             </p>
-                        }
-
+                        )}
                     </form>
-
-
                 </div>
-
             </div>
         </>
     );

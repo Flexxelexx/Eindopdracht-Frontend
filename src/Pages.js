@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Switch} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home/Home";
 
 import Uploads from "./pages/Uploads/Uploads";
@@ -14,45 +14,52 @@ import Register from "./pages/Register/Register";
 import Zoeken from "./pages/Zoeken/Zoeken";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import UserPage from "./pages/UserPage/UserPage";
-import OverOns from "./pages/OverOns/OverOns"
+import OverOns from "./pages/OverOns/OverOns";
 import CreateAdmin from "./pages/Admin/CreateAdmin";
 
 function Pages() {
-    return (
-        <>
-            <Header/>
-            <Switch>
-                <Route path="/" exact component={Home}/>
+  return (
+    <>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
 
-                <Route path="/zoeken" exact component={Zoeken}/>
+        <Route path="/zoeken" exact component={Zoeken} />
 
-                <Route path="/upload" exact component={Uploads}/>
+        <Route path="/upload" exact component={Uploads} />
 
-                <Route path="/account" exact component={Account}/>
+        <Route path="/account" exact component={Account} />
 
-                <Route path="/contact" exact component={Contact}/>
+        <Route path="/contact" exact component={Contact} />
 
-                <Route path="/login" exact component={SignIn}/>
+        <Route path="/login" exact component={SignIn} />
 
-                <Route path="/admin" exact component={AdminPortal}/>
+        <Route path="/admin" exact component={AdminPortal} />
 
-                <Route path="/register" exact component={Register}/>
+        <Route path="/register" exact component={Register} />
 
-                <Route path="/details/:id" component={DetailsPage}/>
+        <Route path="/details/:id" component={DetailsPage} />
 
-                <Route path="/users/:id" component={UserPage}/>
+        <Route path="/users/:id" component={UserPage} />
 
-                <Route path="/algemene-voorwaarden" exact component={AlgemeneVoorwaarden}/>
+        <Route
+          path="/algemene-voorwaarden"
+          exact
+          component={AlgemeneVoorwaarden}
+        />
 
-                <Route path="/over-ons" exact component={OverOns}/>
+        <Route path="/over-ons" exact component={OverOns} />
 
-                <Route path="/beepetiebaapetiebooHowAboutYou" exact component={CreateAdmin}/>
+        <Route
+          path="/beepetiebaapetiebooHowAboutYou"
+          exact
+          component={CreateAdmin}
+        />
+      </Switch>
 
-            </Switch>
-
-            <Footer/>
-        </>
-    );
+      <Footer />
+    </>
+  );
 }
 
 export default Pages;

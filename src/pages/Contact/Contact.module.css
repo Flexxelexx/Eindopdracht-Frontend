@@ -1,35 +1,36 @@
 #formposition {
-    justify-content: center;
+  justify-content: center;
 }
 
 .midcontent {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    border-radius: 50px;
-    border-width: thick;
-    box-shadow: 7px -8px 9px -1px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 50px;
+  border-width: thick;
+  box-shadow: 7px -8px 9px -1px;
 }
 
 .fishLogo {
-    font-size: 50px;
+  font-size: 50px;
 }
 
-.midcontent h2 , h3 {
-    text-align: center;
+.midcontent h2,
+h3 {
+  text-align: center;
 }
 
 .buttoncontainer {
-    background-color: black;
-    color: white;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 15px;
-    padding: 6px;
-    margin-top: 10px;
-    cursor: pointer;
+  background-color: black;
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 15px;
+  padding: 6px;
+  margin-top: 10px;
+  cursor: pointer;
 }
